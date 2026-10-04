@@ -1084,7 +1084,7 @@
     border-radius: 6px;
     overflow: hidden;
     background: #fafbf7;
-    height: 47px;
+    height: 50px;
     transition:
       border-color 0.15s,
       box-shadow 0.15s;
@@ -1126,6 +1126,38 @@
     border-left: 1px solid #e3e8dc;
     background: #f0f4e9;
     max-width: 110px;
+  }
+  .number-stepper {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    flex: 0 0 32px;
+    border-left: 1px solid #e3e8dc;
+    background: #f0f4e9;
+  }
+  .number-stepper button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #59764a;
+    background: transparent;
+    transition: background 0.15s;
+  }
+  .number-stepper button + button {
+    border-top: 1px solid #e3e8dc;
+  }
+  .number-stepper button:hover:not(:disabled) {
+    background: #e1ebd5;
+  }
+  .number-stepper button:active:not(:disabled) {
+    background: #cfdcbd;
+  }
+  .number-stepper button:focus-visible {
+    outline-offset: -3px;
+  }
+  .number-stepper button:disabled {
+    color: #bdc7b5;
+    cursor: default;
   }
   .field-hint,
   .field-error {
@@ -1856,6 +1888,7 @@
     }
     .fields-grid {
       gap: 20px 13px;
+      grid-template-columns: 1fr;
     }
     .field label {
       font-size: 9px;

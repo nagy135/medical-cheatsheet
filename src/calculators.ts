@@ -22,7 +22,7 @@ export const categories = [
 export type CategoryId = (typeof categories)[number]['id'];
 export type Values = Record<string, number>;
 export type Source = { title: string; detail: string; url: string };
-export type Unit = { label: string; factor: number };
+export type Unit = { label: string; factor: number; step?: number };
 export type Field = {
   id: string;
   label: string;
@@ -31,6 +31,7 @@ export type Field = {
   min?: number;
   max?: number;
   integer?: boolean;
+  step?: number;
   example: string;
   hint?: string;
   options?: { label: string; value: string }[];
@@ -67,7 +68,7 @@ const number = (
 const age = (): Field =>
   number('age', 'Alter', 'Jahre', '60', { min: 18, max: 120, integer: true });
 const height = (): Field => number('height', 'Körpergröße', 'cm', '175', { min: 100, max: 250 });
-const weight = (): Field => number('weight', 'Körpergewicht', 'kg', '75', { max: 500 });
+const weight = (): Field => number('weight', 'Körpergewicht', 'kg', '75', { max: 500, step: 0.1 });
 const sex = (): Field => ({
   id: 'sex',
   label: 'Geschlecht (Formelparameter)',
@@ -78,22 +79,22 @@ const sex = (): Field => ({
   ],
 });
 const creatinineUnits = [
-  { label: 'mg/dl', factor: 1 },
-  { label: 'µmol/l', factor: 1 / 88.4 },
+  { label: 'mg/dl', factor: 1, step: 0.01 },
+  { label: 'µmol/l', factor: 1 / 88.4, step: 1 },
 ];
 const glucoseUnits = [
-  { label: 'mg/dl', factor: 1 },
-  { label: 'mmol/l', factor: 18.0182 },
+  { label: 'mg/dl', factor: 1, step: 1 },
+  { label: 'mmol/l', factor: 18.0182, step: 0.1 },
 ];
 const ureaUnits = [
-  { label: 'mmol/l', factor: 1 },
-  { label: 'mg/dl', factor: 1 / 6.006 },
+  { label: 'mmol/l', factor: 1, step: 0.1 },
+  { label: 'mg/dl', factor: 1 / 6.006, step: 1 },
 ];
 const albumin = (): Field =>
   number('albumin', 'Albumin', 'g/l', '30', {
     units: [
-      { label: 'g/l', factor: 1 },
-      { label: 'g/dl', factor: 10 },
+      { label: 'g/l', factor: 1, step: 1 },
+      { label: 'g/dl', factor: 10, step: 0.1 },
     ],
     max: 100,
   });
@@ -333,7 +334,7 @@ export const calculators: Calculator[] = [
     category: 'elektrolyte',
     description: 'Gesamtkalzium für die Albuminkonzentration korrigieren.',
     method: 'Konventionelle Albuminkorrektur · Faktor 0,02',
-    fields: [number('calcium', 'Gesamtkalzium', 'mmol/l', '2,1'), albumin()],
+    fields: [number('calcium', 'Gesamtkalzium', 'mmol/l', '2,1', { step: 0.01 }), albumin()],
     calculate: (v) => v.calcium + 0.02 * (40 - v.albumin),
     resultLabel: 'Korrigiertes Gesamtkalzium',
     resultUnit: 'mmol/l',
@@ -578,16 +579,16 @@ export const calculators: Calculator[] = [
     fields: [
       number('pao2', 'Arterieller Sauerstoffpartialdruck', 'mmHg', '80', {
         units: [
-          { label: 'mmHg', factor: 1 },
-          { label: 'kPa', factor: 7.50062 },
+          { label: 'mmHg', factor: 1, step: 1 },
+          { label: 'kPa', factor: 7.50062, step: 0.1 },
         ],
       }),
       number('fio2', 'Inspiratorische Sauerstoffkonzentration', '%', '40', {
         min: 21,
         max: 100,
         units: [
-          { label: '%', factor: 1 },
-          { label: 'Anteil (0–1)', factor: 100 },
+          { label: '%', factor: 1, step: 1 },
+          { label: 'Anteil (0–1)', factor: 100, step: 0.01 },
         ],
       }),
     ],

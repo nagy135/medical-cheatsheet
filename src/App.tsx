@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { Ref } from 'react';
 import {
   Activity,
   ArrowDown,
@@ -10,6 +11,7 @@ import {
   Check,
   ChevronDown,
   ChevronRight,
+  ChevronUp,
   Copy,
   FlaskConical,
   Grid2X2,
@@ -34,6 +36,7 @@ import {
   searchCalculators,
 } from './calculators';
 import type { Calculator, Field } from './calculators';
+import { numericFieldSettings, stepNumericValue } from './numeric-input';
 
 function MedicalIcon({ name, size = 22 }: { name: string; size?: number }) {
   if (name === 'heart') return <HeartPulse size={size} strokeWidth={1.6} />;
@@ -362,6 +365,90 @@ function HeroArt() {
   );
 }
 
+function NumericInput({
+  field,
+  value,
+  unitIndex,
+  error,
+  inputRef,
+  onChange,
+  onUnitChange,
+}: {
+  field: Field;
+  value: string;
+  unitIndex: number;
+  error?: string;
+  inputRef?: Ref<HTMLInputElement>;
+  onChange: (value: string) => void;
+  onUnitChange: (unitIndex: number) => void;
+}) {
+  const { min, max, step } = numericFieldSettings(field, unitIndex);
+  const increased = stepNumericValue(field, value, 1, unitIndex);
+  const decreased = stepNumericValue(field, value, -1, unitIndex);
+  const unitLabel = field.units?.[unitIndex]?.label ?? field.unit ?? '';
+  return (
+    <div className={`input-wrap ${error ? 'input-error' : ''}`}>
+      <input
+        ref={inputRef}
+        id={`field-${field.id}`}
+        type="text"
+        role="spinbutton"
+        inputMode={field.integer ? 'numeric' : 'decimal'}
+        autoComplete="off"
+        placeholder={`z. B. ${field.example}`}
+        value={value}
+        aria-valuenow={parseGermanNumber(value) ?? undefined}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-invalid={!!error}
+        aria-describedby={error ? `error-${field.id}` : field.hint ? `hint-${field.id}` : undefined}
+        onChange={(event) => onChange(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+            event.preventDefault();
+            onChange(event.key === 'ArrowUp' ? increased : decreased);
+          }
+        }}
+      />
+      {field.units ? (
+        <select
+          aria-label={`Einheit für ${field.label}`}
+          value={unitIndex}
+          onChange={(event) => onUnitChange(Number(event.target.value))}
+        >
+          {field.units.map((unit, i) => (
+            <option key={unit.label} value={i}>
+              {unit.label}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <span className="field-unit">{field.unit}</span>
+      )}
+      <div className="number-stepper">
+        <button
+          type="button"
+          aria-label={`${field.label} erhöhen`}
+          title={`Um ${formatNumber(step, 2)} ${unitLabel} erhöhen`}
+          disabled={increased === value}
+          onClick={() => onChange(increased)}
+        >
+          <ChevronUp size={14} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          aria-label={`${field.label} verringern`}
+          title={`Um ${formatNumber(step, 2)} ${unitLabel} verringern`}
+          disabled={decreased === value}
+          onClick={() => onChange(decreased)}
+        >
+          <ChevronDown size={14} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function CalculatorPage({
   calculator,
   favorite,
@@ -491,46 +578,18 @@ function CalculatorPage({
                       ))}
                     </div>
                   ) : (
-                    <div
-                      className={`input-wrap ${evaluation.errors[field.id] ? 'input-error' : ''}`}
-                    >
-                      <input
-                        ref={index === 0 ? firstInput : undefined}
-                        id={`field-${field.id}`}
-                        type="text"
-                        inputMode={field.integer ? 'numeric' : 'decimal'}
-                        autoComplete="off"
-                        placeholder={`z. B. ${field.example}`}
-                        value={raw[field.id] || ''}
-                        aria-invalid={!!evaluation.errors[field.id]}
-                        aria-describedby={
-                          evaluation.errors[field.id]
-                            ? `error-${field.id}`
-                            : field.hint
-                              ? `hint-${field.id}`
-                              : undefined
-                        }
-                        onChange={(event) => {
-                          setRaw((current) => ({ ...current, [field.id]: event.target.value }));
-                          setCopyState('idle');
-                        }}
-                      />
-                      {field.units ? (
-                        <select
-                          aria-label={`Einheit für ${field.label}`}
-                          value={units[field.id] ?? 0}
-                          onChange={(event) => changeUnit(field, Number(event.target.value))}
-                        >
-                          {field.units.map((unit, i) => (
-                            <option key={unit.label} value={i}>
-                              {unit.label}
-                            </option>
-                          ))}
-                        </select>
-                      ) : (
-                        <span className="field-unit">{field.unit}</span>
-                      )}
-                    </div>
+                    <NumericInput
+                      field={field}
+                      inputRef={index === 0 ? firstInput : undefined}
+                      value={raw[field.id] || ''}
+                      unitIndex={units[field.id] ?? 0}
+                      error={evaluation.errors[field.id]}
+                      onChange={(value) => {
+                        setRaw((current) => ({ ...current, [field.id]: value }));
+                        setCopyState('idle');
+                      }}
+                      onUnitChange={(unitIndex) => changeUnit(field, unitIndex)}
+                    />
                   )}
                   {evaluation.errors[field.id] ? (
                     <span className="field-error" id={`error-${field.id}`}>

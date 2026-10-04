@@ -43,6 +43,8 @@ Um einen Rechner hinzuzufügen, einen Eintrag in `calculators` ergänzen und ein
 
 Dezimalkommas und Dezimalpunkte werden akzeptiert. Laborwerte verwenden im deutschen Klinikalltag verbreitete Einheiten: unter anderem mg/dl bzw. µmol/l für Kreatinin, mg/dl bzw. mmol/l für Glukose und mmol/l bzw. mg/dl für Harnstoff. Albumin kann in g/l oder g/dl eingegeben werden. Beim Wechsel einer Einheit wird ein vorhandener Wert umgerechnet.
 
+Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten der Tastatur funktionieren. Die Schrittweite richtet sich nach Feld und ausgewählter Einheit, zum Beispiel 0,01 mg/dl bei Kreatinin und 0,01 bei FiO₂ als Anteil. Vorhandene Eingabegrenzen werden dabei berücksichtigt.
+
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
 ## Formeln und Quellen
