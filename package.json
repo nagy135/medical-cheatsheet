@@ -16,7 +16,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "anatomy:bsa": "node scripts/build-bsa-anatomy.mjs",
-    "anatomy:bsa:audit": "node scripts/build-bsa-anatomy.mjs --audit"
+    "anatomy:bsa:audit": "node scripts/build-bsa-anatomy.mjs --audit",
+    "anatomy:shock": "node scripts/build-shock-anatomy.mjs",
+    "anatomy:shock:audit": "node scripts/build-shock-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",

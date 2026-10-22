@@ -62,7 +62,14 @@ ist der Zahlenwert der KOF. Eingaben sind mit dem Hauptformular verbunden.
 Beide Einflüsse lassen sich einzeln ausprobieren; die Formsteuerung ändert
 keinen medizinischen Wert. Die Seite startet mit 175 cm und 75 kg.
 
-Bei den übrigen 18 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Der Schockindex besitzt als drittes individuelles Modell die Verhältniswaage.
+Die Herzfrequenz steht links, der systolische Blutdruck rechts. Ihre Zahlenwerte
+bestimmen zwei Modellgewichte und den ausbalancierten Stützpunkt. Das Verhältnis
+rechter/linker Hebelarm ergibt den Index. Beide Eingaben sind mit dem Hauptformular
+verbunden; die Seite startet mit 90/min und 120 mmHg. Verdopplung beider Werte
+lässt Quotient und Stützpunkt unverändert.
+
+Bei den übrigen 17 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -90,6 +97,12 @@ Die Prüfung erfasst Rechteck, Quadrat und Zwischenstellungen bei normalen
 Werten und an den Eingabegrenzen. Die Dimensionen, Fläche und Anzeige stammen
 aus `src/anatomy/bsa-model.ts`; `scripts/verify-bsa-anatomy.json` prüft die
 Browserinteraktionen mit dem Anatomy-Skript `drive.mjs`.
+
+Die Verhältniswaage wird mit `npm run anatomy:shock:audit` erzeugt. Die
+Geometrieprüfung umfasst ausgeglichene und extreme Verhältnisse sowie gemeinsam
+skalierte Eingaben. `scripts/verify-shock-anatomy.json` prüft die beiden
+Eingabeeinflüsse, Proportionalität, geteilten Formularzustand und Bedienung
+mit dem Anatomy-Skript `drive.mjs`.
 
 ## Formeln und Quellen
 

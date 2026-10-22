@@ -1,0 +1,122 @@
+[
+  ["until", "document.querySelector('.shock-svg')"],
+  ["scroll", ".shock-figure"],
+  ["until", "Number(document.querySelector('.shock-svg').dataset.shockResult)===.75"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.shock-panel [data-trace]'))throw Error('Generic plotter');window.shockBase={...document.querySelector('.shock-svg').dataset};window.shockBody=document.querySelector('[data-shock-group=weight0]').innerHTML;return 'Dedicated balance initialized at 90 / 120';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/shock-desktop.png", ".shock-panel"],
+  ["lines", "docs/anatomy-map/shots/shock-lines.png", ".shock-figure"],
+  ["scroll", ".shock-experiments"],
+  ["click", ".shock-experiments button:nth-child(2)"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-1)<1e-7"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.shock-svg').dataset;if(Number(d.shockPivot)>=Number(window.shockBase.shockPivot)||Number(d.shockHeartHeight)<=Number(window.shockBase.shockHeartHeight)||Math.abs(Number(d.shockPressureHeight)-Number(window.shockBase.shockPressureHeight))>1e-5)throw Error('Heart-rate effect on geometry');if(document.querySelector('[data-shock-group=weight0]').innerHTML===window.shockBody)throw Error('Actual weight unchanged');if(document.querySelector('.result-number').textContent!=='1,00'||document.querySelector('#field-heartRate').value!=='120')throw Error('Shared heart-rate effect');return 'Heart rate +30 raises left weight, shifts support left and gives SI 1.00';})()"
+  ],
+  ["lines", null, ".shock-figure"],
+  ["scroll", ".shock-experiments"],
+  ["click", ".shock-experiments button:nth-child(3)"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-0.6)<1e-7"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.shock-svg').dataset;if(Number(d.shockPivot)<=Number(window.shockBase.shockPivot)||Number(d.shockPressureHeight)<=Number(window.shockBase.shockPressureHeight)||Math.abs(Number(d.shockHeartHeight)-Number(window.shockBase.shockHeartHeight))>1e-5)throw Error('Pressure effect on geometry');if(document.querySelector('.result-number').textContent!=='0,60')throw Error('Shared pressure effect');return 'Pressure +30 raises right weight, shifts support right and gives SI 0.60';})()"
+  ],
+  ["lines", null, ".shock-figure"],
+  ["scroll", ".shock-experiments"],
+  ["click", ".shock-experiments button:nth-child(4)"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-0.75)<1e-7"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.shock-svg').dataset;if(Math.abs(Number(d.shockPivot)-Number(window.shockBase.shockPivot))>1e-5)throw Error('Scaling moved support');if(Number(d.shockHeartHeight)<=Number(window.shockBase.shockHeartHeight))throw Error('Scaled model weights not updated');if(document.querySelector('#field-heartRate').value!=='180'||document.querySelector('#field-systolic').value!=='240')throw Error('Scaled values diverged');return 'Both inputs doubled: support and quotient stay fixed';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/shock-double.png", ".shock-figure"],
+  ["shot", "docs/anatomy-map/shots/shock-close.png", ".shock-svg", 4],
+  ["lines", null, ".shock-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-heartRate\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"120\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-heartRate').value==='120'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-systolic\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"120\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#field-systolic').value==='120' && document.querySelector('[data-anatomy-result]').textContent==='1,00'"
+  ],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockPivot))<1e-5"],
+  ["key", "ArrowUp", ".shock-handle[aria-label^=Herzfrequenz]"],
+  ["until", "document.querySelector('#field-heartRate').value==='121'"],
+  ["key", "ArrowUp", ".shock-handle[aria-label^=Systolischen]"],
+  ["until", "document.querySelector('#field-systolic').value==='121'"],
+  ["scroll", ".shock-experiments"],
+  ["click", ".shock-experiments button:nth-child(1)"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-0.75)<1e-7"],
+  ["drag", ".shock-handle[aria-label^=Herzfrequenz]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-heartRate').value.replace(',','.'))<=90)throw Error('Direct heartRate drag failed');if(document.querySelector('#field-heartRate').value!==document.querySelector('#anatomy-heartRate').value)throw Error('Dragged inputs diverged');return 'Direct heartRate drag updates shared input';})()"
+  ],
+  ["drag", ".shock-handle[aria-label^=Systolischen]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-systolic').value.replace(',','.'))<=120)throw Error('Direct systolic drag failed');if(document.querySelector('#field-systolic').value!==document.querySelector('#anatomy-systolic').value)throw Error('Dragged inputs diverged');return 'Direct systolic drag updates shared input';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-systolic\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"0\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-shock-group=pivot]').style.display!=='none')throw Error('Stale invalid division');return 'Invalid pressure clears both results and moving mechanism';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-heartRate').value==='' && document.querySelector('#anatomy-systolic').value===''"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-.75)<1e-7"],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Reset, example and viewport width pass';})()"
+  ],
+  ["scroll", ".clinical-note"],
+  ["wait", 150],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-heartRate');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'100');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.shock-svg').getBoundingClientRect().bottom>=-60)return 'Figure partly visible in this viewport; phone run checks offscreen pause';if(Number(document.querySelector('.shock-svg').dataset.shockResult)!==.75)throw Error('Offscreen animation continued');if(document.querySelector('.result-number').textContent!=='0,83')throw Error('Calculation stopped offscreen');return 'Calculation remains live while offscreen figure pauses';})()"
+  ],
+  ["scroll", ".shock-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-100/120)<1e-7"
+  ],
+  ["scroll", ".shock-experiments"],
+  ["click", ".shock-experiments button:nth-child(1)"],
+  ["scroll", ".shock-figure"],
+  ["until", "Math.abs(Number(document.querySelector('.shock-svg').dataset.shockResult)-.75)<1e-7"],
+  ["move", ".shock-handle[aria-label^=Herzfrequenz]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/shock-hover.png", ".shock-figure"],
+  ["lines", null, ".shock-figure"],
+  ["shot", "docs/anatomy-map/shots/shock-final.png", ".shock-panel"]
+]

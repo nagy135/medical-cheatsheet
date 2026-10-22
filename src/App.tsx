@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const ShockAnatomy = lazy(() =>
+  import('./anatomy/ShockAnatomy').then(({ ShockAnatomy }) => ({ default: ShockAnatomy })),
+);
 const BsaAnatomy = lazy(() =>
   import('./anatomy/BsaAnatomy').then(({ BsaAnatomy }) => ({ default: BsaAnatomy })),
 );
@@ -384,7 +387,9 @@ function CalculatorPage({
       ? { systolic: '120', diastolic: '80' }
       : calculator.id === 'koerperoberflaeche'
         ? { height: '175', weight: '75' }
-        : {},
+        : calculator.id === 'schockindex'
+          ? { heartRate: '90', systolic: '120' }
+          : {},
   );
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
@@ -616,6 +621,20 @@ function CalculatorPage({
       ) : calculator.id === 'koerperoberflaeche' ? (
         <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
           <BsaAnatomy
+            raw={raw}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onPreset={(values) => {
+              setRaw(values);
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'schockindex' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <ShockAnatomy
             raw={raw}
             onChange={(field, value) => {
               setRaw((current) => ({ ...current, [field]: value }));
