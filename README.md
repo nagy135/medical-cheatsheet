@@ -2,7 +2,7 @@
 
 Production: https://docsheet.infiniter.tech
 
-Eine deutschsprachige React-App für schnelle medizinische Berechnungen. 20 Rechner in sechs Fachgebieten, eine durchsuchbare Auswahl, automatisch aktualisierte Ergebnisse und nachvollziehbare medizinische Quellen.
+Eine deutschsprachige React-App für schnelle medizinische Berechnungen. 21 Rechner in sechs Fachgebieten, eine durchsuchbare Auswahl, automatisch aktualisierte Ergebnisse und nachvollziehbare medizinische Quellen.
 
 ## Starten
 
@@ -30,14 +30,14 @@ Um einen Rechner hinzuzufügen, einen Eintrag in `calculators` ergänzen und ein
 
 ## Enthaltene Rechner
 
-| Fachgebiet                 | Rechner                                                                                                                         |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Allgemeinmedizin           | BMI, Körperoberfläche nach Mosteller                                                                                            |
-| Nephrologie                | CKD-EPI 2021, Cockcroft–Gault, FENa, FEUrea                                                                                     |
-| Elektrolyte & Stoffwechsel | Albuminkorrigiertes Kalzium, Natrium nach Katz, Anionenlücke, albuminkorrigierte Anionenlücke, Serumosmolalität, osmolale Lücke |
-| Kardiologie                | Mittlerer arterieller Druck, Schockindex, QTc nach Bazett und Fridericia                                                        |
-| Intensivmedizin            | Horovitz-Index, Atemzugvolumen bei 6 ml/kg vorhergesagtem Körpergewicht                                                         |
-| Hepatologie                | FIB-4, APRI                                                                                                                     |
+| Fachgebiet                 | Rechner                                                                                                                                               |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Allgemeinmedizin           | BMI, Körperoberfläche nach Mosteller                                                                                                                  |
+| Nephrologie                | CKD-EPI 2021, Cockcroft–Gault, FENa, FEUrea                                                                                                           |
+| Elektrolyte & Stoffwechsel | Albuminkorrigiertes Kalzium, Natrium nach Katz, Anionenlücke, albuminkorrigierte Anionenlücke, Serumosmolalität, osmolale Lücke, freies Wasserdefizit |
+| Kardiologie                | Mittlerer arterieller Druck, Schockindex, QTc nach Bazett und Fridericia                                                                              |
+| Intensivmedizin            | Horovitz-Index, Atemzugvolumen bei 6 ml/kg vorhergesagtem Körpergewicht                                                                               |
+| Hepatologie                | FIB-4, APRI                                                                                                                                           |
 
 ## Einheiten und Daten
 
@@ -47,7 +47,11 @@ Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten
 
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
-Unter jedem Rechner steht ein umrandeter Anatomy-Rechner. Der mittlere arterielle
+Die bisherigen 20 Rechner haben einen umrandeten Anatomy-Rechner.
+Der neue Rechner für freies Wasserdefizit zeigt nur Eingaben und Ergebnis,
+ohne Simulation: Gewicht × Körperwasserfaktor × (Na / 140 − 1), Ausgabe in Litern.
+Der Bezug auf 140 mmol/l beschreibt das geschätzte Defizit und keinen
+Infusionsplan oder ein kurzfristiges Korrekturziel. Der mittlere arterielle
 Druck besitzt als erstes individuelles Modell eine Drittel-Brücke: Zwei
 verschiebbare Enden stehen für diastolischen und systolischen Druck. Ein heller
 Abnehmer bei einem Drittel des Abstands liest den geschätzten Mitteldruck ab.

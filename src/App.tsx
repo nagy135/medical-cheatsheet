@@ -624,7 +624,7 @@ function CalculatorPage({
           </div>
         </section>
       </div>
-      {calculator.id === 'map' ? (
+      {calculator.anatomy === false ? null : calculator.id === 'map' ? (
         <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
           <MapAnatomy
             raw={raw}

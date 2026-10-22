@@ -48,6 +48,7 @@ export type Calculator = {
   resultLabel: string;
   resultUnit: string;
   precision: number;
+  anatomy?: boolean;
   formula: string;
   formulaDetail?: string;
   note: string;
@@ -392,6 +393,57 @@ export const calculators: Calculator[] = [
       ),
     ],
     keywords: ['natrium', 'hyperglykämie', 'katz', 'na', 'zucker'],
+  },
+  {
+    id: 'wasserdefizit',
+    title: 'Freies Wasserdefizit',
+    abbreviation: 'Wasserdefizit',
+    category: 'elektrolyte',
+    description:
+      'Freies Wasserdefizit bei Hypernatriämie bis zum Referenznatrium 140 mmol/l schätzen.',
+    method: 'Gesamtkörperwasser × (Na / 140 − 1) · Erwachsene',
+    anatomy: false,
+    fields: [
+      { ...weight(), example: '70' },
+      { ...sodium('sodium', 'Aktuelles Serumnatrium', '170'), min: 140 },
+      number('bodyWaterFraction', 'Geschätzter Körperwasserfaktor', 'l/kg', '0,6', {
+        max: 1,
+        step: 0.05,
+        hint: 'Häufig 0,6 für Männer und 0,5 für Frauen; bei älteren oder dehydrierten Erwachsenen ggf. niedriger. Individuell einschätzen.',
+      }),
+    ],
+    calculate: (v) => v.weight * v.bodyWaterFraction * (v.sodium / 140 - 1),
+    resultLabel: 'Geschätztes freies Wasserdefizit bis Na 140 mmol/l',
+    resultUnit: 'l',
+    precision: 2,
+    formula: 'Wasserdefizit = Gewicht × Körperwasserfaktor × (Na / 140 − 1)',
+    formulaDetail:
+      'Gewicht in kg, Körperwasserfaktor in l/kg, Natrium in mmol/l. Gewicht × Faktor schätzt das aktuelle Gesamtkörperwasser in Litern. 140 mmol/l ist der Rechenbezug, kein kurzfristiges Korrekturziel.',
+    note: 'Für Erwachsene. Geschätztes freies Wasserdefizit, kein Infusionsvolumen oder Dosierungsplan. Laufende Verluste und Erhaltungsbedarf sind nicht enthalten. Volumenstatus, Ursache und Dauer berücksichtigen. Schwere Hypernatriämie erfordert überwachte Behandlung mit wiederholten Natriumkontrollen; eine zu schnelle Korrektur vermeiden.',
+    sources: [
+      source(
+        'MSD Manual · Hypernatriämie',
+        'Professionelle Referenz · Schätzung des Wasserdefizits, Körperwasserfaktoren und Grenzen',
+        'https://www.msdmanuals.com/professional/nephrology/electrolyte-disorders/hypernatremia',
+      ),
+      source(
+        'Yun et al. · Hypernatremia in adults',
+        'Korean J Intern Med 2023 · Wasserdefizitformel, TBW-Schätzung und laufende Verluste',
+        'https://doi.org/10.3904/kjim.2022.346',
+      ),
+    ],
+    keywords: [
+      'hypernatriämie',
+      'hypernatraemie',
+      'hypernatremia',
+      'free water deficit',
+      'flüssigkeit',
+      'fluessigkeit',
+      'dehydratation',
+      'tbw',
+      'wasser',
+      'natrium',
+    ],
   },
   {
     id: 'anionenluecke',

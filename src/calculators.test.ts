@@ -23,6 +23,7 @@ describe('reference calculations', () => {
     ['feurea', 36],
     ['kalzium', 2.3],
     ['natrium', 134.8],
+    ['wasserdefizit', 9],
     ['anionenluecke', 12],
     ['anionenluecke-korrigiert', 14.5],
     ['osmolalitaet', 290.54994394556616],
@@ -220,6 +221,40 @@ describe('search', () => {
   });
   it('returns an empty set for unknown queries and all calculators for an empty query', () => {
     expect(searchCalculators('unbekannt')).toEqual([]);
-    expect(searchCalculators('')).toHaveLength(20);
+    expect(searchCalculators('')).toHaveLength(21);
+  });
+});
+
+describe('free-water deficit', () => {
+  const calculator = get('wasserdefizit');
+  it.each([
+    ['70', '170', '0,6', 9],
+    ['70', '170', '0,5', 7.5],
+    ['60', '166', '0,5', 5.571428571428571],
+    ['80', '154', '0,6', 4.8],
+    ['70', '140', '0,6', 0],
+    ['140', '170', '0,6', 18],
+  ])('estimates %s kg, sodium %s and factor %s', (weight, sodium, bodyWaterFraction, expected) => {
+    expect(
+      evaluateCalculator(calculator, { weight, sodium, bodyWaterFraction }).result,
+    ).toBeCloseTo(expected, 10);
+  });
+  it.each<Record<string, string>>([
+    { weight: '0' },
+    { weight: '-70' },
+    { sodium: '139' },
+    { bodyWaterFraction: '0' },
+    { bodyWaterFraction: '1,1' },
+    { sodium: 'text' },
+    { bodyWaterFraction: '' },
+  ])('rejects invalid or incomplete inputs %j', (patch) => {
+    expect(
+      evaluateCalculator(calculator, { ...example('wasserdefizit'), ...patch }).result,
+    ).toBeNull();
+  });
+  it('is searchable and explicitly omits Anatomy', () => {
+    expect(calculator.anatomy).toBe(false);
+    for (const q of ['hypernatriamie', 'free water deficit', 'wasserdefizit'])
+      expect(searchCalculators(q).map((c) => c.id)).toContain('wasserdefizit');
   });
 });

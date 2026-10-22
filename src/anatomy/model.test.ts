@@ -13,9 +13,10 @@ const get = (id: string) => calculators.find((c) => c.id === id)!;
 const example = (id: string) => evaluateCalculator(get(id), exampleRaw(get(id))).values;
 
 describe('Anatomy coverage and plotted calculations', () => {
-  it('provides a deliberate axis, ranges and finite intermediate values for every calculator', () => {
-    expect(Object.keys(anatomySpecs).sort()).toEqual(calculators.map((c) => c.id).sort());
-    for (const calculator of calculators) {
+  it('provides axes, ranges and finite values for every calculator with Anatomy enabled', () => {
+    const enabled = calculators.filter((c) => c.anatomy !== false);
+    expect(Object.keys(anatomySpecs).sort()).toEqual(enabled.map((c) => c.id).sort());
+    for (const calculator of enabled) {
       const spec = anatomySpecs[calculator.id],
         values = example(calculator.id);
       expect(calculator.fields.find((f) => f.id === spec.axis)?.options).toBeUndefined();
