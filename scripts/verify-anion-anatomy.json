@@ -1,0 +1,198 @@
+[
+  ["until", "document.querySelector('.anion-svg')"],
+  ["scroll", ".anion-figure"],
+  ["until", "Number(document.querySelector('.anion-svg').dataset.anionResult)===12"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.anion-panel [data-trace]'))throw Error('Generic plotter');window.anionBase={...document.querySelector('.anion-svg').dataset};window.anionPaths=Object.fromEntries(['sodium','chloride','bicarbonate'].map(k=>[k,document.querySelector('[data-anion-group='+k+']').innerHTML]));return 'Dedicated cabinet at 140 / 104 / 24 = 12';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/anion-desktop.png", ".anion-panel"],
+  ["lines", "docs/anatomy-map/shots/anion-lines.png", ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(2)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-150)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(22))<1e-6"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;const key='anionSodiumHeight';if(Math.abs(Number(d[key])-Number(window.anionBase[key])-10)>1e-5)throw Error('sodium height does not follow its input');if(document.querySelector('[data-anion-group=sodium]').innerHTML===window.anionPaths.sodium)throw Error('sodium actual body did not change');if(document.querySelector('.result-number').textContent!==document.querySelector('[data-anatomy-result]').textContent)throw Error('Results diverged');return 'Only sodium +10: visible body changes and AG is 22';})()"
+  ],
+  ["lines", null, ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(3)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-114)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(2))<1e-6"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;const key='anionChlorideHeight';if(Math.abs(Number(d[key])-Number(window.anionBase[key])-10)>1e-5)throw Error('chloride height does not follow its input');if(document.querySelector('[data-anion-group=chloride]').innerHTML===window.anionPaths.chloride)throw Error('chloride actual body did not change');if(document.querySelector('.result-number').textContent!==document.querySelector('[data-anatomy-result]').textContent)throw Error('Results diverged');return 'Only chloride +10: visible body changes and AG is 2';})()"
+  ],
+  ["lines", null, ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(4)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-34)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(2))<1e-6"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;const key='anionBicarbonateHeight';if(Math.abs(Number(d[key])-Number(window.anionBase[key])-10)>1e-5)throw Error('bicarbonate height does not follow its input');if(document.querySelector('[data-anion-group=bicarbonate]').innerHTML===window.anionPaths.bicarbonate)throw Error('bicarbonate actual body did not change');if(document.querySelector('.result-number').textContent!==document.querySelector('[data-anatomy-result]').textContent)throw Error('Results diverged');return 'Only bicarbonate +10: visible body changes and AG is 2';})()"
+  ],
+  ["lines", null, ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(5)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-128)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(0))<1e-6"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;if(Number(d.anionGapHeight)!==0||document.querySelector('[data-anion-group=gap]').innerHTML!=='')throw Error('Fake zero strip');if(Math.abs(Number(d.anionSodiumHeight)-Number(d.anionTotalHeight))>1e-5)throw Error('Zero not flush');return 'Zero gap closes exactly and has no minimum-size artifact';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/anion-zero.png", ".anion-figure"],
+  ["lines", null, ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(6)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-120)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(-8))<1e-6"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;if(Number(d.anionSign)!==-1||Math.abs(Number(d.anionGapHeight)-8)>1e-5||document.querySelector('[data-anion-group=gap]').innerHTML==='')throw Error('Negative gap hidden or clamped');if(document.querySelector('.result-number').textContent!=='-8,0'||!document.querySelector('[data-anion-state]').textContent.includes('negatives'))throw Error('Negative sign missing');return 'Negative AG -8 remains signed and highlights the reversed difference';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/anion-negative.png", ".anion-panel"],
+  ["shot", "docs/anatomy-map/shots/anion-close.png", ".anion-svg", 4],
+  ["lines", null, ".anion-figure"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(1)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(12))<1e-6"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"150\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-sodium').value==='150'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-chloride\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"110\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-chloride').value==='110'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-bicarbonate\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"24,5\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('.result-number').textContent==='15,5'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-bicarbonate').value!=='24,5')throw Error('Decimal shared state');return 'Upper/lower forms share all three values and accept decimal commas';})()"
+  ],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(1)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(12))<1e-6"],
+  ["key", "ArrowUp", ".anion-handle[aria-label^=Natrium]"],
+  ["until", "document.querySelector('#field-sodium').value==='141'"],
+  ["key", "ArrowUp", ".anion-handle[aria-label^=Chlorid]"],
+  ["until", "document.querySelector('#field-chloride').value==='105'"],
+  ["key", "ArrowUp", ".anion-handle[aria-label^=Bikarbonat]"],
+  ["until", "document.querySelector('#field-bicarbonate').value==='25'"],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(1)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(12))<1e-6"],
+  ["drag", ".anion-handle[aria-label^=Natrium]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-sodium').value.replace(',','.'))<=140)throw Error('Direct sodium drag failed');if(document.querySelector('#field-sodium').value!==document.querySelector('#anatomy-sodium').value)throw Error('Dragged fields diverged');return 'Direct sodium drag changes the shared input';})()"
+  ],
+  ["drag", ".anion-handle[aria-label^=Chlorid]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-chloride').value.replace(',','.'))<=104)throw Error('Direct chloride drag failed');if(document.querySelector('#field-chloride').value!==document.querySelector('#anatomy-chloride').value)throw Error('Dragged fields diverged');return 'Direct chloride drag changes the shared input';})()"
+  ],
+  ["drag", ".anion-handle[aria-label^=Bikarbonat]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-bicarbonate').value.replace(',','.'))<=24)throw Error('Direct bicarbonate drag failed');if(document.querySelector('#field-bicarbonate').value!==document.querySelector('#anatomy-bicarbonate').value)throw Error('Dragged fields diverged');return 'Direct bicarbonate drag changes the shared input';})()"
+  ],
+  ["scroll", ".anion-experiments"],
+  ["click", ".anion-experiments button:nth-child(1)"],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionSodiumHeight)-140)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-104)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionBicarbonateHeight)-24)<1e-6"
+  ],
+  ["until", "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-(12))<1e-6"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-chloride\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"114\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-bicarbonate\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"14\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["scroll", ".anion-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.anion-svg').dataset.anionResult)-12)<1e-6 && Math.abs(Number(document.querySelector('.anion-svg').dataset.anionChlorideHeight)-114)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.anion-svg').dataset;if(Math.abs(Number(d.anionTotalHeight)-128)>1e-5||Math.abs(Number(d.anionGapHeight)-12)>1e-5)throw Error('Measured-anion compensation failed');return 'Cl +10 and HCO3 -10 move the boundary while preserving AG';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-bicarbonate\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"0\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-anion-group=sodium]').style.display!=='none')throw Error('Stale invalid drawing');return 'Invalid input clears both results and the live cabinet';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "['sodium','chloride','bicarbonate'].every(k=>document.querySelector('#anatomy-'+k).value==='')"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".anion-figure"],
+  ["until", "Number(document.querySelector('.anion-svg').dataset.anionResult)===12"],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Reset, examples and viewport width pass';})()"
+  ],
+  ["move", ".anion-handle[aria-label^=Natrium]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/anion-hover.png", ".anion-figure"],
+  ["lines", null, ".anion-figure"],
+  ["shot", "docs/anatomy-map/shots/anion-final.png", ".anion-panel"]
+]

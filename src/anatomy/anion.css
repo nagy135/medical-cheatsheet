@@ -1,0 +1,233 @@
+.anion-panel {
+  background: #faf7fb;
+  border-color: #bba9c5;
+}
+.anion-panel .anatomy-eyebrow {
+  color: #846c93;
+}
+.anion-panel .anatomy-method {
+  background: #f1eaf5;
+  border-color: #d4c3de;
+  color: #78538e;
+  white-space: nowrap;
+}
+.anion-panel .anatomy-header p {
+  color: #7d6e84;
+}
+.anion-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(230px, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.anion-figure {
+  margin: 0;
+  min-width: 0;
+}
+.anion-figure.iso[data-theme='light'] {
+  --anatomy-mid: #82738b;
+  --anatomy-lo: #ada0b4;
+  --anatomy-faint: #ddd3e2;
+  --anatomy-card: #faf7fb;
+  --anatomy-paper: #faf7fb;
+  --anatomy-lit: #68407b;
+  --anatomy-lit-top: #cfb4dd;
+  --anatomy-lit-shade: #c3a4d3;
+  --anatomy-shade-0: #d4c9dc;
+  --anatomy-shade-1: #dfd5e5;
+  --anatomy-shade-2: #e9e1ed;
+  --anatomy-shade-3: #f2ecf5;
+}
+.anion-plate.iso-plate {
+  padding: 16px 14px;
+}
+.anion-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.anion-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.anion-handle:focus {
+  outline: none;
+}
+.anion-handle:focus-visible rect {
+  stroke: #815496;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.anion-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #927c9e;
+  margin-top: 11px;
+}
+.anion-input {
+  margin-bottom: 18px;
+  min-width: 0;
+}
+.anion-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #836491;
+  margin-bottom: 8px;
+}
+.anion-input .input-wrap {
+  background: #fff;
+}
+.anion-input .input-wrap input {
+  min-width: 0;
+  font-size: 23px;
+}
+.anion-input .field-unit {
+  font-size: 11px;
+  padding: 0 11px;
+}
+.anion-panel .anatomy-range {
+  accent-color: #9b7cac;
+}
+.anion-answer {
+  border-top: 1px solid #dfd0e6;
+  padding-top: 17px;
+}
+.anion-answer > span {
+  font-size: 10px;
+  color: #9273a1;
+}
+.anion-answer > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.anion-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 46px;
+  font-weight: 650;
+  letter-spacing: -1.6px;
+  color: #68407b;
+  overflow-wrap: anywhere;
+}
+.anion-answer small {
+  font-size: 12px;
+  color: #9b7caa;
+}
+.anion-answer p {
+  font-size: 10px;
+  color: #90709f;
+  line-height: 1.8;
+}
+.anion-shared {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #927c9e;
+  margin: 16px 0;
+}
+.anion-working {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 1px solid #dfd0e6;
+  border-bottom: 1px solid #dfd0e6;
+  padding: 18px 0;
+}
+.anion-working span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9c86a6;
+}
+.anion-working b {
+  font-size: 23px;
+  font-weight: 500;
+  color: #78538e;
+  overflow-wrap: anywhere;
+}
+.anion-experiments {
+  margin-top: 18px;
+}
+.anion-experiments p,
+.anion-note {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9a84a4;
+}
+.anion-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.anion-experiments button {
+  font-size: 10px;
+  padding: 10px 12px;
+  border: 1px solid #d2bcde;
+  border-radius: 5px;
+  background: #fff;
+  color: #815a94;
+  cursor: pointer;
+}
+.anion-experiments button:hover {
+  background: #f1eaf5;
+}
+.anion-note {
+  margin-top: 16px;
+}
+@media (max-width: 800px) {
+  .anion-workbench {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .anion-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 14px;
+  }
+  .anion-input:first-child {
+    grid-column: 1/-1;
+  }
+  .anion-input > label {
+    min-height: 3.4em;
+  }
+  .anion-input:first-child > label {
+    min-height: 0;
+  }
+  .anion-input .input-wrap input {
+    font-size: 20px;
+    padding-left: 9px;
+  }
+  .anion-input .field-unit {
+    font-size: 9px;
+    padding: 0 6px;
+  }
+  .anion-answer {
+    grid-column: 1/-1;
+    text-align: center;
+  }
+  .anion-answer > div {
+    justify-content: center;
+  }
+  .anion-panel .anatomy-header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .anion-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+  .anion-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .anion-working {
+    gap: 13px;
+  }
+  .anion-working span {
+    font-size: 9px;
+  }
+  .anion-working b {
+    font-size: 20px;
+  }
+}

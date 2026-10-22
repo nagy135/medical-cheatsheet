@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const AnionAnatomy = lazy(() =>
+  import('./anatomy/AnionAnatomy').then(({ AnionAnatomy }) => ({ default: AnionAnatomy })),
+);
 const ShockAnatomy = lazy(() =>
   import('./anatomy/ShockAnatomy').then(({ ShockAnatomy }) => ({ default: ShockAnatomy })),
 );
@@ -389,7 +392,9 @@ function CalculatorPage({
         ? { height: '175', weight: '75' }
         : calculator.id === 'schockindex'
           ? { heartRate: '90', systolic: '120' }
-          : {},
+          : calculator.id === 'anionenluecke'
+            ? { sodium: '140', chloride: '104', bicarbonate: '24' }
+            : {},
   );
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
@@ -635,6 +640,20 @@ function CalculatorPage({
       ) : calculator.id === 'schockindex' ? (
         <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
           <ShockAnatomy
+            raw={raw}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onPreset={(values) => {
+              setRaw(values);
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'anionenluecke' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <AnionAnatomy
             raw={raw}
             onChange={(field, value) => {
               setRaw((current) => ({ ...current, [field]: value }));

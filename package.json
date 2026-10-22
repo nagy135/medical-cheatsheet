@@ -18,7 +18,9 @@
     "anatomy:bsa": "node scripts/build-bsa-anatomy.mjs",
     "anatomy:bsa:audit": "node scripts/build-bsa-anatomy.mjs --audit",
     "anatomy:shock": "node scripts/build-shock-anatomy.mjs",
-    "anatomy:shock:audit": "node scripts/build-shock-anatomy.mjs --audit"
+    "anatomy:shock:audit": "node scripts/build-shock-anatomy.mjs --audit",
+    "anatomy:anion": "node scripts/build-anion-anatomy.mjs",
+    "anatomy:anion:audit": "node scripts/build-anion-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",

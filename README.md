@@ -69,7 +69,13 @@ rechter/linker Hebelarm ergibt den Index. Beide Eingaben sind mit dem Hauptformu
 verbunden; die Seite startet mit 90/min und 120 mmHg. Verdopplung beider Werte
 lässt Quotient und Stützpunkt unverändert.
 
-Bei den übrigen 17 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Die Anionenlücke besitzt als viertes individuelles Modell den Bilanzschrank.
+Links steht Natrium, rechts werden Chlorid und Bikarbonat gestapelt. Ein heller
+Streifen zeigt den Betrag des Höhenunterschieds; Ergebnis und Text behalten das
+Vorzeichen. Bei null verschwindet der Streifen vollständig. Alle drei Eingaben
+sind mit dem Hauptformular verbunden; der Startwert ist 140 / 104 / 24 mmol/l.
+
+Bei den übrigen 16 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -103,6 +109,14 @@ Geometrieprüfung umfasst ausgeglichene und extreme Verhältnisse sowie gemeinsa
 skalierte Eingaben. `scripts/verify-shock-anatomy.json` prüft die beiden
 Eingabeeinflüsse, Proportionalität, geteilten Formularzustand und Bedienung
 mit dem Anatomy-Skript `drive.mjs`.
+
+Der Bilanzschrank wird mit `npm run anatomy:anion:audit` erzeugt.
+`src/anatomy/anion-solid.ts` liefert dieselben Körpergrenzen und SVG-Flächen für
+Generator und Browser. Der gemeinsame Zeichenmaßstab erweitert sich für große
+Werte; normalisierte Addition vermeidet einen unnötigen Überlauf von Cl + HCO₃.
+Die Geometrieprüfung erfasst positive, bündige, negative und extreme Fälle.
+`scripts/verify-anion-anatomy.json` prüft alle drei Einflüsse, Gegenänderungen,
+Vorzeichen, gemeinsamen Formularzustand, Reset sowie Ziehen und Tastatur.
 
 ## Formeln und Quellen
 
