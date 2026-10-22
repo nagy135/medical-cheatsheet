@@ -1,0 +1,43 @@
+[
+  [
+    "eval",
+    "(() => { const p=document.querySelector('main'); if(Number(p.dataset.map)!==(120+2*80)/3 && Math.abs(Number(p.dataset.map)-93.333333)>0.000001) throw Error('Initial MAP'); return 'Initial MAP matches repository'; })()"
+  ],
+  ["click", "[data-preset='150,80']"],
+  ["until", "document.querySelector('main').dataset.map==='103.333333'"],
+  [
+    "eval",
+    "(() => {if(document.querySelector('[data-value=map]').textContent!=='103.3')throw Error('Systolic sensitivity');return 'Systolic +30 gives MAP +10';})()"
+  ],
+  ["lines"],
+  ["click", "[data-preset='120,110']"],
+  ["until", "document.querySelector('main').dataset.map==='113.333333'"],
+  [
+    "eval",
+    "(() => {if(document.querySelector('[data-value=map]').textContent!=='113.3')throw Error('Diastolic sensitivity');return 'Diastolic +30 gives MAP +20';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/raised.png"],
+  ["lines"],
+  ["key", "End", "#diastolic"],
+  ["until", "document.querySelector('main').dataset.diastolic==='120.000'"],
+  [
+    "eval",
+    "(() => {const p=document.querySelector('main');if(p.dataset.map!=='120.000000')throw Error('Equal endpoint pressures');return 'Keyboard limit preserves diastolic ≤ systolic';})()"
+  ],
+  ["click", "[data-preset='120,80']"],
+  ["until", "document.querySelector('main').dataset.map==='93.333333'"],
+  ["drag", ".iso-stage", 0.714, 0.5, 0.714, 0.37, 20],
+  ["wait", 500],
+  [
+    "eval",
+    "(() => {const p=document.querySelector('main');if(Number(p.dataset.systolic)<=120)throw Error('Endpoint drag did not raise systolic pressure');if(Math.abs(Number(p.dataset.map)-(Number(p.dataset.systolic)+2*Number(p.dataset.diastolic))/3)>0.00001)throw Error('Dragged geometry and formula disagree');return 'Direct endpoint drag updates pressure and MAP together';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/drag.png"],
+  ["click", "#theme"],
+  [
+    "eval",
+    "(() => {if(document.body.dataset.theme!=='light')throw Error('Theme switch');if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Light theme and responsive width pass';})()"
+  ],
+  ["lines"],
+  ["shot", "docs/anatomy-map/shots/switched-light.png"]
+]

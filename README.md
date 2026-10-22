@@ -47,6 +47,24 @@ Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten
 
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
+Unter jedem Rechner steht ein umrandeter Anatomy-Rechner. Ein isometrischer
+Kurvenschreiber zeigt die Originalformel als Kurve: Die gewählte Eingabe bewegt
+den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
+Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
+Erklärungen und live berechnete Zwischenschritte. Skalen sind illustrative
+Ausschnitte und keine klinischen Referenzbereiche; ungültige Eingaben zeichnen
+keine Ergebnisse.
+
+Regler, Zahlenfelder und Einheiten erlauben eine zweite Eingabeweise. Werte
+werden nur auf Knopfdruck zwischen Hauptformular und Anatomy-Rechner übernommen.
+Die Kurvenfahrt verändert keine Formularwerte. Tastatur, reduzierte Bewegung und
+Pausen außerhalb des sichtbaren Bereichs werden unterstützt.
+
+Die Geometrie liegt vorab generiert in `src/anatomy/plotter-art.json`. Nach
+Änderungen an `scripts/build-anatomy.mjs` mit `node scripts/build-anatomy.mjs --audit`
+neu erzeugen. Die MIT-lizenzierte Anatomy-Geometriebibliothek liegt neben der
+ursprünglichen eigenständigen MAP-Figur unter `docs/anatomy-map/vendor`.
+
 ## Formeln und Quellen
 
 Jeder Rechner zeigt seine genaue Methode, Formel, Einheiten und direkt verlinkte Referenzen. Die Quellen umfassen Originalpublikationen, die National Kidney Foundation, WHO, ARDS Network/NHLBI, AHA/ACCF/HRS, ACEP, University of Washington, NHS und MSD Manual.
@@ -56,11 +74,13 @@ Die Rechner sind für Erwachsene vorgesehen. Methodenabhängige Grenzen stehen d
 ## Deployment auf nixpi
 
 Nach dem Commit der Änderungen auf dem Mac `npm run deploy` ausführen. Das Skript
-führt Tests und Build aus, überträgt den Git-Commit nach
-`/home/infiniter/services/medical-cheatsheet`, lädt `dist` nach
-`/var/www/docsheet/releases/<commit>-<timestamp>` und wechselt den Symlink
-`/var/www/docsheet/current` atomar. Frühere Releases bleiben für einen Rollback
-erhalten. Der GitHub-Remote wird nicht verändert.
+führt lokale Tests und Build aus und pusht den Commit auf `origin/main`.
+Auf nixpi muss `/home/infiniter/services/medical-cheatsheet` auf einem sauberen
+`main` stehen. Dort wird der veröffentlichte Commit per Fast-Forward gepullt,
+mit `npm ci` installiert, getestet und gebaut. Erst danach wird das dort gebaute
+`dist` nach `/var/www/docsheet/releases/<commit>-<timestamp>` kopiert und der
+Symlink `/var/www/docsheet/current` atomar gewechselt. Der Commit wird vor und
+nach dem Build geprüft. Frühere Releases bleiben für einen Rollback erhalten.
 
 Nginx, HTTPS/ACME, Websupport-DDNS und Verzeichnisrechte sind im Repository
 `nix-server` für den Host `nixpi` deklariert. In Produktion ist kein Node- oder

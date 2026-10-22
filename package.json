@@ -6,6 +6,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
+    "anatomy:build": "node scripts/build-anatomy.mjs",
+    "anatomy:audit": "node scripts/build-anatomy.mjs --audit",
     "deploy": "bash scripts/deploy.sh",
     "test": "vitest run",
     "test:watch": "vitest",
