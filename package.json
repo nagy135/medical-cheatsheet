@@ -26,7 +26,9 @@
     "anatomy:horovitz": "node scripts/build-horovitz-anatomy.mjs",
     "anatomy:horovitz:audit": "node scripts/build-horovitz-anatomy.mjs --audit",
     "anatomy:calcium": "node scripts/build-calcium-anatomy.mjs",
-    "anatomy:calcium:audit": "node scripts/build-calcium-anatomy.mjs --audit"
+    "anatomy:calcium:audit": "node scripts/build-calcium-anatomy.mjs --audit",
+    "anatomy:water": "node scripts/build-water-anatomy.mjs",
+    "anatomy:water:audit": "node scripts/build-water-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",

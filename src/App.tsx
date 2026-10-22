@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const WaterAnatomy = lazy(() =>
+  import('./anatomy/WaterAnatomy').then(({ WaterAnatomy }) => ({ default: WaterAnatomy })),
+);
 const CalciumAnatomy = lazy(() =>
   import('./anatomy/CalciumAnatomy').then(({ CalciumAnatomy }) => ({ default: CalciumAnatomy })),
 );
@@ -731,6 +734,21 @@ function CalculatorPage({
                 index,
               )
             }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'wasserdefizit' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <WaterAnatomy
+            raw={raw}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
             onPreset={(values) => {
               setRaw(values);
               setUnits({});

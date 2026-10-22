@@ -47,11 +47,9 @@ Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten
 
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
-Die bisherigen 20 Rechner haben einen umrandeten Anatomy-Rechner.
-Der neue Rechner für freies Wasserdefizit zeigt nur Eingaben und Ergebnis,
-ohne Simulation: Gewicht × Körperwasserfaktor × (Na / 140 − 1), Ausgabe in Litern.
-Der Bezug auf 140 mmol/l beschreibt das geschätzte Defizit und keinen
-Infusionsplan oder ein kurzfristiges Korrekturziel. Der mittlere arterielle
+Alle 21 Rechner besitzen einen umrandeten Anatomy-Rechner.
+Der Bezug auf 140 mmol/l beim freien Wasserdefizit beschreibt das geschätzte
+Defizit und keinen Infusionsplan oder ein kurzfristiges Korrekturziel. Der mittlere arterielle
 Druck besitzt als erstes individuelles Modell eine Drittel-Brücke: Zwei
 verschiebbare Enden stehen für diastolischen und systolischen Druck. Ein heller
 Abnehmer bei einem Drittel des Abstands liest den geschätzten Mitteldruck ab.
@@ -189,3 +187,15 @@ Der Audit prüft echte Formen und die gemeinsame Zeichenreihenfolge in zehn
 Stellungen, einschließlich negativer Korrekturen, Nullwert und erweitertem
 Maßstab. Modelltests und `scripts/verify-calcium-anatomy.json` prüfen beide
 Eingaben, Albumin-Einheiten, Vorzeichen und die Synchronisierung der Formulare.
+
+Das freie Wasserdefizit besitzt als achtes individuelles Modell die
+Verdünnungskammer: Grau zeigt geschätztes Körperwasser, die helle Verlängerung
+das berechnete Defizit; eine Endwand folgt der Summe. Alle drei Eingaben sind
+mit dem Hauptrechner verbunden. Ein optionaler automatischer Beispielvergleich
+endet bei eigener Eingabe und pausiert, wenn die Figur nicht sichtbar ist.
+
+`npm run anatomy:water:audit` prüft die echten Formen und eine gemeinsame
+Zeichenreihenfolge in zehn Stellungen, einschließlich Nullwert und erweitertem
+Maßstab. `src/anatomy/water-model.test.ts` und
+`scripts/verify-water-anatomy.json` prüfen alle Eingaben, Volumenverhältnis,
+Nullwert, Formular-Synchronisierung und Bedienung.

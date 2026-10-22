@@ -252,8 +252,8 @@ describe('free-water deficit', () => {
       evaluateCalculator(calculator, { ...example('wasserdefizit'), ...patch }).result,
     ).toBeNull();
   });
-  it('is searchable and explicitly omits Anatomy', () => {
-    expect(calculator.anatomy).toBe(false);
+  it('is searchable and uses a dedicated Anatomy model', () => {
+    expect(calculator.anatomy).toBe('custom');
     for (const q of ['hypernatriamie', 'free water deficit', 'wasserdefizit'])
       expect(searchCalculators(q).map((c) => c.id)).toContain('wasserdefizit');
   });

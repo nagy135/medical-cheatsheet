@@ -48,7 +48,8 @@ export type Calculator = {
   resultLabel: string;
   resultUnit: string;
   precision: number;
-  anatomy?: boolean;
+  // Undefined uses the generic plotter; custom figures are routed in App.
+  anatomy?: false | 'custom';
   formula: string;
   formulaDetail?: string;
   note: string;
@@ -402,7 +403,7 @@ export const calculators: Calculator[] = [
     description:
       'Freies Wasserdefizit bei Hypernatriämie bis zum Referenznatrium 140 mmol/l schätzen.',
     method: 'Gesamtkörperwasser × (Na / 140 − 1) · Erwachsene',
-    anatomy: false,
+    anatomy: 'custom',
     fields: [
       { ...weight(), example: '70' },
       { ...sodium('sodium', 'Aktuelles Serumnatrium', '170'), min: 140 },

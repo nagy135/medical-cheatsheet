@@ -1,0 +1,199 @@
+[
+  ["until", "document.querySelector('.water-svg')"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.water-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Incomplete result');return 'Dedicated dilution chamber starts empty with the main form';})()"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{window.base={...document.querySelector('.water-svg').dataset};window.current=document.querySelector('[data-water-group=current]').innerHTML;window.extra=document.querySelector('[data-water-group=extra]').innerHTML;window.witness=document.querySelector('[data-water-group=witness]').getAttribute('transform');return '42 l current body water + 9 l deficit = 51 l model volume';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/water-anatomy-desktop.png", ".water-figure"],
+  ["lines", null, ".water-figure"],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(2)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-80)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.water-svg').dataset;if(Math.abs(Number(d.waterResult)-10.285714285714286)>1e-7||Number(d.waterTBW)!==48||document.querySelector('[data-water-group=current]').innerHTML===window.current||document.querySelector('[data-water-group=extra]').innerHTML===window.extra||document.querySelector('.result-number').textContent!=='10,29')throw Error('Weight sensitivity');return 'Only weight changes both inserts and the end wall';})()"
+  ],
+  ["lines", null, ".water-figure"],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(3)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-180)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.water-svg').dataset;if(Math.abs(Number(d.waterResult)-12)>1e-7||document.querySelector('[data-water-group=current]').innerHTML!==window.current||document.querySelector('[data-water-group=witness]').getAttribute('transform')!==window.witness||document.querySelector('[data-water-group=extra]').innerHTML===window.extra)throw Error('Sodium sensitivity');return 'Only sodium enlarges the extra insert; current body water stays fixed';})()"
+  ],
+  ["lines", null, ".water-figure"],
+  ["shot", "docs/anatomy-map/shots/water-anatomy-close.png", ".water-svg", 4],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(4)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.5)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.water-svg').dataset;if(Math.abs(Number(d.waterResult)-7.5)>1e-7||Number(d.waterTBW)!==35||document.querySelector('[data-water-group=current]').innerHTML===window.current||document.querySelector('.result-number').textContent!=='7,50')throw Error('Water factor sensitivity');return 'Only factor .5 reduces body water and deficit';})()"
+  ],
+  ["lines", null, ".water-figure"],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(5)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-140)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.water-svg').dataset;if(Number(d.waterResult)!==0||d.waterCurrentLength!==d.waterTotalLength||document.querySelector('[data-water-group=extra]').innerHTML!==''||document.querySelector('.result-number').textContent!=='0,00')throw Error('Zero deficit');return 'At sodium 140 the extension vanishes and the end meets the current-volume boundary';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/water-anatomy-zero.png", ".water-figure"],
+  ["lines", null, ".water-figure"],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(1)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-weight');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'75');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  ["until", "document.querySelector('#anatomy-weight').value==='75'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-bodyWaterFraction');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'0,5');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.5)<1e-8"
+  ],
+  ["until", "document.querySelector('#field-bodyWaterFraction').value==='0,5'"],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('.water-svg').dataset.waterResult)-8.035714285714286)>1e-7)throw Error('Shared inputs');return 'Main and lower numeric fields synchronize in both directions';})()"
+  ],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(1)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  ["key", "ArrowUp", ".water-handle[aria-label^=Gewicht]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70.1)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  ["key", "ArrowUp", ".water-handle[aria-label^=Natrium]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70.1)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-171)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  ["key", "ArrowUp", ".water-handle[aria-label^=Körperwasserfaktor]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70.1)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-171)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.65)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-weight').value!=='70,1'||document.querySelector('#field-sodium').value!=='171'||document.querySelector('#field-bodyWaterFraction').value!=='0,65')throw Error('Keyboard steps');return 'All knobs honor registry keyboard steps';})()"
+  ],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(1)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  ["drag", ".water-handle[aria-label^=Gewicht]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-weight').value.replace(',','.'))<=70||document.querySelector('#field-weight').value!==document.querySelector('#anatomy-weight').value)throw Error('weight drag');return 'Gewicht drag changes the shared input';})()"
+  ],
+  ["drag", ".water-handle[aria-label^=Natrium]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-sodium').value.replace(',','.'))<=170||document.querySelector('#field-sodium').value!==document.querySelector('#anatomy-sodium').value)throw Error('sodium drag');return 'Natrium drag changes the shared input';})()"
+  ],
+  ["drag", ".water-handle[aria-label^=Körperwasserfaktor]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-bodyWaterFraction').value.replace(',','.'))<=0.6||document.querySelector('#field-bodyWaterFraction').value!==document.querySelector('#anatomy-bodyWaterFraction').value)throw Error('bodyWaterFraction drag');return 'Körperwasserfaktor drag changes the shared input';})()"
+  ],
+  ["scroll", ".water-experiments"],
+  ["click", ".water-experiments button:nth-child(1)"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-sodium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'1000000');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-1000000)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.water-svg').dataset;if(Number(d.waterTotalLength)>240||Math.abs(Number(d.waterExtraLength)/Number(d.waterUnit)-Number(d.waterResult))>1e-5)throw Error('Expanded scale');return 'Large values preserve the deficit on a shared expanded scale';})()"
+  ],
+  ["lines", null, ".water-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-sodium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'139');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-water-group=extra]').style.display!=='none')throw Error('Stale invalid volume');return 'Invalid sodium clears moving inserts and both readouts';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "[...document.querySelectorAll('.water-input .input-wrap input')].every(e=>e.value==='')"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".water-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.water-svg').dataset.waterWeight)-70)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterSodium)-170)<1e-6&&Math.abs(Number(document.querySelector('.water-svg').dataset.waterFraction)-0.6)<1e-8"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');const rs=[...document.querySelectorAll('[data-water-handle]')].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error('Small handle');for(let i=0;i<3;i++)for(let j=i+1;j<3;j++){const a=rs[i],b=rs[j];if(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)throw Error('Overlapping handles');}return 'Reset/example, layout and three separate 44px targets pass';})()"
+  ],
+  ["move", ".water-handle[aria-label^=Natrium]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/water-anatomy-hover.png", ".water-figure"],
+  ["lines", null, ".water-figure"]
+]
