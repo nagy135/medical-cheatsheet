@@ -1,0 +1,254 @@
+.calcium-panel {
+  background: #fbf8f5;
+  border-color: #c7ad9c;
+}
+.calcium-panel .anatomy-eyebrow {
+  color: #95765f;
+}
+.calcium-panel .anatomy-method {
+  background: #f3ebe4;
+  border-color: #ddc8b9;
+  color: #8b614a;
+  white-space: nowrap;
+}
+.calcium-panel .anatomy-header p {
+  color: #897a6d;
+}
+.calcium-figure {
+  max-width: 830px;
+  margin: 0 auto;
+}
+.calcium-figure.iso[data-theme='light'] {
+  --anatomy-mid: #837b73;
+  --anatomy-lo: #ada296;
+  --anatomy-faint: #ded6cd;
+  --anatomy-card: #fbf8f3;
+  --anatomy-paper: #fbf8f3;
+  --anatomy-lit: #596c48;
+  --anatomy-lit-top: #c4d2a6;
+  --anatomy-lit-shade: #a6ba87;
+  --anatomy-shade-0: #d5cdc2;
+  --anatomy-shade-1: #e1d9cf;
+  --anatomy-shade-2: #ebe5db;
+  --anatomy-shade-3: #f3eee6;
+}
+.calcium-plate.iso-plate {
+  padding: 17px 18px;
+}
+.calcium-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.calcium-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.calcium-handle:focus {
+  outline: none;
+}
+.calcium-handle:focus-visible rect {
+  stroke: #94634b;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.calcium-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #968473;
+  margin: 11px 0 20px;
+}
+.calcium-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  border-top: 1px solid #e1d5c9;
+  padding-top: 20px;
+}
+.calcium-input {
+  min-width: 0;
+}
+.calcium-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #886d57;
+  margin-bottom: 9px;
+}
+.calcium-input .input-wrap {
+  background: #fff;
+}
+.calcium-input .input-wrap input {
+  font-size: 25px;
+  min-width: 0;
+}
+.calcium-input .field-unit {
+  font-size: 12px;
+}
+.calcium-panel .anatomy-range {
+  accent-color: #94634b;
+}
+.calcium-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #dbc5b5;
+  border-radius: 9px;
+  background: #f5ece5;
+  padding: 18px 24px;
+  margin-top: 16px;
+}
+.calcium-answer span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9b7b63;
+}
+.calcium-answer code {
+  font:
+    25px ui-monospace,
+    monospace;
+  line-height: 1.7;
+  color: #8b614a;
+}
+.calcium-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 46px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+  color: #596c48;
+  line-height: 1.3;
+}
+.calcium-answer small {
+  font-size: 12px;
+  color: #ab886e;
+  margin-left: 8px;
+}
+.calcium-shared {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a08a76;
+  margin: 12px 0 21px;
+}
+.calcium-working {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  border-top: 1px solid #e1d5c9;
+  border-bottom: 1px solid #e1d5c9;
+  padding: 17px 0;
+}
+.calcium-working span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a18a76;
+}
+.calcium-working b {
+  font-size: 23px;
+  font-weight: 500;
+  color: #8b614a;
+}
+.calcium-working small {
+  font-size: 11px;
+}
+.calcium-experiments {
+  margin-top: 20px;
+}
+.calcium-experiments p,
+.calcium-note {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9c8775;
+}
+.calcium-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.calcium-experiments button {
+  border: 1px solid #d9c0ad;
+  border-radius: 5px;
+  background: #fff;
+  color: #956c51;
+  font-size: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.calcium-experiments button:hover {
+  background: #f5ece5;
+}
+.calcium-note {
+  margin-top: 16px;
+}
+@media (max-width: 680px) {
+  .calcium-controls {
+    gap: 14px;
+  }
+  .calcium-input > label {
+    min-height: 3.4em;
+  }
+  .calcium-input .input-wrap input {
+    font-size: 19px;
+    padding-left: 9px;
+  }
+  .calcium-input .field-unit {
+    font-size: 10px;
+    padding: 0 7px;
+  }
+  .calcium-plate.iso-plate {
+    padding: 13px 9px;
+  }
+  .calcium-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .calcium-answer {
+    padding: 14px;
+    gap: 12px;
+  }
+  .calcium-answer code {
+    font-size: 17px;
+  }
+  .calcium-answer strong {
+    font-size: 35px;
+  }
+  .calcium-answer span {
+    font-size: 9px;
+  }
+  .calcium-working span {
+    font-size: 9px;
+  }
+  .calcium-working b {
+    font-size: 20px;
+  }
+  .calcium-panel .anatomy-header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .calcium-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+}
+
+.calcium-panel .input-wrap select {
+  max-width: 128px;
+}
+@media (max-width: 680px) {
+  .calcium-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .calcium-input > label {
+    min-height: 0;
+  }
+  .calcium-working {
+    gap: 8px;
+  }
+  .calcium-working b {
+    font-size: 17px;
+  }
+}

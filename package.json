@@ -24,7 +24,9 @@
     "anatomy:bazett": "node scripts/build-bazett-anatomy.mjs",
     "anatomy:bazett:audit": "node scripts/build-bazett-anatomy.mjs --audit",
     "anatomy:horovitz": "node scripts/build-horovitz-anatomy.mjs",
-    "anatomy:horovitz:audit": "node scripts/build-horovitz-anatomy.mjs --audit"
+    "anatomy:horovitz:audit": "node scripts/build-horovitz-anatomy.mjs --audit",
+    "anatomy:calcium": "node scripts/build-calcium-anatomy.mjs",
+    "anatomy:calcium:audit": "node scripts/build-calcium-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",

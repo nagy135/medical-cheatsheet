@@ -1,0 +1,224 @@
+[
+  ["until", "document.querySelector('.calcium-svg')"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{window.base={...document.querySelector('.calcium-svg').dataset};window.lower=document.querySelector('[data-calcium-group=measured]').getAttribute('transform');window.upper=document.querySelector('[data-calcium-group=corrected]').getAttribute('transform');return 'Dedicated compound slide: 2.10 + .20 = 2.30';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/calcium-desktop.png", ".calcium-panel"],
+  ["lines", null, ".calcium-figure"],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(2)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.5)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.calcium-svg').dataset;const lo=document.querySelector('[data-calcium-group=measured]').transform.baseVal.consolidate().matrix,hi=document.querySelector('[data-calcium-group=corrected]').transform.baseVal.consolidate().matrix;if(Math.abs(Number(d.calciumResult)-2.7)>1e-8||Number(d.calciumCorrection)!==.2||Math.abs(lo.e-hi.e)>1e-5||Math.abs(lo.f-hi.f)>1e-5||Math.abs(lo.e)<1||document.querySelector('.result-number').textContent!=='2,70')throw Error('Calcium motion sensitivity');return 'Only calcium: both stages translate equally; correction stays .20';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(3)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-20)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.calcium-svg').dataset;if(Math.abs(Number(d.calciumResult)-2.5)>1e-8||d.calciumMeasuredX!==window.base.calciumMeasuredX||document.querySelector('[data-calcium-group=measured]').getAttribute('transform')!==window.lower||document.querySelector('[data-calcium-group=corrected]').getAttribute('transform')===window.upper)throw Error('Albumin sensitivity');return 'Only albumin: lower carriage fixed, upper head gains .20';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  ["shot", "docs/anatomy-map/shots/calcium-close.png", ".calcium-svg", 4],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(4)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.calcium-svg').dataset;if(d.calciumMeasuredX!==d.calciumResultX||Number(d.calciumCorrection)!==0||document.querySelector('.result-number').textContent!=='2,10')throw Error('Zero correction identity');return '40 g/l: centres align and corrected equals measured calcium';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  ["shot", "docs/anatomy-map/shots/calcium-zero.png", ".calcium-figure"],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(5)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-50)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.calcium-svg').dataset;if(Number(d.calciumResultX)>=Number(d.calciumMeasuredX)||Math.abs(Number(d.calciumResult)-1.9)>1e-8||document.querySelector('.result-number').textContent!=='1,90')throw Error('Correction reversal');return '50 g/l reverses the offset; corrected calcium 1.90';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(1)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.input-panel #field-albumin').closest('.input-wrap').querySelector('select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-albumin').value==='3'"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#anatomy-albumin').closest('.input-wrap').querySelector('select').value!=='1'||document.querySelector('[data-calcium-group=corrected]').getAttribute('transform')!==window.upper)throw Error('Unit conversion changes pose');const r=document.querySelector('#anatomy-albumin').closest('.calcium-input').querySelector('[type=range]');if(r.min!=='.1'&&r.min!=='0.1'||r.max!=='10'||r.step!=='0.1')throw Error('Albumin unit slider');return '30 g/l converts to 3 g/dl in both forms without moving the mechanism';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-albumin');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'2');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-20)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-albumin').value!=='2'||document.querySelector('.result-number').textContent!=='2,50')throw Error('g/dl input');return '2 g/dl means 20 g/l, corrected calcium 2.50';})()"
+  ],
+  ["key", "ArrowUp", ".calcium-handle[aria-label^=Albumin]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-21)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-albumin').value!=='2,1')throw Error('g/dl knob step');return 'Albumin knob keyboard advances .1 g/dl (1 g/l)';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.calcium-panel #anatomy-albumin').closest('.input-wrap').querySelector('select');e.value='0';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-albumin').value==='21'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-calcium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'2,2');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.2)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-21)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#anatomy-calcium').value!=='2,2')throw Error('Main/lower calcium sync');return 'Main calcium input updates the lower form and moving stages';})()"
+  ],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(1)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  ["key", "ArrowUp", ".calcium-handle[aria-label^=Kalzium]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.11)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  ["scroll", ".calcium-experiments"],
+  ["click", ".calcium-experiments button:nth-child(1)"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  ["drag", ".calcium-handle[aria-label^=Kalzium]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 700],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)<=2.1||document.querySelector('#field-calcium').value!==document.querySelector('#anatomy-calcium').value)throw Error('Calcium drag');return 'Calcium knob drag updates shared input';})()"
+  ],
+  ["drag", ".calcium-handle[aria-label^=Albumin]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 700],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)<=30||document.querySelector('#field-albumin').value!==document.querySelector('#anatomy-albumin').value)throw Error('Albumin drag');return 'Albumin knob drag updates shared input';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-calcium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'0,1');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-albumin');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'100');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-0.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-100)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumResult)+1.1)>1e-8||document.querySelector('.result-number').textContent!=='−1,10'&&document.querySelector('.result-number').textContent!=='-1,10')throw Error('Signed negative output lost');return 'Negative result stays signed and visible';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-calcium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'1,2');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-1.2)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-100)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.calcium-svg').dataset.calciumResult)!==0||document.querySelector('.result-number').textContent!=='0,00')throw Error('Zero output hidden');return 'Exact zero result remains visible';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-calcium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'1000000');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-1000000.0)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-100)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.calcium-svg').dataset;if(Number(d.calciumMeasuredX)!==50||Math.abs(Number(d.calciumResult)-999998.8)>1e-5||Math.abs((Number(d.calciumResultX)+70)/Number(d.calciumUnit)-999998.8)>1e-5)throw Error('Extended scale');return 'Large calcium preserves the signed correction and shared display scale';})()"
+  ],
+  ["lines", null, ".calcium-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-albumin');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'101');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-calcium-group=corrected]').style.display!=='none')throw Error('Invalid stale head');return 'Invalid albumin clears both readouts and moving parts';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-calcium').value===''&&document.querySelector('#anatomy-albumin').value===''"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".calcium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumMeasured)-2.1)<1e-6&&Math.abs(Number(document.querySelector('.calcium-svg').dataset.calciumAlbumin)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');const r=[...document.querySelectorAll('[data-calcium-handle]')].map(e=>e.getBoundingClientRect());if(r.some(e=>e.width<43.9||e.height<43.9))throw Error('Small knob target');if(r[0].right>r[1].left&&r[0].left<r[1].right&&r[0].bottom>r[1].top&&r[0].top<r[1].bottom)throw Error('Overlapping targets');return 'Reset/example, no overflow, and separate 44px targets pass';})()"
+  ],
+  ["move", ".calcium-handle[aria-label^=Albumin]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/calcium-hover.png", ".calcium-figure"],
+  ["lines", null, ".calcium-figure"]
+]

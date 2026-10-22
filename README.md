@@ -88,7 +88,12 @@ Links zeigt ein Schieber den Sauerstoffanteil; rechts stehen PaO₂ und der
 berechnete P/F auf derselben Druckskala. Beide Eingaben und ihre Einheiten
 (mmHg/kPa, Prozent/Anteil) sind mit dem Hauptrechner verbunden.
 
-Bei den übrigen 14 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Albuminkorrigiertes Kalzium besitzt als siebtes individuelles Modell einen
+Korrekturschlitten. Kalzium bewegt die untere Stufe; Albumin setzt einen
+vorzeichenbehafteten Versatz auf der zweiten Schiene. Albumin-Einheiten und
+Eingaben sind mit dem Hauptrechner verbunden; 40 g/l setzt den Versatz auf null.
+
+Bei den übrigen 13 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -174,3 +179,9 @@ zehn Stellungen, einschließlich 21 %, 100 %, sehr kleiner und großer Drücke.
 `src/anatomy/horovitz-model.test.ts` prüft Formel, Einfluss beider Eingaben und
 alle vier Kombinationen der Einheiten. Browser-Sequenzen stehen in
 `scripts/verify-horovitz-anatomy.json`.
+
+Der Korrekturschlitten wird mit `npm run anatomy:calcium:audit` erzeugt.
+Der Audit prüft echte Formen und die gemeinsame Zeichenreihenfolge in zehn
+Stellungen, einschließlich negativer Korrekturen, Nullwert und erweitertem
+Maßstab. Modelltests und `scripts/verify-calcium-anatomy.json` prüfen beide
+Eingaben, Albumin-Einheiten, Vorzeichen und die Synchronisierung der Formulare.
