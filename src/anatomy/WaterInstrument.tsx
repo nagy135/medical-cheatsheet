@@ -5,6 +5,7 @@ import { formatNumber } from '../calculators';
 import { waterInputs, waterPose } from './water-model';
 import { waterPoint, waterBounds, waterSolid } from './water-solid';
 import art from './water-art.json';
+import { useTouchLock } from './touch';
 type Input = (typeof waterInputs)[number];
 type Props = {
   values: Values | null;
@@ -17,6 +18,7 @@ export function WaterInstrument(props: Props) {
     scaleReadout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.water-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number } | null>(null);
   const pose = props.values ? waterPose(props.values) : null;

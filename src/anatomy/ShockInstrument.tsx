@@ -5,6 +5,7 @@ import { formatNumber } from '../calculators';
 import { shockPose } from './shock-model';
 import { shockPoint, shockWeight } from './shock-weight';
 import art from './shock-art.json';
+import { useTouchLock } from './touch';
 type Input = 'heartRate' | 'systolic';
 type Props = { values: Values | null; onInput: (field: Input, value: number) => void };
 export function ShockInstrument(props: Props) {
@@ -12,6 +13,7 @@ export function ShockInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.shock-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number; scale: number } | null>(null);
   const pose = props.values ? shockPose(props.values) : null;

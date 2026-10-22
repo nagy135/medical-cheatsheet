@@ -5,6 +5,7 @@ import { formatNumber } from '../calculators';
 import { calciumInputs, calciumPose } from './calcium-model';
 
 import art from './calcium-art.json';
+import { useTouchLock } from './touch';
 const calciumPoint = (P: typeof art, x: number, y: number, z: number) => [
   P.origin[0] + P.xVector[0] * x + P.yVector[0] * y + P.zVector[0] * z,
   P.origin[1] + P.xVector[1] * x + P.yVector[1] * y + P.zVector[1] * z,
@@ -20,6 +21,7 @@ export function CalciumInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.calcium-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number } | null>(null);
   const pose = props.values ? calciumPose(props.values) : null;

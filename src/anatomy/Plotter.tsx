@@ -5,6 +5,7 @@ import type { Calculator, Field, Values } from '../calculators';
 import { numericFieldSettings } from '../numeric-input';
 import { inputInterval, resultForPose, traceCurve } from './model';
 import art from './plotter-art.json';
+import { useTouchLock } from './touch';
 
 type Props = {
   calculator: Calculator;
@@ -28,6 +29,7 @@ export function Plotter(props: Props) {
   const yScale = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg);
   const wake = useRef<() => void>(() => {});
   const dragging = useRef(false);
   const { axis, calculator, unitIndex, values } = props;

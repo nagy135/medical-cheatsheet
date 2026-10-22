@@ -5,6 +5,7 @@ import type { Values } from '../calculators';
 import { anionInputs, anionPose } from './anion-model';
 import { anionBounds, anionPoint, anionSolid } from './anion-solid';
 import art from './anion-art.json';
+import { useTouchLock } from './touch';
 type Input = (typeof anionInputs)[number];
 type Props = { values: Values | null; onInput: (field: Input, value: number) => void };
 export function AnionInstrument(props: Props) {
@@ -12,6 +13,7 @@ export function AnionInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.anion-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number; unit: number } | null>(null);
   const pose = props.values ? anionPose(props.values) : null;

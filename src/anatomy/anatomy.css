@@ -123,7 +123,7 @@
   font-weight: 600;
 }
 .anatomy-svg {
-  touch-action: pan-y;
+  touch-action: none;
   cursor: ew-resize;
   outline-offset: -4px;
 }

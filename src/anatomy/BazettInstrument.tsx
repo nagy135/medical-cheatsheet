@@ -5,6 +5,7 @@ import { formatNumber } from '../calculators';
 import { bazettInputs, bazettPose } from './bazett-model';
 import { bazettPoint, bazettShapes, bazettSolid, bazettTicks } from './bazett-solid';
 import art from './bazett-art.json';
+import { useTouchLock } from './touch';
 type Input = (typeof bazettInputs)[number];
 type Props = { values: Values | null; onInput: (field: Input, value: number) => void };
 export function BazettInstrument(props: Props) {
@@ -12,6 +13,7 @@ export function BazettInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.bazett-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number } | null>(null);
   const pose = props.values ? bazettPose(props.values) : null;

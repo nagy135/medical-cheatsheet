@@ -5,6 +5,7 @@ import { formatNumber } from '../calculators';
 import { horovitzInputs, horovitzPose } from './horovitz-model';
 import { horovitzPoint, horovitzBounds, horovitzSolid } from './horovitz-solid';
 import art from './horovitz-art.json';
+import { useTouchLock } from './touch';
 type Input = (typeof horovitzInputs)[number];
 type Props = {
   values: Values | null;
@@ -16,6 +17,7 @@ export function HorovitzInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.horovitz-handle');
   const wake = useRef(() => {}),
     drag = useRef<{ field: Input; start: number; value: number } | null>(null);
   const pose = props.values ? horovitzPose(props.values) : null;

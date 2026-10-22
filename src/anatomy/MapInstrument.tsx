@@ -5,6 +5,7 @@ import type { Values } from '../calculators';
 import art from './map-art.json';
 import { mapExample, mapPose } from './map-model';
 import { mapBeam, mapPoint } from './map-beam';
+import { useTouchLock } from './touch';
 
 type Input = 'systolic' | 'diastolic';
 type Props = { values: Values | null; onInput: (field: Input, value: number) => void };
@@ -20,6 +21,7 @@ export function MapInstrument(props: Props) {
   const readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.map-handle');
   const wake = useRef<() => void>(() => {});
   const drag = useRef<{ field: Input; start: number; pressure: number; scale: number } | null>(
     null,

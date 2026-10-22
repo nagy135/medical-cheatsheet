@@ -5,6 +5,7 @@ import type { Values } from '../calculators';
 import { bsaCalculator, bsaExample, bsaPose } from './bsa-model';
 import { bsaBox, bsaPoint } from './bsa-box';
 import art from './bsa-art.json';
+import { useTouchLock } from './touch';
 
 type Input = 'height' | 'weight';
 type Props = {
@@ -18,6 +19,7 @@ export function BsaInstrument(props: Props) {
     readout = useRef<HTMLSpanElement>(null);
   const latest = useRef(props);
   latest.current = props;
+  useTouchLock(svg, '.bsa-handle');
   const wake = useRef(() => {});
   const drag = useRef<{
     field: Input;
