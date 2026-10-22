@@ -75,7 +75,15 @@ Streifen zeigt den Betrag des Höhenunterschieds; Ergebnis und Text behalten das
 Vorzeichen. Bei null verschwindet der Streifen vollständig. Alle drei Eingaben
 sind mit dem Hauptformular verbunden; der Startwert ist 140 / 104 / 24 mmol/l.
 
-Bei den übrigen 16 Rechnern zeigt ein isometrischer Kurvenschreiber die
+QTc nach Bazett besitzt als fünftes individuelles Modell die Bazett-Scheibe,
+einen Kreisrechenschieber. QT setzt den grauen Zeiger, der Faktor 1/√RR dreht
+die innere Skala, und der helle Zeiger zeigt QTc auf der festen Außenskala.
+Winkel werden logarithmisch abgebildet; der gemeinsame Ausschnitt passt sich
+an, damit auch Eingabegrenzen nicht um den Kreis herumwickeln. Bei 60/min
+liegen beide Zeiger in derselben Richtung. Eingaben und Hauptformular bleiben
+synchron; Startwerte sind 400 ms und 75/min.
+
+Bei den übrigen 15 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -117,6 +125,14 @@ Werte; normalisierte Addition vermeidet einen unnötigen Überlauf von Cl + HCO�
 Die Geometrieprüfung erfasst positive, bündige, negative und extreme Fälle.
 `scripts/verify-anion-anatomy.json` prüft alle drei Einflüsse, Gegenänderungen,
 Vorzeichen, gemeinsamen Formularzustand, Reset sowie Ziehen und Tastatur.
+
+Die Bazett-Scheibe wird mit `npm run anatomy:bazett:audit` erzeugt.
+`src/anatomy/bazett-solid.ts` liefert die tatsächlichen Zeigerpolygone und
+Skalenpositionen für Generator und Browser. Drehende Teile werden in der
+Instrumentenebene neu projiziert. Die Geometrieprüfung umfasst beide
+Eingabegrenzen, die Identität bei 60/min und niedrige sowie hohe Frequenzen.
+`scripts/verify-bazett-anatomy.json` prüft beide Eingabeeinflüsse, die
+Quadratwurzelskalierung, Formularsynchronisierung und Bedienung.
 
 ## Formeln und Quellen
 

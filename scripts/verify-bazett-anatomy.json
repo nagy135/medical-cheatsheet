@@ -1,0 +1,138 @@
+[
+  ["until", "document.querySelector('.bazett-svg')"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Number(document.querySelector('.bazett-svg').dataset.bazettQT)===400 && Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)===75"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.bazett-panel [data-trace]'))throw Error('Generic plotter');window.bazettBase={...document.querySelector('.bazett-svg').dataset};window.bazettQTBody=document.querySelector('[data-bazett-group=qt]').innerHTML;window.bazettOutputBody=document.querySelector('[data-bazett-group=corrected]').innerHTML;return 'Dedicated circular slide rule at 400 ms / 75';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/bazett-desktop.png", ".bazett-panel"],
+  ["lines", "docs/anatomy-map/shots/bazett-lines.png", ".bazett-figure"],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(2)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-500)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-75)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bazett-svg').dataset;if(Math.abs(Number(d.bazettResult)-559.0169943749474)>1e-5||Number(d.bazettQTAngle)<=Number(window.bazettBase.bazettQTAngle)||Math.abs(Number(d.bazettGainAngle)-Number(window.bazettBase.bazettGainAngle))>1e-5)throw Error('QT sensitivity or rotor changed');if(document.querySelector('[data-bazett-group=qt]').innerHTML===window.bazettQTBody)throw Error('QT arm did not move');if(document.querySelector('.result-number').textContent!=='559')throw Error('Main QT synchronization');return 'QT +100: grey and output arms move; RR rotor stays fixed; QTc 559';})()"
+  ],
+  ["lines", null, ".bazett-figure"],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(3)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-400)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-120)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bazett-svg').dataset;if(Math.abs(Number(d.bazettResult)-565.685424949238)>1e-5||Math.abs(Number(d.bazettQTAngle))>1e-5||Number(d.bazettGainAngle)<=Number(window.bazettBase.bazettGainAngle))throw Error('Rate sensitivity');if(document.querySelector('[data-bazett-group=qt]').innerHTML!==window.bazettQTBody||document.querySelector('[data-bazett-group=corrected]').innerHTML===window.bazettOutputBody)throw Error('Actual arm separation');if(document.querySelector('.result-number').textContent!=='566')throw Error('Main rate synchronization');return 'Rate 120: QT arm stays fixed; rotor and bright arm move; QTc 566';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/bazett-fast.png", ".bazett-figure"],
+  ["shot", "docs/anatomy-map/shots/bazett-close.png", ".bazett-svg", 4],
+  ["lines", null, ".bazett-figure"],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(4)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-400)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-60)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bazett-svg').dataset;if(Number(d.bazettGain)!==1||Number(d.bazettRR)!==1||Number(d.bazettQTAngle)!==Number(d.bazettResultAngle)||document.querySelector('.result-number').textContent!=='400')throw Error('60/min identity');return '60/min: RR 1 s, gain 1, pointers align and QTc equals QT';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/bazett-identity.png", ".bazett-figure"],
+  ["lines", null, ".bazett-figure"],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(5)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-400)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-30)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bazett-svg').dataset;if(Math.abs(Number(d.bazettResult)-282.842712474619)>1e-5||Number(d.bazettGainAngle)>=0||Number(d.bazettQTAngle)!==0)throw Error('Low rate correction');return '30/min reverses the correction direction at fixed QT';})()"
+  ],
+  ["lines", null, ".bazett-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-qt\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"450\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-qt').value==='450'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-heartRate\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"60\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#field-heartRate').value==='60' && document.querySelector('.result-number').textContent==='450'"
+  ],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(1)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-400)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-75)<1e-6"
+  ],
+  ["key", "ArrowUp", ".bazett-handle[aria-label^=Herzfrequenz]"],
+  ["until", "document.querySelector('#field-heartRate').value==='76'"],
+  ["key", "ArrowUp", ".bazett-handle[aria-label^=QT-Intervall]"],
+  ["until", "document.querySelector('#field-qt').value==='401'"],
+  ["scroll", ".bazett-experiments"],
+  ["click", ".bazett-experiments button:nth-child(1)"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettQT)-400)<1e-6 && Math.abs(Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)-75)<1e-6"
+  ],
+  ["drag", ".bazett-handle[aria-label^=Herzfrequenz]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-heartRate').value.replace(',','.'))<=75)throw Error('Direct heartRate drag failed');if(document.querySelector('#field-heartRate').value!==document.querySelector('#anatomy-heartRate').value)throw Error('Dragged inputs diverged');return 'Direct heartRate knob drag changes shared input';})()"
+  ],
+  ["drag", ".bazett-handle[aria-label^=QT-Intervall]", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-qt').value.replace(',','.'))<=400)throw Error('Direct qt drag failed');if(document.querySelector('#field-qt').value!==document.querySelector('#anatomy-qt').value)throw Error('Dragged inputs diverged');return 'Direct qt knob drag changes shared input';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-qt\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"1501\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-bazett-group=corrected]').style.display!=='none')throw Error('Stale invalid result');return 'Out-of-range QT clears both results and moving hands';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-qt').value==='' && document.querySelector('#anatomy-heartRate').value===''"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".bazett-figure"],
+  [
+    "until",
+    "Number(document.querySelector('.bazett-svg').dataset.bazettQT)===400 && Number(document.querySelector('.bazett-svg').dataset.bazettHeartRate)===75"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Reset, example and viewport width pass';})()"
+  ],
+  ["move", ".bazett-handle[aria-label^=Herzfrequenz]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/bazett-hover.png", ".bazett-figure"],
+  ["lines", null, ".bazett-figure"],
+  ["shot", "docs/anatomy-map/shots/bazett-final.png", ".bazett-panel"]
+]

@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const BazettAnatomy = lazy(() =>
+  import('./anatomy/BazettAnatomy').then(({ BazettAnatomy }) => ({ default: BazettAnatomy })),
+);
 const AnionAnatomy = lazy(() =>
   import('./anatomy/AnionAnatomy').then(({ AnionAnatomy }) => ({ default: AnionAnatomy })),
 );
@@ -394,7 +397,9 @@ function CalculatorPage({
           ? { heartRate: '90', systolic: '120' }
           : calculator.id === 'anionenluecke'
             ? { sodium: '140', chloride: '104', bicarbonate: '24' }
-            : {},
+            : calculator.id === 'qtc-bazett'
+              ? { qt: '400', heartRate: '75' }
+              : {},
   );
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
@@ -654,6 +659,20 @@ function CalculatorPage({
       ) : calculator.id === 'anionenluecke' ? (
         <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
           <AnionAnatomy
+            raw={raw}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onPreset={(values) => {
+              setRaw(values);
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'qtc-bazett' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <BazettAnatomy
             raw={raw}
             onChange={(field, value) => {
               setRaw((current) => ({ ...current, [field]: value }));
