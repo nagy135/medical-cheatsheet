@@ -1,4 +1,22 @@
-# Anatomy set: 20 live curve tracers
+# Anatomy instruments
+
+## First individual instrument: MAP
+
+MAP now uses a dedicated 67-part straightedge instrument. The original MAP
+parts plan is in `docs/anatomy-map/README.md`; `scripts/map-geometry.mjs` builds
+the real geometry. A diagonal straightedge connects two pressure heights; its
+bright readout sits at x = −40, one-third of the 240-unit span from x = −120.
+Both the displayed result and the physical readout use `map.calculate` from the
+registry. A fixed 0–240 mmHg scale makes either input's effect visible; a larger
+labelled scale accommodates pressures beyond it. Heights map from 30 to 160,
+so the shoes stay clear of both end stops. The original form and the instrument
+share the same raw values, starting at the explicit 120/80 example.
+
+Audit all real shapes, including the two changing straightedge prisms, at the
+reference pose, equal endpoint pressures, full span, tiny pressures and expanded
+scale. Assert the effect of each input numerically and visually, synchronization
+in both directions, reset and invalid values. Generate static paths once and
+update only transforms and changing beam-face paths per frame.
 
 Size: Figure, one 40–80-part plotting instrument reused for the 20 formulas. Each calculator gets its own input scales, explanation and intermediate quantities; the actual registry calculation drives its curve, pen and readout. This is a mathematical instrument, not a model of anatomy or of a medical device.
 

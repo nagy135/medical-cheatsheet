@@ -1,0 +1,95 @@
+[
+  ["scroll", ".map-panel"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.map-svg').dataset.mapResult)-93.3333333333)<0.00001"
+  ],
+  [
+    "eval",
+    "(() => {if(document.querySelector('.map-panel [data-trace]'))throw Error('Generic plotter still present');if(document.querySelector('#field-systolic').value!=='120'||document.querySelector('#field-diastolic').value!=='80')throw Error('Default shared pressures');window.__mapBase=Number(document.querySelector('[data-map-group=slider1]').getAttribute('transform').match(/-?[0-9.]+/g).at(-1));return 'Unique bridge with shared 120/80 inputs';})()"
+  ],
+  ["scroll", ".map-experiments"],
+  ["click", ".map-experiments button:nth-child(2)"],
+  ["scroll", ".map-panel"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.map-svg').dataset.mapResult)-103.3333333333)<0.00001"
+  ],
+  [
+    "eval",
+    "(() => {if(document.querySelector('[data-anatomy-result]').textContent!=='103,3'||document.querySelector('.result-number').textContent!=='103,3'||document.querySelector('#field-systolic').value!=='150')throw Error('Systolic influence or synchronization');window.__mapS=Number(document.querySelector('[data-map-group=slider1]').getAttribute('transform').match(/-?[0-9.]+/g).at(-1))-window.__mapBase;if(window.__mapS>=0)throw Error('Readout did not rise');return 'Systolic +30: both results +10 and physical readout rises';})()"
+  ],
+  ["lines"],
+  ["scroll", ".map-experiments"],
+  ["click", ".map-experiments button:nth-child(3)"],
+  ["scroll", ".map-panel"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.map-svg').dataset.mapResult)-113.3333333333)<0.00001"
+  ],
+  [
+    "eval",
+    "(() => {if(document.querySelector('[data-anatomy-result]').textContent!=='113,3'||document.querySelector('.result-number').textContent!=='113,3')throw Error('Diastolic influence');const d=Number(document.querySelector('[data-map-group=slider1]').getAttribute('transform').match(/-?[0-9.]+/g).at(-1))-window.__mapBase;if(Math.abs(d/window.__mapS-2)>.0001)throw Error('Physical 1:2 weighting');return 'Diastolic +30: both results +20 and readout moves twice as far';})()"
+  ],
+  [
+    "eval",
+    "(() => {const e=document.querySelector('#field-systolic');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'150');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='123,3'"],
+  [
+    "eval",
+    "(() => {if(document.querySelector('#anatomy-systolic').value!=='150')throw Error('Upper-to-lower sync');const e=document.querySelector('#anatomy-diastolic');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'80');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('.result-number').textContent==='103,3'"],
+  [
+    "eval",
+    "(() => {if(document.querySelector('#field-diastolic').value!=='80')throw Error('Lower-to-upper sync');return 'Editing either form updates the other';})()"
+  ],
+  ["key", "ArrowUp", ".map-handle[aria-label^=Diastolischen]"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='104,0'"],
+  ["scroll", ".map-experiments"],
+  ["click", ".map-experiments button:nth-child(1)"],
+  ["scroll", ".map-panel"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.map-svg').dataset.mapResult)-93.3333333333)<0.00001"
+  ],
+  ["drag", ".map-handle[aria-label^=Systolischen]", 0.5, 0.5, 0.5, 0.1, 18],
+  ["wait", 700],
+  [
+    "eval",
+    "(() => {if(Number(document.querySelector('#field-systolic').value)<=120)throw Error('Direct endpoint drag');if(document.querySelector('#anatomy-systolic').value!==document.querySelector('#field-systolic').value)throw Error('Dragged values diverged');return 'Both endpoint keyboard and drag interaction update shared inputs';})()"
+  ],
+  ["lines"],
+  [
+    "eval",
+    "(() => {const e=document.querySelector('#anatomy-diastolic');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'300');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(() => {if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-map-group=slider1]').style.display!=='none')throw Error('Stale result for invalid pressures');return 'Reversed pressures clear both results and the moving mechanism';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-systolic').value==='' && document.querySelector('#anatomy-diastolic').value===''"
+  ],
+  [
+    "eval",
+    "(() => {if(document.querySelector('#anatomy-systolic').value!==''||document.querySelector('#anatomy-diastolic').value!=='')throw Error('Reset did not clear shared values');return 'Reset clears both input locations';})()"
+  ],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".map-panel"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.map-svg').dataset.mapResult)-93.3333333333)<0.00001"
+  ],
+  ["lines"],
+  [
+    "eval",
+    "(() => {if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Restored example, valid geometry, no horizontal overflow';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/unique-map-verified.png", ".map-panel", 1]
+]

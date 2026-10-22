@@ -4,4 +4,5 @@ package-lock.json
 docs/anatomy-map/vendor
 docs/anatomy-map/index*.html
 src/anatomy/plotter-art.json
+src/anatomy/map-art.json
 src/anatomy/iso.css

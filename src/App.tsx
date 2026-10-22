@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import {
   Activity,
   ArrowDown,
@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const MapAnatomy = lazy(() =>
+  import('./anatomy/MapAnatomy').then(({ MapAnatomy }) => ({ default: MapAnatomy })),
+);
 
 function MedicalIcon({ name, size = 22 }: { name: string; size?: number }) {
   if (name === 'heart') return <HeartPulse size={size} strokeWidth={1.6} />;
@@ -373,7 +376,9 @@ function CalculatorPage({
   favorite: boolean;
   toggleFavorite: (id: string) => void;
 }) {
-  const [raw, setRaw] = useState<Record<string, string>>({});
+  const [raw, setRaw] = useState<Record<string, string>>((): Record<string, string> =>
+    calculator.id === 'map' ? { systolic: '120', diastolic: '80' } : {},
+  );
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
   const copyTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -587,17 +592,33 @@ function CalculatorPage({
           </div>
         </section>
       </div>
-      <AnatomyCalculator
-        key={calculator.id}
-        calculator={calculator}
-        mainRaw={raw}
-        mainUnits={units}
-        onApply={(values) => {
-          setRaw(values);
-          setUnits({});
-          setCopyState('idle');
-        }}
-      />
+      {calculator.id === 'map' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <MapAnatomy
+            raw={raw}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onPreset={(values) => {
+              setRaw(values);
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : (
+        <AnatomyCalculator
+          key={calculator.id}
+          calculator={calculator}
+          mainRaw={raw}
+          mainUnits={units}
+          onApply={(values) => {
+            setRaw(values);
+            setUnits({});
+            setCopyState('idle');
+          }}
+        />
+      )}
       <div className="clinical-note">
         <Info size={19} />
         <div>

@@ -47,16 +47,25 @@ Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten
 
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
-Unter jedem Rechner steht ein umrandeter Anatomy-Rechner. Ein isometrischer
-Kurvenschreiber zeigt die Originalformel als Kurve: Die gewählte Eingabe bewegt
+Unter jedem Rechner steht ein umrandeter Anatomy-Rechner. Der mittlere arterielle
+Druck besitzt als erstes individuelles Modell eine Drittel-Brücke: Zwei
+verschiebbare Enden stehen für diastolischen und systolischen Druck. Ein heller
+Abnehmer bei einem Drittel des Abstands liest den geschätzten Mitteldruck ab.
+Beide Eingaben sind mit dem Hauptformular verbunden. Die Seite startet mit
+120/80; Regler, Zahlenfelder, Ziehen an den Knöpfen und Tastatur ändern dieselben
+Werte. Oberer Rechner, Instrument und Ergebnis bleiben synchron.
+
+Bei den übrigen 19 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
 Erklärungen und live berechnete Zwischenschritte. Skalen sind illustrative
 Ausschnitte und keine klinischen Referenzbereiche; ungültige Eingaben zeichnen
 keine Ergebnisse.
 
-Regler, Zahlenfelder und Einheiten erlauben eine zweite Eingabeweise. Werte
-werden nur auf Knopfdruck zwischen Hauptformular und Anatomy-Rechner übernommen.
+Regler, Zahlenfelder und Einheiten erlauben eine zweite Eingabeweise. Beim
+Kurvenschreiber werden Werte auf Knopfdruck zwischen Hauptformular und
+Anatomy-Rechner übernommen.
 Die Kurvenfahrt verändert keine Formularwerte. Tastatur, reduzierte Bewegung und
 Pausen außerhalb des sichtbaren Bereichs werden unterstützt.
 
@@ -64,6 +73,10 @@ Die Geometrie liegt vorab generiert in `src/anatomy/plotter-art.json`. Nach
 Änderungen an `scripts/build-anatomy.mjs` mit `node scripts/build-anatomy.mjs --audit`
 neu erzeugen. Die MIT-lizenzierte Anatomy-Geometriebibliothek liegt neben der
 ursprünglichen eigenständigen MAP-Figur unter `docs/anatomy-map/vendor`.
+Die individuelle Drittel-Brücke wird mit `npm run anatomy:map:audit` aus
+`scripts/map-geometry.mjs` generiert. Ihre Druckskala bleibt bis 240 mmHg
+fest und erweitert sich für höhere gültige Eingaben. Die Geometrieprüfung deckt
+auch gleiche Drücke, sehr kleine Werte und erweiterte Skalen ab.
 
 ## Formeln und Quellen
 
