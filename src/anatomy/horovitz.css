@@ -1,0 +1,262 @@
+.horovitz-panel {
+  background: #fbf8f5;
+  border-color: #c7ad9c;
+}
+.horovitz-panel .anatomy-eyebrow {
+  color: #95765f;
+}
+.horovitz-panel .anatomy-method {
+  background: #f3ebe4;
+  border-color: #ddc8b9;
+  color: #8b614a;
+  white-space: nowrap;
+}
+.horovitz-panel .anatomy-header p {
+  color: #897a6d;
+}
+.horovitz-figure {
+  max-width: 830px;
+  margin: 0 auto;
+}
+.horovitz-figure.iso[data-theme='light'] {
+  --anatomy-mid: #837b73;
+  --anatomy-lo: #ada296;
+  --anatomy-faint: #ded6cd;
+  --anatomy-card: #fbf8f3;
+  --anatomy-paper: #fbf8f3;
+  --anatomy-lit: #366b73;
+  --anatomy-lit-top: #a1c5ca;
+  --anatomy-lit-shade: #88b5bd;
+  --anatomy-shade-0: #d5cdc2;
+  --anatomy-shade-1: #e1d9cf;
+  --anatomy-shade-2: #ebe5db;
+  --anatomy-shade-3: #f3eee6;
+}
+.horovitz-plate.iso-plate {
+  padding: 17px 18px;
+}
+.horovitz-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.horovitz-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.horovitz-handle:focus {
+  outline: none;
+}
+.horovitz-handle:focus-visible rect {
+  stroke: #94634b;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.horovitz-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #968473;
+  margin: 11px 0 20px;
+}
+.horovitz-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  border-top: 1px solid #e1d5c9;
+  padding-top: 20px;
+}
+.horovitz-input {
+  min-width: 0;
+}
+.horovitz-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #886d57;
+  margin-bottom: 9px;
+}
+.horovitz-input .input-wrap {
+  background: #fff;
+}
+.horovitz-input .input-wrap input {
+  font-size: 25px;
+  min-width: 0;
+}
+.horovitz-input .field-unit {
+  font-size: 12px;
+}
+.horovitz-panel .anatomy-range {
+  accent-color: #94634b;
+}
+.horovitz-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #dbc5b5;
+  border-radius: 9px;
+  background: #f5ece5;
+  padding: 18px 24px;
+  margin-top: 16px;
+}
+.horovitz-answer span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9b7b63;
+}
+.horovitz-answer code {
+  font:
+    25px ui-monospace,
+    monospace;
+  line-height: 1.7;
+  color: #8b614a;
+}
+.horovitz-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 46px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+  color: #366b73;
+  line-height: 1.3;
+}
+.horovitz-answer small {
+  font-size: 12px;
+  color: #ab886e;
+  margin-left: 8px;
+}
+.horovitz-shared {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a08a76;
+  margin: 12px 0 21px;
+}
+.horovitz-working {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  border-top: 1px solid #e1d5c9;
+  border-bottom: 1px solid #e1d5c9;
+  padding: 17px 0;
+}
+.horovitz-working span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a18a76;
+}
+.horovitz-working b {
+  font-size: 23px;
+  font-weight: 500;
+  color: #8b614a;
+}
+.horovitz-working small {
+  font-size: 11px;
+}
+.horovitz-experiments {
+  margin-top: 20px;
+}
+.horovitz-experiments p,
+.horovitz-note {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9c8775;
+}
+.horovitz-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.horovitz-experiments button {
+  border: 1px solid #d9c0ad;
+  border-radius: 5px;
+  background: #fff;
+  color: #956c51;
+  font-size: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.horovitz-experiments button:hover {
+  background: #f5ece5;
+}
+.horovitz-note {
+  margin-top: 16px;
+}
+@media (max-width: 680px) {
+  .horovitz-controls {
+    gap: 14px;
+  }
+  .horovitz-input > label {
+    min-height: 3.4em;
+  }
+  .horovitz-input .input-wrap input {
+    font-size: 19px;
+    padding-left: 9px;
+  }
+  .horovitz-input .field-unit {
+    font-size: 10px;
+    padding: 0 7px;
+  }
+  .horovitz-plate.iso-plate {
+    padding: 13px 9px;
+  }
+  .horovitz-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .horovitz-answer {
+    padding: 14px;
+    gap: 12px;
+  }
+  .horovitz-answer code {
+    font-size: 17px;
+  }
+  .horovitz-answer strong {
+    font-size: 35px;
+  }
+  .horovitz-answer span {
+    font-size: 9px;
+  }
+  .horovitz-working span {
+    font-size: 9px;
+  }
+  .horovitz-working b {
+    font-size: 20px;
+  }
+  .horovitz-panel .anatomy-header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .horovitz-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+}
+
+.horovitz-handle[aria-orientation='horizontal'] {
+  cursor: ew-resize;
+}
+.horovitz-panel .input-wrap select {
+  max-width: 128px;
+}
+.horovitz-figure [data-horovitz-group='oxygen'] {
+  --anatomy-shade-2: #c3cbc9;
+  --anatomy-shade-0: #aab8b5;
+  --anatomy-shade-3: #dbe2df;
+}
+@media (max-width: 680px) {
+  .horovitz-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .horovitz-input > label {
+    min-height: 0;
+  }
+  .horovitz-working {
+    gap: 8px;
+  }
+  .horovitz-working b {
+    font-size: 17px;
+  }
+}

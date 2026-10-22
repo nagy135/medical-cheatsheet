@@ -83,7 +83,12 @@ an, damit auch Eingabegrenzen nicht um den Kreis herumwickeln. Bei 60/min
 liegen beide Zeiger in derselben Richtung. Eingaben und Hauptformular bleiben
 synchron; Startwerte sind 400 ms und 75/min.
 
-Bei den übrigen 15 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Der Horovitz-Index besitzt als sechstes individuelles Modell eine O₂-Normierbank.
+Links zeigt ein Schieber den Sauerstoffanteil; rechts stehen PaO₂ und der
+berechnete P/F auf derselben Druckskala. Beide Eingaben und ihre Einheiten
+(mmHg/kPa, Prozent/Anteil) sind mit dem Hauptrechner verbunden.
+
+Bei den übrigen 14 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -162,3 +167,10 @@ auswählen und den Symlink atomar wechseln:
 ```sh
 ssh infiniter@nixpi.tail6650cb.ts.net 'ln -s releases/<release> /var/www/docsheet/.rollback && mv -Tf /var/www/docsheet/.rollback /var/www/docsheet/current'
 ```
+
+Die O₂-Normierbank wird mit `npm run anatomy:horovitz:audit` erzeugt.
+Der Audit prüft die echten Formen und eine gemeinsame Zeichenreihenfolge in
+zehn Stellungen, einschließlich 21 %, 100 %, sehr kleiner und großer Drücke.
+`src/anatomy/horovitz-model.test.ts` prüft Formel, Einfluss beider Eingaben und
+alle vier Kombinationen der Einheiten. Browser-Sequenzen stehen in
+`scripts/verify-horovitz-anatomy.json`.

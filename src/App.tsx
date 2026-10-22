@@ -36,6 +36,9 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const HorovitzAnatomy = lazy(() =>
+  import('./anatomy/HorovitzAnatomy').then(({ HorovitzAnatomy }) => ({ default: HorovitzAnatomy })),
+);
 const BazettAnatomy = lazy(() =>
   import('./anatomy/BazettAnatomy').then(({ BazettAnatomy }) => ({ default: BazettAnatomy })),
 );
@@ -399,7 +402,9 @@ function CalculatorPage({
             ? { sodium: '140', chloride: '104', bicarbonate: '24' }
             : calculator.id === 'qtc-bazett'
               ? { qt: '400', heartRate: '75' }
-              : {},
+              : calculator.id === 'horovitz'
+                ? { pao2: '80', fio2: '40' }
+                : {},
   );
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
@@ -680,6 +685,28 @@ function CalculatorPage({
             }}
             onPreset={(values) => {
               setRaw(values);
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'horovitz' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <HorovitzAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
               setCopyState('idle');
             }}
           />

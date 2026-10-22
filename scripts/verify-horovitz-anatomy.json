@@ -1,0 +1,217 @@
+[
+  ["until", "document.querySelector('.horovitz-svg')"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{window.base={...document.querySelector('.horovitz-svg').dataset};window.pa=document.querySelector('[data-horovitz-group=pao2]').innerHTML;window.o2=document.querySelector('[data-horovitz-group=oxygen]').innerHTML;window.pf=document.querySelector('[data-horovitz-group=result]').innerHTML;return 'Baseline PaO2 80 / FiO2 .4 = 200';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/horovitz-desktop.png", ".horovitz-panel"],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(2)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-120)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.horovitz-svg').dataset;if(Number(d.horovitzResult)!==300||document.querySelector('[data-horovitz-group=oxygen]').innerHTML!==window.o2||document.querySelector('[data-horovitz-group=pao2]').innerHTML===window.pa||document.querySelector('.result-number').textContent!=='300')throw Error('PaO2 sensitivity');return 'Only PaO2: both pressure columns rise, oxygen mix stays fixed';})()"
+  ],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(3)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-80)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.horovitz-svg').dataset;if(Number(d.horovitzResult)!==100||document.querySelector('[data-horovitz-group=pao2]').innerHTML!==window.pa||document.querySelector('[data-horovitz-group=oxygen]').innerHTML===window.o2||document.querySelector('.result-number').textContent!=='100')throw Error('FiO2 sensitivity');return 'Only FiO2: mix widens and P/F drops, measured PaO2 stays fixed';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/horovitz-close.png", ".horovitz-svg", 4],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(4)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-100)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.horovitz-svg').dataset;if(d.horovitzPaHeight!==d.horovitzResultHeight||Number(d.horovitzResult)!==80||document.querySelector('[data-horovitz-group=rest]').innerHTML!=='')throw Error('Pure oxygen identity');return '100%: equal pressure heights and no fictitious remaining gas';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/horovitz-pure.png", ".horovitz-figure"],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(5)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-21)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzResult)-80/.21)>1e-5)throw Error('Air fraction');return '21% oxygen gives P/F 381';})()"
+  ],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(6)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-160)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-80)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.horovitz-svg').dataset.horovitzResult)!==200)throw Error('Equal scaling');return 'Both inputs doubled: quotient unchanged at 200';})()"
+  ],
+  ["lines", null, ".horovitz-figure"],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(1)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.input-panel #field-pao2').closest('.input-wrap').querySelector('select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#anatomy-pao2').closest('.input-wrap').querySelector('select').value==='1'"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('#anatomy-pao2').value.replace(',','.'))-80/7.50062)>1e-8)throw Error('kPa conversion');return 'Main pressure selector converts and synchronizes kPa';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.horovitz-panel #anatomy-fio2').closest('.input-wrap').querySelector('select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-fio2').value==='0,4'"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-fio2').closest('.horovitz-input').querySelector('[type=range]');if(e.min!=='0.21'||e.max!=='1'||e.step!=='0.01')throw Error('Fraction slider bounds');const d=document.querySelector('.horovitz-svg').dataset;if(Math.abs(Number(d.horovitzResult)-200)>1e-6||Math.abs(Number(d.horovitzOxygenWidth)-Number(window.base.horovitzOxygenWidth))>1e-6)throw Error('Unit changed geometry');return 'Both alternative units preserve physical values, P/F and slider limits';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-pao2');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'10');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-75.0062)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-pao2').value!=='10'||Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzResult)-187.5155)>1e-5)throw Error('kPa input');return '10 kPa is 75.0062 mmHg; index 187.5155';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-fio2').closest('.horovitz-input').querySelector('[type=range]');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'0.5');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-75.0062)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-50)<1e-6"
+  ],
+  ["until", "document.querySelector('#field-fio2').value==='0.5'"],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzResult)-150.0124)>1e-5)throw Error('Fraction slider');return 'Fraction slider .5 controls canonical 50%';})()"
+  ],
+  ["scroll", ".horovitz-figure"],
+  ["key", "ArrowUp", ".horovitz-handle[aria-label^=PaO₂]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-75.756262)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-50)<1e-6"
+  ],
+  ["key", "ArrowRight", ".horovitz-handle[aria-label^=FiO₂]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-75.756262)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-51)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('#field-pao2').value.replace(',','.'))-10.1)>1e-8||Math.abs(Number(document.querySelector('#field-fio2').value.replace(',','.'))-.51)>1e-8)throw Error('Selected-unit keyboard step');return 'Knob keyboard steps respect .1 kPa and .01 fraction';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.horovitz-panel #anatomy-pao2').closest('.input-wrap').querySelector('select');e.value='0';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.input-panel #field-fio2').closest('.input-wrap').querySelector('select');e.value='0';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-75.756262)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-51)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-pao2').closest('.input-wrap').querySelector('select').value!=='0'||document.querySelector('#anatomy-fio2').closest('.input-wrap').querySelector('select').value!=='0')throw Error('Unit reverse sync');return 'Reverse conversions synchronize both controls';})()"
+  ],
+  ["scroll", ".horovitz-experiments"],
+  ["click", ".horovitz-experiments button:nth-child(1)"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  ["drag", ".horovitz-handle[aria-label^=FiO₂]", 0.25, 0.5, 0.75, 0.5, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)<=40||document.querySelector('#field-fio2').value!==document.querySelector('#anatomy-fio2').value)throw Error('Mix drag');return 'Direct mix knob drag updates shared FiO2';})()"
+  ],
+  ["drag", ".horovitz-handle[aria-label^=PaO₂]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)<=80||document.querySelector('#field-pao2').value!==document.querySelector('#anatomy-pao2').value)throw Error('Pressure drag');return 'Direct pressure knob drag updates shared PaO2';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-fio2');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'101');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-horovitz-group=result]').style.display!=='none')throw Error('Invalid stale result');return 'Invalid input clears both readouts and moving parts';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-pao2').value===''&&document.querySelector('#anatomy-fio2').value===''"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".horovitz-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzPao2)-80)<1e-6 && Math.abs(Number(document.querySelector('.horovitz-svg').dataset.horovitzFio2)-40)<1e-6"
+  ],
+  ["move", ".horovitz-handle[aria-label^=FiO₂]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/horovitz-hover.png", ".horovitz-figure"],
+  ["lines", null, ".horovitz-figure"],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');const r=document.querySelector('[data-horovitz-handle=fio2]').getBoundingClientRect();if(r.width<43.9||r.height<43.9)throw Error('Small pointer target');return 'Reset, example, layout and 44px control targets pass';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/horovitz-final.png", ".horovitz-panel"]
+]

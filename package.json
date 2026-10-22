@@ -22,7 +22,9 @@
     "anatomy:anion": "node scripts/build-anion-anatomy.mjs",
     "anatomy:anion:audit": "node scripts/build-anion-anatomy.mjs --audit",
     "anatomy:bazett": "node scripts/build-bazett-anatomy.mjs",
-    "anatomy:bazett:audit": "node scripts/build-bazett-anatomy.mjs --audit"
+    "anatomy:bazett:audit": "node scripts/build-bazett-anatomy.mjs --audit",
+    "anatomy:horovitz": "node scripts/build-horovitz-anatomy.mjs",
+    "anatomy:horovitz:audit": "node scripts/build-horovitz-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",
