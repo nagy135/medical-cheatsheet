@@ -1,0 +1,265 @@
+.bsa-panel {
+  border-color: #c9b78d;
+  background: #fcfaf4;
+}
+.bsa-panel .anatomy-eyebrow {
+  color: #8b703e;
+}
+.bsa-panel .anatomy-method {
+  color: #795f30;
+  background: #f5efdf;
+  border-color: #d9c99f;
+  white-space: nowrap;
+}
+.bsa-panel .anatomy-header p {
+  color: #796f5d;
+}
+.bsa-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(220px, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.bsa-visual {
+  min-width: 0;
+}
+.bsa-figure {
+  margin: 0;
+}
+.bsa-figure.iso[data-theme='light'] {
+  --anatomy-mid: #857d6c;
+  --anatomy-lo: #aaa08b;
+  --anatomy-faint: #dfd8c9;
+  --anatomy-card: #fbf8ee;
+  --anatomy-paper: #fbf8ee;
+  --anatomy-lit: #6e4a17;
+  --anatomy-lit-top: #e8ca85;
+  --anatomy-lit-shade: #e1be70;
+  --anatomy-shade-0: #d6cebd;
+  --anatomy-shade-1: #e1dacb;
+  --anatomy-shade-2: #ece5d7;
+  --anatomy-shade-3: #f3eddf;
+}
+.bsa-plate.iso-plate {
+  padding: 16px 14px;
+}
+.bsa-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bsa-handle {
+  touch-action: none;
+}
+.bsa-handle-height {
+  cursor: ew-resize;
+}
+.bsa-handle-weight {
+  cursor: ns-resize;
+}
+.bsa-handle:focus {
+  outline: none;
+}
+.bsa-handle:focus-visible rect {
+  stroke: #8a6425;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.bsa-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #857961;
+  margin: 10px 0 16px;
+}
+.bsa-form-control {
+  border: 1px solid #d9cdaf;
+  border-radius: 9px;
+  padding: 13px 16px;
+  background: #f6f0e1;
+}
+.bsa-form-control label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  color: #705c34;
+}
+.bsa-form-control label span {
+  font-family: ui-monospace, monospace;
+}
+.bsa-panel .anatomy-range {
+  accent-color: #a37b34;
+}
+.bsa-form-control > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bsa-form-control button,
+.bsa-experiments button {
+  border: 1px solid #d8c9a6;
+  border-radius: 5px;
+  background: #fffdf8;
+  color: #776033;
+  padding: 9px 11px;
+  font-size: 10px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.bsa-form-control button:hover,
+.bsa-form-control button[aria-pressed='true'],
+.bsa-experiments button:hover {
+  background: #e9d9b1;
+  border-color: #b99a59;
+  color: #5b4219;
+}
+.bsa-form-control p,
+.bsa-shared,
+.bsa-note,
+.bsa-experiments p {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #8b7b5f;
+}
+.bsa-form-control p {
+  margin: 10px 0 0;
+}
+.bsa-shared {
+  border-bottom: 1px solid #ded4bc;
+  padding-bottom: 14px;
+  margin: 0 0 18px;
+}
+.bsa-input {
+  margin-bottom: 22px;
+  min-width: 0;
+}
+.bsa-input > label {
+  display: block;
+  font-size: 11px;
+  color: #7f683e;
+  margin-bottom: 9px;
+}
+.bsa-input .input-wrap {
+  background: #fffdf8;
+}
+.bsa-input .input-wrap input {
+  font-size: 24px;
+  min-width: 0;
+}
+.bsa-input .field-unit {
+  font-size: 12px;
+  padding: 0 14px;
+}
+.bsa-answer {
+  border-top: 1px solid #ded4bc;
+  padding: 21px 0 0;
+}
+.bsa-answer > span {
+  font-size: 10px;
+  color: #8b754b;
+}
+.bsa-answer > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.bsa-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 52px;
+  font-weight: 650;
+  letter-spacing: -2px;
+  color: #6e4a17;
+}
+.bsa-answer small {
+  font-size: 16px;
+  color: #947749;
+}
+.bsa-answer code {
+  font-size: 12px;
+  color: #8b7040;
+  line-height: 1.8;
+}
+.bsa-working {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  border-top: 1px solid #ded4bc;
+  border-bottom: 1px solid #ded4bc;
+  margin-top: 25px;
+  padding: 19px 0;
+}
+.bsa-working span {
+  font-size: 10px;
+  color: #927e57;
+}
+.bsa-working strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 500;
+  color: #6e4a17;
+  margin: 5px 0;
+}
+.bsa-working p {
+  font-size: 10px;
+  color: #96876b;
+  line-height: 1.7;
+}
+.bsa-experiments {
+  margin-top: 19px;
+}
+.bsa-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 9px 0;
+}
+.bsa-note {
+  margin-top: 16px;
+}
+@media (max-width: 800px) {
+  .bsa-workbench {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .bsa-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+    min-width: 0;
+  }
+  .bsa-shared {
+    grid-column: 1/-1;
+  }
+  .bsa-answer {
+    grid-column: 1/-1;
+    text-align: center;
+    padding-top: 14px;
+  }
+  .bsa-answer > div {
+    justify-content: center;
+  }
+  .bsa-input .input-wrap input {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .bsa-working {
+    gap: 12px;
+  }
+  .bsa-working strong {
+    font-size: 17px;
+  }
+  .bsa-working p {
+    font-size: 9px;
+  }
+  .bsa-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .bsa-panel .anatomy-header {
+    gap: 10px;
+  }
+  .bsa-panel .anatomy-header h2 {
+    font-size: 22px;
+  }
+}

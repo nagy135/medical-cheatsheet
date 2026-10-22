@@ -55,7 +55,14 @@ Beide Eingaben sind mit dem Hauptformular verbunden. Die Seite startet mit
 120/80; Regler, Zahlenfelder, Ziehen an den Knöpfen und Tastatur ändern dieselben
 Werte. Oberer Rechner, Instrument und Ergebnis bleiben synchron.
 
-Bei den übrigen 19 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Die Körperoberfläche nach Mosteller besitzt als zweites individuelles Modell
+das Wurzelfenster: Größe und Gewicht bestimmen die Hilfsseiten eines Rechtecks.
+Eine Formsteuerung überführt es flächentreu in ein Quadrat; dessen Seitenlänge
+ist der Zahlenwert der KOF. Eingaben sind mit dem Hauptformular verbunden.
+Beide Einflüsse lassen sich einzeln ausprobieren; die Formsteuerung ändert
+keinen medizinischen Wert. Die Seite startet mit 175 cm und 75 kg.
+
+Bei den übrigen 18 Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
 Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
@@ -77,6 +84,12 @@ Die individuelle Drittel-Brücke wird mit `npm run anatomy:map:audit` aus
 `scripts/map-geometry.mjs` generiert. Ihre Druckskala bleibt bis 240 mmHg
 fest und erweitert sich für höhere gültige Eingaben. Die Geometrieprüfung deckt
 auch gleiche Drücke, sehr kleine Werte und erweiterte Skalen ab.
+
+Das Wurzelfenster wird mit `npm run anatomy:bsa:audit` erzeugt.
+Die Prüfung erfasst Rechteck, Quadrat und Zwischenstellungen bei normalen
+Werten und an den Eingabegrenzen. Die Dimensionen, Fläche und Anzeige stammen
+aus `src/anatomy/bsa-model.ts`; `scripts/verify-bsa-anatomy.json` prüft die
+Browserinteraktionen mit dem Anatomy-Skript `drive.mjs`.
 
 ## Formeln und Quellen
 

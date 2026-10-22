@@ -1,0 +1,141 @@
+[
+  ["until", "document.querySelector('.bsa-svg')"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-1.9094065395649333)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.bsa-panel [data-trace]'))throw Error('Generic plotter');window.bsaBase={...document.querySelector('.bsa-svg').dataset};window.bsaBasePaths=[...document.querySelectorAll('[data-bsa-kind] path')].map(n=>n.getAttribute('d')).join('|');return 'Dedicated aperture, default 175 cm / 75 kg';})()"
+  ],
+  ["scroll", ".bsa-experiments"],
+  ["click", ".bsa-experiments button:nth-child(2)"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-2.041241452319315)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bsa-svg').dataset;if(Number(d.bsaArea)<=Number(window.bsaBase.bsaArea))throw Error('Input has no effect on opening');if([...document.querySelectorAll('[data-bsa-kind] path')].map(n=>n.getAttribute('d')).join('|')===window.bsaBasePaths)throw Error('Actual opening paths did not move');if(document.querySelector('.result-number').textContent!==document.querySelector('[data-anatomy-result]').textContent)throw Error('Results diverged');return 'Input 1 changes numeric result and aperture';})()"
+  ],
+  ["lines", null, ".bsa-figure"],
+  ["scroll", ".bsa-experiments"],
+  ["click", ".bsa-experiments button:nth-child(3)"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-2.204792759220492)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bsa-svg').dataset;if(Number(d.bsaArea)<=Number(window.bsaBase.bsaArea))throw Error('Input has no effect on opening');if([...document.querySelectorAll('[data-bsa-kind] path')].map(n=>n.getAttribute('d')).join('|')===window.bsaBasePaths)throw Error('Actual opening paths did not move');if(document.querySelector('.result-number').textContent!==document.querySelector('[data-anatomy-result]').textContent)throw Error('Results diverged');return 'Input 2 changes numeric result and aperture';})()"
+  ],
+  ["lines", null, ".bsa-figure"],
+  ["scroll", ".bsa-experiments"],
+  ["click", ".bsa-experiments button:nth-child(1)"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Number(document.querySelector('.bsa-svg').dataset.bsaForm)===0 && Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-1.9094065395649333)<1e-6"
+  ],
+  ["shot", "docs/anatomy-map/shots/bsa-rectangle.png", ".bsa-panel"],
+  ["scroll", ".bsa-form-control"],
+  ["click", ".bsa-form-control button:nth-child(2)"],
+  ["scroll", ".bsa-figure"],
+  ["wait", 100],
+  ["shot", "docs/anatomy-map/shots/bsa-transition.png", ".bsa-figure"],
+  ["until", "Number(document.querySelector('.bsa-svg').dataset.bsaForm)===1"],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bsa-svg').dataset;if(Math.abs(Number(d.bsaW)-Number(d.bsaH))>1e-6)throw Error('Not square');if(Math.abs(Number(d.bsaW)*Number(d.bsaH)-Number(window.bsaBase.bsaW)*Number(window.bsaBase.bsaH))>1e-4)throw Error('Area changed');if(Math.abs(Number(d.bsaResult)-Number(window.bsaBase.bsaResult))>1e-6)throw Error('Form changed medical result');return 'Square preserves area and KOF';})()"
+  ],
+  ["lines", null, ".bsa-figure"],
+  ["shot", "docs/anatomy-map/shots/bsa-square.png", ".bsa-panel"],
+  ["shot", "docs/anatomy-map/shots/bsa-close.png", ".bsa-svg", 4],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-height\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"200\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-height').value==='200'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-weight\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"100\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#field-weight').value==='100' && document.querySelector('[data-anatomy-result]').textContent==='2,36'"
+  ],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-Math.sqrt(200*100/3600))<1e-6"
+  ],
+  ["key", "ArrowUp", ".bsa-handle-height"],
+  ["until", "document.querySelector('#field-height').value==='201'"],
+  ["scroll", ".bsa-experiments"],
+  ["click", ".bsa-experiments button:nth-child(1)"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Number(document.querySelector('.bsa-svg').dataset.bsaForm)===0 && Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-1.9094065395649333)<1e-6"
+  ],
+  ["drag", ".bsa-handle-height", 0.5, 0.5, 0.9, 0.5, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-height').value.replace(',','.'))<=175)throw Error('Height drag failed');return 'Shared main and Anatomy inputs, keyboard and drag work';})()"
+  ],
+  ["drag", ".bsa-handle-weight", 0.5, 0.5, 0.5, 0.1, 14],
+  ["wait", 600],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-weight').value.replace(',','.'))<=75)throw Error('Weight drag failed');return 'Both physical handles change shared medical inputs';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-weight\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"0\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||document.querySelector('[data-bsa-group=variable]').style.display!=='none')throw Error('Stale invalid result');return 'Invalid weight clears both results and opening';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "until",
+    "document.querySelector('#anatomy-weight').value==='' && document.querySelector('#anatomy-height').value===''"
+  ],
+  ["scroll", ".input-panel-footer"],
+  ["click", ".input-panel-footer .text-button"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-1.9094065395649333)<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Reset, example and viewport width pass';})()"
+  ],
+  [
+    "eval",
+    "(()=>{for(const [id,value]of [['height','250'],['weight','500']]){const e=document.querySelector('#anatomy-'+id);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,value);e.dispatchEvent(new Event('input',{bubbles:true}));}})()"
+  ],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-Math.sqrt(250*500/3600))<1e-6"
+  ],
+  ["lines", null, ".bsa-figure"],
+  ["shot", "docs/anatomy-map/shots/bsa-max.png", ".bsa-figure"],
+  ["scroll", ".bsa-experiments"],
+  ["click", ".bsa-experiments button:nth-child(1)"],
+  ["scroll", ".bsa-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bsa-svg').dataset.bsaResult)-1.9094065395649333)<1e-6"
+  ],
+  ["shot", "docs/anatomy-map/shots/bsa-final.png", ".bsa-panel"]
+]
