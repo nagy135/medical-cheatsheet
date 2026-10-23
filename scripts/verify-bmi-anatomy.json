@@ -1,0 +1,200 @@
+[
+  ["until", "document.querySelector('.bmi-svg')"],
+  [
+    "eval",
+    "(()=>{if(!(document.querySelector('[data-anatomy-result]').textContent==='—'&&document.querySelector('[data-bmi-group=load]').style.display==='none'))throw Error('Empty state');return 'Empty state passed';})()"
+  ],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(1)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "window.base={...document.querySelector('.bmi-svg').dataset};window.baseLoad=document.querySelector('[data-bmi-group=load]').innerHTML;'Saved baseline';"
+  ],
+  ["shot", "/tmp/bmi-anatomy-desktop.png", ".bmi-figure"],
+  ["lines", null, ".bmi-figure"],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(2)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-100)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(Number(document.querySelector('.bmi-svg').dataset.bmiSide)===Number(window.base.bmiSide)&&Number(document.querySelector('.bmi-svg').dataset.bmiThickness)>Number(window.base.bmiThickness)&&document.querySelector('#field-weight').value==='100'))throw Error('Weight increases thickness at fixed square');return 'Weight increases thickness at fixed square passed';})()"
+  ],
+  ["lines", null, ".bmi-figure"],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(3)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-200)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(Number(document.querySelector('.bmi-svg').dataset.bmiArea)===4&&Number(document.querySelector('.bmi-svg').dataset.bmiResult)===18.75&&Number(document.querySelector('.bmi-svg').dataset.bmiThickness)<Number(window.base.bmiThickness)))throw Error('Height increases square and reduces thickness');return 'Height increases square and reduces thickness passed';})()"
+  ],
+  ["lines", null, ".bmi-figure"],
+  ["shot", "/tmp/bmi-anatomy-tall.png", ".bmi-figure"],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(1)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-weight');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'80');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-80)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(document.querySelector('#anatomy-weight').value==='80'))throw Error('Main to Anatomy synchronization');return 'Main to Anatomy synchronization passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-height');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'180');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-80)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-180)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(document.querySelector('#field-height').value==='180'))throw Error('Anatomy to main synchronization');return 'Anatomy to main synchronization passed';})()"
+  ],
+  ["key", "ArrowUp", ".bmi-handle[aria-label^=Körpergewicht]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-80.1)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-180)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  ["key", "ArrowUp", ".bmi-handle[aria-label^=Körpergröße]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-80.1)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-181)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  ["drag", ".bmi-handle[aria-label^=Körpergewicht]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(!(Number(document.querySelector('#field-weight').value.replace(',','.'))>80.1))throw Error('Weight pointer capture drag');return 'Weight pointer capture drag passed';})()"
+  ],
+  ["drag", ".bmi-handle[aria-label^=Körpergröße]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(!(Number(document.querySelector('#field-height').value.replace(',','.'))>181))throw Error('Height pointer capture drag');return 'Height pointer capture drag passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector('.bmi-svg'),h=document.querySelector('.bmi-handle rect');const start=new TouchEvent('touchstart',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:svg,clientX:0,clientY:0})]});h.dispatchEvent(start);if(!start.defaultPrevented)throw Error('Touch start scroll lock');const move=new TouchEvent('touchmove',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:svg,clientX:0,clientY:0})]});svg.dispatchEvent(move);if(!move.defaultPrevented)throw Error('Touch move scroll lock');svg.dispatchEvent(new TouchEvent('touchcancel',{bubbles:true,touches:[]}));const free=new TouchEvent('touchmove',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:svg,clientX:0,clientY:0})]});svg.dispatchEvent(free);if(free.defaultPrevented)throw Error('Touch cancellation stuck');const body=new TouchEvent('touchstart',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:svg,clientX:0,clientY:0})]});svg.dispatchEvent(body);if(body.defaultPrevented)throw Error('Non-control scroll blocked');return 'Native non-passive touch prevention, cancel and selective scrolling passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-weight');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'500');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-height');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'100');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-500)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-100)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiThickness)-70)<1e-6&&Number(document.querySelector('.bmi-svg').dataset.bmiResult)===500))throw Error('Expanded vertical scale preserves result');return 'Expanded vertical scale preserves result passed';})()"
+  ],
+  ["lines", null, ".bmi-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-weight');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'0');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["wait", 200],
+  [
+    "eval",
+    "(()=>{if(!(document.querySelector('[data-anatomy-result]').textContent==='—'&&document.querySelector('.result-number').textContent==='—'&&document.querySelector('[data-bmi-group=load]').style.display==='none'))throw Error('Invalid clears both results and variable geometry');return 'Invalid clears both results and variable geometry passed';})()"
+  ],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(1)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  [
+    "eval",
+    "(()=>{if(!(document.querySelector('#anatomy-weight').value===''&&document.querySelector('#anatomy-height').value===''))throw Error('Main reset synchronization');return 'Main reset synchronization passed';})()"
+  ],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(1)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(document.documentElement.scrollWidth<=innerWidth))throw Error('No horizontal overflow');return 'No horizontal overflow passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(!([...document.querySelectorAll('[data-bmi-hit]')].every(e=>{const r=e.getBoundingClientRect();return r.width>=43.9&&r.height>=43.9})))throw Error('44px controls');return '44px controls passed';})()"
+  ],
+  [
+    "eval",
+    "window.boxes=[...document.querySelectorAll('[data-bmi-hit]')].map(e=>e.getBoundingClientRect());if(window.boxes[0].right>window.boxes[1].left&&window.boxes[0].bottom>window.boxes[1].top&&window.boxes[0].top<window.boxes[1].bottom)throw Error('Overlap');'Separate targets passed'"
+  ],
+  ["move", ".bmi-handle[aria-label^=Körpergewicht]", 0.5, 0.5],
+  ["shot", "/tmp/bmi-anatomy-hover.png", ".bmi-figure"],
+  ["shot", "/tmp/bmi-anatomy-close-light.png", ".bmi-svg", 4],
+  ["lines", "/tmp/bmi-anatomy-lines-light.png", ".bmi-figure"],
+  ["eval", "document.querySelector('.bmi-figure').dataset.theme='dark'"],
+  ["shot", "/tmp/bmi-anatomy-close-dark.png", ".bmi-svg", 4],
+  ["lines", "/tmp/bmi-anatomy-lines-dark.png", ".bmi-figure"],
+  ["eval", "document.querySelector('.bmi-figure').dataset.theme='light'"],
+  [
+    "eval",
+    "(()=>{const spacer=document.createElement('div');spacer.id='bmi-qa-spacer';spacer.style.height=innerHeight+'px';document.body.append(spacer);window.scrollTo(0,document.documentElement.scrollHeight);return 'Scroll beyond the entire figure';})()"
+  ],
+  ["wait", 200],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-weight');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'90');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.bmi-svg').dataset;if(d.bmiVisible!=='false'||Math.abs(Number(d.bmiWeight)-75)>1e-6)throw Error('Offscreen loop sleeps '+JSON.stringify(d)+' rect '+JSON.stringify(document.querySelector('.bmi-svg').getBoundingClientRect()));return 'Offscreen loop sleeps passed';})()"
+  ],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-90)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  [
+    "eval",
+    "(()=>{if(!(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)===90))throw Error('Offscreen resumes to newest target');return 'Offscreen resumes to newest target passed';})()"
+  ],
+  ["eval", "document.querySelector('#bmi-qa-spacer').remove()"],
+  ["scroll", ".bmi-experiments"],
+  ["click", ".bmi-experiments button:nth-child(1)"],
+  ["scroll", ".bmi-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiWeight)-75)<1e-6&&Math.abs(Number(document.querySelector('.bmi-svg').dataset.bmiHeight)-175)<1e-6&&document.querySelector('.bmi-svg').dataset.bmiMoving==='false'"
+  ],
+  ["shot", "/tmp/bmi-anatomy-final.png", ".bmi-panel"]
+]
