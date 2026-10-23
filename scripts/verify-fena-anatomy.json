@@ -1,0 +1,310 @@
+[
+  ["until", "document.querySelector('.fena-svg')"],
+  [
+    "eval",
+    "(()=>{window.fenaSet=(id,v)=>{const e=document.querySelector('#anatomy-'+id);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,v);e.dispatchEvent(new Event('input',{bubbles:true}));};window.fenaUnit=(id,v)=>{const e=document.querySelector('#anatomy-'+id).closest('.input-wrap').querySelector('select');e.value=String(v);e.dispatchEvent(new Event('change',{bubbles:true}));};if(document.querySelector('[data-anatomy-result]').textContent!=='—'||document.querySelector('.fena-svg').dataset.fenaValid!=='false')throw Error('Initial blank state');return 'Empty shared form hides result and geometry';})()"
+  ],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Math.abs(Number(d.fenaSodiumRatio)-1/7)>1e-10||Number(d.fenaCreatinineRatio)!==100||document.querySelector('.result-number').textContent!=='0,14')throw Error('Registry computation');window.fenaBase={...d};return 'True sodium and creatinine concentration ratios agree with main result';})()"
+  ],
+  ["shot", "/tmp/fena-qa/desktop.png", ".fena-figure", 1],
+  ["lines", "/tmp/fena-qa/lines-reference.png", ".fena-figure"],
+  ["shot", "/tmp/fena-qa/mechanism-4x.png", ".fena-svg", 4],
+  ["eval", "window.fenaSet('sodium','280')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/14))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const s=document.querySelector('.fena-svg');if(JSON.stringify(s.dataset)===JSON.stringify(window.fenaBase)||document.querySelector('#field-sodium').value!=='280')throw Error('Parameter/shared sensitivity sodium');return 'sodium independently changes shared computation and sample geometry';})()"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaSet('urineSodium','40')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(2/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const s=document.querySelector('.fena-svg');if(JSON.stringify(s.dataset)===JSON.stringify(window.fenaBase)||document.querySelector('#field-urineSodium').value!=='40')throw Error('Parameter/shared sensitivity urineSodium');return 'urineSodium independently changes shared computation and sample geometry';})()"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaSet('creatinine','2')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(2/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const s=document.querySelector('.fena-svg');if(JSON.stringify(s.dataset)===JSON.stringify(window.fenaBase)||document.querySelector('#field-creatinine').value!=='2')throw Error('Parameter/shared sensitivity creatinine');return 'creatinine independently changes shared computation and sample geometry';})()"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaSet('urineCreatinine','200')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/14))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const s=document.querySelector('.fena-svg');if(JSON.stringify(s.dataset)===JSON.stringify(window.fenaBase)||document.querySelector('#field-urineCreatinine').value!=='200')throw Error('Parameter/shared sensitivity urineCreatinine');return 'urineCreatinine independently changes shared computation and sample geometry';})()"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaUnit('creatinine',0);window.fenaUnit('urineCreatinine',1);"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaCreatinine)!==1||Number(d.fenaUrineCreatinine)!==100||document.querySelector('#anatomy-creatinine').closest('.input-wrap').querySelector('select').value!=='0'||document.querySelector('#anatomy-urineCreatinine').closest('.input-wrap').querySelector('select').value!=='1')throw Error('Unit pair');return 'Serum/urine creatinine units 0/1: same canonical values and geometry';})()"
+  ],
+  ["eval", "window.fenaUnit('creatinine',1);window.fenaUnit('urineCreatinine',1);"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaCreatinine)!==1||Number(d.fenaUrineCreatinine)!==100||document.querySelector('#anatomy-creatinine').closest('.input-wrap').querySelector('select').value!=='1'||document.querySelector('#anatomy-urineCreatinine').closest('.input-wrap').querySelector('select').value!=='1')throw Error('Unit pair');return 'Serum/urine creatinine units 1/1: same canonical values and geometry';})()"
+  ],
+  ["eval", "window.fenaUnit('creatinine',1);window.fenaUnit('urineCreatinine',0);"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaCreatinine)!==1||Number(d.fenaUrineCreatinine)!==100||document.querySelector('#anatomy-creatinine').closest('.input-wrap').querySelector('select').value!=='1'||document.querySelector('#anatomy-urineCreatinine').closest('.input-wrap').querySelector('select').value!=='0')throw Error('Unit pair');return 'Serum/urine creatinine units 1/0: same canonical values and geometry';})()"
+  ],
+  ["eval", "window.fenaUnit('creatinine',0);window.fenaUnit('urineCreatinine',0);"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaCreatinine)!==1||Number(d.fenaUrineCreatinine)!==100||document.querySelector('#anatomy-creatinine').closest('.input-wrap').querySelector('select').value!=='0'||document.querySelector('#anatomy-urineCreatinine').closest('.input-wrap').querySelector('select').value!=='0')throw Error('Unit pair');return 'Serum/urine creatinine units 0/0: same canonical values and geometry';})()"
+  ],
+  ["eval", "window.fenaUnit('creatinine',1);window.fenaUnit('urineCreatinine',1);"],
+  ["eval", "window.fenaSet('creatinine','176,8')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(2/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaSet('urineCreatinine','17680')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["key", "ArrowUp", ".fena-handle[aria-label^=Serumkreatinin]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(100*(20/140)*((177.8/88.4)/200)))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-creatinine').value!=='177,8')throw Error('Selected unit keyboard step');return 'µmol/l handle uses registry step 1, converts to canonical creatinine';})()"
+  ],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["key", "ArrowUp", ".fena-handle[aria-label^=Serumnatrium]"],
+  ["until", "document.querySelector('#field-sodium').value==='141'"],
+  ["key", "ArrowUp", ".fena-handle[aria-label^=Urinnatrium]"],
+  ["until", "document.querySelector('#field-urineSodium').value==='21'"],
+  ["key", "ArrowUp", ".fena-handle[aria-label^=Serumkreatinin]"],
+  ["until", "document.querySelector('#field-creatinine').value==='1,01'"],
+  ["key", "ArrowUp", ".fena-handle[aria-label^=Urinkreatinin]"],
+  ["until", "document.querySelector('#field-urineCreatinine').value==='100,01'"],
+  ["until", "document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"],
+  ["eval", "'All four keyboard controls update the shared main form'"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["drag", ".fena-handle[aria-label^=Urinnatrium]", 0.5, 0.8, 0.5, 0.1, 12],
+  ["until", "Number(document.querySelector('#field-urineSodium').value.replace(',','.'))>20"],
+  ["until", "document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"],
+  ["eval", "'Pointer capture drag changes urinary sodium in both forms'"],
+  ["move", ".fena-handle[aria-label^=Urinnatrium]", 0.5, 0.5],
+  ["shot", "/tmp/fena-qa/hover.png", ".fena-figure", 1],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector('.fena-svg'),handle=svg.querySelector('.fena-handle rect');const send=(target,type,active)=>{const t=new Touch({identifier:7,target,clientX:10,clientY:10});const e=new TouchEvent(type,{bubbles:true,cancelable:true,touches:active?[t]:[],changedTouches:[t]});target.dispatchEvent(e);return e.defaultPrevented;};if(!send(handle,'touchstart',true)||!send(handle,'touchmove',true))throw Error('Handle must cancel native touch scrolling');send(handle,'touchcancel',false);if(send(svg,'touchstart',true)||send(svg,'touchmove',true))throw Error('Non-controls must preserve scrolling');send(svg,'touchend',false);if(send(svg,'touchmove',true))throw Error('Touch cancellation did not release');return 'Native cancelable touchstart/move preventDefault on handles; non-control touches and cancel/end release preserve page scrolling';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const rs=[...document.querySelectorAll('[data-fena-target]')].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error('Under 44px target');for(let i=0;i<rs.length;i++)for(let j=i+1;j<rs.length;j++){const a=rs[i],b=rs[j];if(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)throw Error('Overlapping controls');}if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');return 'Four separate 44px targets and no horizontal overflow';})()"
+  ],
+  ["slow", 0.1],
+  ["eval", "window.fenaSet('urineSodium','80')"],
+  ["sheet", "/tmp/fena-qa/motion.png", 60, 8, ".fena-svg", 1, null, 4],
+  ["slow", 1],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(4/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["eval", "window.fenaSet('urineSodium','0')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(0))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaHeightUrineSodium)!==0||document.querySelector('[data-fena-group=sample][data-fena-field=urineSodium]').innerHTML!==''||document.querySelector('.result-number').textContent!=='0,00')throw Error('Zero sodium');return 'Zero urinary sodium has no insert and a true zero result';})()"
+  ],
+  ["shot", "/tmp/fena-qa/zero.png", ".fena-figure", 1],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "window.fenaSet('sodium','-1')"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector('.fena-svg');if(svg.dataset.fenaResult!==undefined||[...svg.querySelectorAll('[data-fena-group=sample],[data-fena-group=cap]')].some(e=>e.style.display!=='none')||document.querySelector('.result-number').textContent!=='—')throw Error('Stale invalid state');return 'Invalid form immediately clears live datasets, inserts, caps and both results';})()"
+  ],
+  ["eval", "window.fenaSet('sodium','')"],
+  ["until", "document.querySelector('#field-sodium').value===''"],
+  ["shot", "/tmp/fena-qa/blank.png", ".fena-figure", 1],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-urineSodium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'30');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(3/14))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["until", "document.querySelector('#anatomy-urineSodium').value==='30'"],
+  ["eval", "'Main form edits synchronize with the comparator in both directions'"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["eval", "document.querySelector('.fena-figure').dataset.theme='dark'"],
+  ["shot", "/tmp/fena-qa/dark.png", ".fena-figure", 1],
+  ["shot", "/tmp/fena-qa/dark-4x.png", ".fena-svg", 4],
+  ["lines", "/tmp/fena-qa/lines-dark.png", ".fena-figure"],
+  ["eval", "document.querySelector('.fena-figure').dataset.theme='light'"],
+  ["eval", "window.fenaSet('sodium','1000000')"],
+  ["eval", "window.fenaSet('urineSodium','2000000')"],
+  ["eval", "window.fenaSet('creatinine','1000000')"],
+  ["eval", "window.fenaSet('urineCreatinine','500000')"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(400))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fena-svg').dataset;if(Number(d.fenaSodiumRatio)!==2||Number(d.fenaCreatinineRatio)!==0.5||Number(d.fenaHeightSodium)!==38||Number(d.fenaHeightUrineSodium)!==76||Number(d.fenaHeightCreatinine)!==76||Number(d.fenaHeightUrineCreatinine)!==38)throw Error('Large concentration scale');return 'Unbounded registry values retain both exact ratios and shared per-pair scales';})()"
+  ],
+  ["lines", null, ".fena-figure"],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  [
+    "eval",
+    "(()=>{const spacer=document.createElement('div');spacer.id='fena-qa-spacer';spacer.style.height='2000px';document.body.append(spacer);spacer.scrollIntoView({block:'end'});})()"
+  ],
+  ["wait", 250],
+  [
+    "eval",
+    "(()=>{const r=document.querySelector('.fena-svg').getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)throw Error('Offscreen test did not leave viewport');return 'SVG outside viewport before mutation';})()"
+  ],
+  [
+    "eval",
+    "window.fenaBefore=JSON.stringify([...document.querySelectorAll('[data-fena-group=sample]')].map(e=>e.innerHTML));window.fenaSet('urineSodium','40');"
+  ],
+  ["wait", 400],
+  [
+    "eval",
+    "(()=>{if(JSON.stringify([...document.querySelectorAll('[data-fena-group=sample]')].map(e=>e.innerHTML))!==window.fenaBefore)throw Error('Offscreen frames');return 'Geometry pauses while offscreen';})()"
+  ],
+  ["eval", "document.querySelector('#fena-qa-spacer').remove()"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(2/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["scroll", ".fena-experiments"],
+  ["click", ".fena-experiments button"],
+  ["scroll", ".fena-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.fena-svg').dataset.fenaResult)-(1/7))<1e-8&&document.querySelector('.fena-svg').dataset.fenaMotion==='rest'"
+  ],
+  ["shot", "/tmp/fena-qa/final.png", ".fena-figure", 1],
+  ["eval", "document.querySelector('.topbar').style.visibility='hidden'"],
+  ["shot", "/tmp/fena-qa/panel.png", ".fena-panel"],
+  ["eval", "document.querySelector('.topbar').style.visibility='' "]
+]

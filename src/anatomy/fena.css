@@ -1,0 +1,268 @@
+.fena-panel {
+  background: #f6f9f8;
+  border-color: #b0c6c6;
+}
+.fena-panel .anatomy-eyebrow {
+  color: #62817f;
+}
+.fena-panel .anatomy-header p {
+  color: #607675;
+}
+.fena-panel .anatomy-method {
+  color: #416e70;
+  background: #eaf2f1;
+  border-color: #c4d7d5;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.fena-figure {
+  max-width: 830px;
+  margin: 0 auto;
+}
+.fena-figure.iso[data-theme='light'] {
+  --anatomy-mid: #6f8180;
+  --anatomy-lo: #9daead;
+  --anatomy-faint: #d2ddda;
+  --anatomy-card: #f8faf7;
+  --anatomy-paper: #f8faf7;
+  --anatomy-lit: #3f797a;
+  --anatomy-lit-top: #b2d9d3;
+  --anatomy-lit-shade: #88bdb9;
+  --anatomy-shade-0: #c5d3d0;
+  --anatomy-shade-1: #d3deda;
+  --anatomy-shade-2: #e0e8e3;
+  --anatomy-shade-3: #edf1eb;
+}
+.fena-figure.iso[data-theme='dark'] {
+  --anatomy-card: #142222;
+  --anatomy-paper: #142222;
+  --anatomy-face: #29403e;
+  --anatomy-top: #344a47;
+  --anatomy-mid: #96b6b0;
+  --anatomy-lo: #63847e;
+  --anatomy-faint: #3b5752;
+  --anatomy-lit: #b4e3da;
+  --anatomy-lit-top: #84b6ad;
+  --anatomy-lit-shade: #497e79;
+  --anatomy-shade-0: #1b302c;
+  --anatomy-shade-1: #223b36;
+  --anatomy-shade-2: #29413b;
+  --anatomy-shade-3: #304a43;
+}
+.fena-figure[data-theme='dark'] .anatomy-figure-heading,
+.fena-figure[data-theme='dark'] .anatomy-figure-footer {
+  color: var(--anatomy-mid);
+}
+.fena-figure[data-theme='dark'] .anatomy-figure-footer span:last-child {
+  color: var(--anatomy-lit);
+}
+.fena-plate.iso-plate {
+  padding: 17px 18px;
+}
+.fena-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fena-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.fena-handle:focus {
+  outline: none;
+}
+.fena-handle:focus-visible rect,
+.fena-handle:hover rect {
+  stroke: var(--anatomy-lit);
+  stroke-width: 1.3;
+  vector-effect: non-scaling-stroke;
+}
+.fena-plate .anatomy-figure-footer {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.fena-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+  color: #728784;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.fena-legend {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.fena-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #88bdb9;
+  flex-shrink: 0;
+}
+.fena-ratios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #c7d7d3;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #edf4f1;
+  margin-bottom: 22px;
+}
+.fena-ratios > div {
+  padding: 16px 20px;
+  min-width: 0;
+}
+.fena-ratios > div:first-child {
+  border-right: 1px solid #c7d7d3;
+}
+.fena-ratios span {
+  display: block;
+  font-size: 10px;
+  color: #6f8681;
+  line-height: 1.8;
+}
+.fena-ratios strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 30px;
+  font-weight: 550;
+  color: #436c6b;
+  overflow-wrap: anywhere;
+}
+.fena-ratios small {
+  font-size: 12px;
+  color: #728784;
+}
+.fena-ratios .fena-result {
+  grid-column: 1 / -1;
+  border-top: 1px solid #c7d7d3;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.fena-result span {
+  margin-right: auto;
+}
+.fena-result strong {
+  font-size: 42px;
+}
+.fena-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+}
+.fena-input {
+  min-width: 0;
+}
+.fena-input > label {
+  display: block;
+  color: #4e6a68;
+  font-size: 12px;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.fena-input > label span {
+  display: block;
+  font:
+    9px ui-monospace,
+    monospace;
+  letter-spacing: 0.5px;
+  color: #829592;
+}
+.fena-input .input-wrap {
+  background: #fff;
+}
+.fena-input .input-wrap input {
+  min-width: 0;
+  font-size: 23px;
+}
+.fena-input .field-unit {
+  font-size: 12px;
+}
+.fena-input .input-wrap select {
+  max-width: 125px;
+}
+.fena-input .field-hint,
+.fena-input .field-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.fena-shared,
+.fena-note,
+.fena-experiments p {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #728784;
+}
+.fena-shared {
+  margin: 18px 0;
+}
+.fena-experiments {
+  border-top: 1px solid #d6e0db;
+  padding-top: 12px;
+}
+.fena-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+.fena-experiments button {
+  background: #fff;
+  border: 1px solid #c2d4ce;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 10px;
+  color: #4b7270;
+  cursor: pointer;
+}
+.fena-experiments button:hover {
+  background: #edf4f1;
+}
+.fena-note {
+  margin: 12px 0 0;
+}
+@media (max-width: 680px) {
+  .fena-panel .anatomy-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .fena-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+  .fena-plate.iso-plate {
+    padding: 13px 8px;
+  }
+  .fena-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .fena-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .fena-ratios > div {
+    padding: 13px;
+  }
+  .fena-ratios span {
+    font-size: 9px;
+  }
+  .fena-ratios strong {
+    font-size: 25px;
+  }
+  .fena-ratios .fena-result {
+    flex-wrap: wrap;
+  }
+  .fena-result span {
+    flex-basis: 100%;
+  }
+  .fena-result strong {
+    font-size: 36px;
+  }
+}
