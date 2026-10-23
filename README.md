@@ -95,10 +95,30 @@ Korrekturschlitten. Kalzium bewegt die untere Stufe; Albumin setzt einen
 vorzeichenbehafteten Versatz auf der zweiten Schiene. Albumin-Einheiten und
 Eingaben sind mit dem Hauptrechner verbunden; 40 g/l setzt den Versatz auf null.
 
-Bei den übrigen 13 Rechnern zeigt ein isometrischer Kurvenschreiber die
+Das freie Wasserdefizit besitzt eine Verdünnungskammer: Die ursprüngliche
+Wassermenge und das fehlende Volumen werden bei gleichbleibender Natriummenge
+gegenübergestellt.
+
+Sechs weitere Rechner besitzen eigene Instrumente, jeweils mit den Eingaben
+und Einheiten des Hauptformulars verbunden:
+
+- BMI: Eine quadratische Lastplatte stellt Größe² als Fläche und Gewicht/Fläche
+  als Schichtdicke dar.
+- Korrigiertes Natrium: Eine Rampe übersetzt den Glukoseüberschuss in den
+  Katz-Korrekturwert über dem gemessenen Natrium.
+- Osmolalität: Eine Dosierbank zeigt zwei Natriumportionen, Glukose und Harnstoff
+  sowie ihre addierten Beiträge.
+- Atemzugvolumen: Sechs gleiche Messkammern vervielfachen das aus Größe und
+  Formelparameter berechnete PBW mit 6 ml/kg.
+- FIB-4: Ein Kurvenkomparator zeigt die linearen Einflüsse sowie die Wurzel
+  von ALT und das Verhältnis von Zähler zu Nenner.
+- FENa: Ein Probenkomparator stellt die Natrium- und Kreatininverhältnisse von
+  Serum und Urin nebeneinander.
+
+Bei den übrigen sieben Rechnern zeigt ein isometrischer Kurvenschreiber die
 Originalformel als Kurve: Die gewählte Eingabe bewegt
 den Stift in X-Richtung, das Ergebnis bestimmt seine Y-Position. Alle übrigen
-Eingaben bleiben für die Kurve konstant. Die 20 Formeln haben eigene Skalen,
+Eingaben bleiben für die Kurve konstant. Die Kurvenmodelle haben eigene Skalen,
 Erklärungen und live berechnete Zwischenschritte. Skalen sind illustrative
 Ausschnitte und keine klinischen Referenzbereiche; ungültige Eingaben zeichnen
 keine Ergebnisse.
@@ -199,3 +219,11 @@ Zeichenreihenfolge in zehn Stellungen, einschließlich Nullwert und erweitertem
 Maßstab. `src/anatomy/water-model.test.ts` und
 `scripts/verify-water-anatomy.json` prüfen alle Eingaben, Volumenverhältnis,
 Nullwert, Formular-Synchronisierung und Bedienung.
+
+Die sechs neuen Instrumente lassen sich mit `npm run anatomy:<name>:audit`
+neu erzeugen und geometrisch prüfen; `<name>` ist `bmi`, `sodium`, `osmolality`,
+`pbw`, `fib4` oder `fena`. Die zugehörigen Modelltests laufen mit `npm test`.
+`scripts/verify-<name>-anatomy.json` enthält Browserprüfungen für das
+Anatomy-Skript `drive.mjs`, auch bei 390 Pixel Breite und reduzierter Bewegung.
+Alle neuen Griffe verwenden die native Touch-Sperre: Ziehen am Griff ändert den
+Wert, Berührungen außerhalb der Griffe erlauben weiterhin Seitenscrollen.

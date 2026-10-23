@@ -28,7 +28,19 @@
     "anatomy:calcium": "node scripts/build-calcium-anatomy.mjs",
     "anatomy:calcium:audit": "node scripts/build-calcium-anatomy.mjs --audit",
     "anatomy:water": "node scripts/build-water-anatomy.mjs",
-    "anatomy:water:audit": "node scripts/build-water-anatomy.mjs --audit"
+    "anatomy:water:audit": "node scripts/build-water-anatomy.mjs --audit",
+    "anatomy:bmi": "node scripts/build-bmi-anatomy.mjs",
+    "anatomy:bmi:audit": "node scripts/build-bmi-anatomy.mjs --audit",
+    "anatomy:sodium": "node scripts/build-sodium-anatomy.mjs",
+    "anatomy:sodium:audit": "node scripts/build-sodium-anatomy.mjs --audit",
+    "anatomy:osmolality": "node scripts/build-osmolality-anatomy.mjs",
+    "anatomy:osmolality:audit": "node scripts/build-osmolality-anatomy.mjs --audit",
+    "anatomy:pbw": "node scripts/build-pbw-anatomy.mjs",
+    "anatomy:pbw:audit": "node scripts/build-pbw-anatomy.mjs --audit",
+    "anatomy:fib4": "node scripts/build-fib4-anatomy.mjs",
+    "anatomy:fib4:audit": "node scripts/build-fib4-anatomy.mjs --audit",
+    "anatomy:fena": "node scripts/build-fena-anatomy.mjs",
+    "anatomy:fena:audit": "node scripts/build-fena-anatomy.mjs --audit"
   },
   "repository": {
     "type": "git",

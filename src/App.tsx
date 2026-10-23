@@ -36,6 +36,24 @@ import {
 import type { Calculator, Field } from './calculators';
 import { NumericInput } from './NumericInput';
 import { AnatomyCalculator } from './anatomy/AnatomyCalculator';
+const BmiAnatomy = lazy(() =>
+  import('./anatomy/BmiAnatomy').then((m) => ({ default: m.BmiAnatomy })),
+);
+const SodiumAnatomy = lazy(() =>
+  import('./anatomy/SodiumAnatomy').then((m) => ({ default: m.SodiumAnatomy })),
+);
+const OsmolalityAnatomy = lazy(() =>
+  import('./anatomy/OsmolalityAnatomy').then((m) => ({ default: m.OsmolalityAnatomy })),
+);
+const PbwAnatomy = lazy(() =>
+  import('./anatomy/PbwAnatomy').then((m) => ({ default: m.PbwAnatomy })),
+);
+const Fib4Anatomy = lazy(() =>
+  import('./anatomy/Fib4Anatomy').then((m) => ({ default: m.Fib4Anatomy })),
+);
+const FenaAnatomy = lazy(() =>
+  import('./anatomy/FenaAnatomy').then((m) => ({ default: m.FenaAnatomy })),
+);
 const WaterAnatomy = lazy(() =>
   import('./anatomy/WaterAnatomy').then(({ WaterAnatomy }) => ({ default: WaterAnatomy })),
 );
@@ -749,6 +767,138 @@ function CalculatorPage({
               setRaw((current) => ({ ...current, [field]: value }));
               setCopyState('idle');
             }}
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'bmi' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <BmiAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'natrium' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <SodiumAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'osmolalitaet' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <OsmolalityAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'atemzugvolumen' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <PbwAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'fib4' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <Fib4Anatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
+            onPreset={(values) => {
+              setRaw(values);
+              setUnits({});
+              setCopyState('idle');
+            }}
+          />
+        </Suspense>
+      ) : calculator.id === 'fena' ? (
+        <Suspense fallback={<p className="panel-description">Instrument wird geladen …</p>}>
+          <FenaAnatomy
+            raw={raw}
+            units={units}
+            onChange={(field, value) => {
+              setRaw((current) => ({ ...current, [field]: value }));
+              setCopyState('idle');
+            }}
+            onUnitChange={(id, index) =>
+              changeUnit(
+                calculator.fields.find((f) => f.id === id)!,
+                index,
+              )
+            }
             onPreset={(values) => {
               setRaw(values);
               setUnits({});
