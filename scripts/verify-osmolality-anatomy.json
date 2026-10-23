@@ -1,0 +1,325 @@
+[
+  ["until", "document.querySelector('.osmolality-svg')"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('[data-anatomy-result]').textContent!=='—'||[...document.querySelectorAll('[data-osmolality-group]:not([data-osmolality-group=static])')].some(e=>e.style.display!=='none'))throw Error('Stale empty geometry');return 'Empty main form hides all seven inserts';})()"
+  ],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{window.base={...document.querySelector('.osmolality-svg').dataset};window.doses=[...document.querySelectorAll('[data-osmolality-group^=dose]')].map(e=>e.innerHTML);if(document.querySelector('.result-number').textContent!=='290,5')throw Error('Main result');return 'Registry example and readout agree';})()"
+  ],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:first-child"],
+  ["scroll", ".osmolality-figure"],
+  ["until", "Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)===140"],
+  ["slow", 0.08],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#field-sodium');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'160');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["sheet", "/tmp/osmolality-shots/motion.png", 100, 6, ".osmolality-figure", 1, null, 3],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset,na=Number(d.osmolalitySodium),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced?na!==160:!(na>140&&na<160))throw Error('Motion preference');const sum=2*na+100/18.0182+5;if(Math.abs(sum-Number(d.osmolalityResult))>1e-8)throw Error('Eased model differs');return reduced?'Reduced motion settles without interpolation':'Eased clinical values and geometry share one instantaneous formula';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["slow", 1],
+  ["until", "Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)===160"],
+  ["shot", "/tmp/osmolality-shots/reduced-or-settled.png", ".osmolality-figure"],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  ["until", "Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)===140"],
+  ["shot", "/tmp/osmolality-shots/panel.png", ".osmolality-panel"],
+  ["shot", "/tmp/osmolality-shots/desktop.png", ".osmolality-figure"],
+  ["shot", "/tmp/osmolality-shots/close-light.png", ".osmolality-svg", 4],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(2)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-150)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;if(Math.abs(Number(d.osmolalityResult)-310.54994394556616)>1e-6)throw Error('Sensitivity 2');return 'Independent parameter 2 changes its dose and the sum';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(3)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-360.364)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;if(Math.abs(Number(d.osmolalityResult)-305)>1e-6)throw Error('Sensitivity 3');return 'Independent parameter 3 changes its dose and the sum';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(4)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-20)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;if(Math.abs(Number(d.osmolalityResult)-305.54994394556616)>1e-6)throw Error('Sensitivity 4');return 'Independent parameter 4 changes its dose and the sum';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector('.osmolality-svg'),handle=svg.querySelector('.osmolality-handle rect'),body=svg.querySelector('[data-osmolality-group=static] path');const touch=(target,type,touches=true)=>{const t=new Touch({identifier:1,target,clientX:10,clientY:10});const e=new TouchEvent(type,{bubbles:true,cancelable:true,touches:touches?[t]:[],changedTouches:[t]});target.dispatchEvent(e);return e.defaultPrevented;};if(!touch(handle,'touchstart')||!touch(svg,'touchmove'))throw Error('Control touch not canceled');touch(svg,'touchcancel',false);if(touch(body,'touchstart')||touch(svg,'touchmove'))throw Error('Page scrolling canceled on body');touch(svg,'touchend',false);return 'Native cancelable control touches lock; body touches preserve page scrolling; cancel resets lock';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-glucose').closest('.input-wrap').querySelector('select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#field-glucose').closest('.input-wrap').querySelector('select').value==='1'"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('#anatomy-urea').closest('.input-wrap').querySelector('select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "document.querySelector('#field-urea').closest('.input-wrap').querySelector('select').value==='1'"
+  ],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('.osmolality-svg').dataset.osmolalityResult)-Number(window.base.osmolalityResult))>1e-6)throw Error('Equivalent units');return 'Both unit switches preserve equivalent canonical geometry and synchronize to main form';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"10\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-urea\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"30,03\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-180.182)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='295,0')throw Error('Units result');return '10 mmol/l glucose and 30.03 mg/dl urea yield 295.0';})()"
+  ],
+  ["key", "ArrowUp", ".osmolality-handle[data-field=glucose]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-181.98382)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#anatomy-glucose').value!=='10,1'||document.querySelector('#field-glucose').value!=='10,1')throw Error('SI step');return 'Glucose knob uses 0.1 mmol/l step';})()"
+  ],
+  ["key", "ArrowUp", ".osmolality-handle[data-field=urea]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-181.98382)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5.166500166500167)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-urea').value!=='31,03')throw Error('Urea step');return 'Urea knob uses 1 mg/dl step';})()"
+  ],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  ["key", "ArrowUp", ".osmolality-handle[data-field=sodium]"],
+  ["until", "document.querySelector('#field-sodium').value==='141'"],
+  ["key", "ArrowUp", ".osmolality-handle[data-field=glucose]"],
+  ["until", "document.querySelector('#field-glucose').value==='101'"],
+  ["key", "ArrowUp", ".osmolality-handle[data-field=urea]"],
+  ["until", "document.querySelector('#field-urea').value==='5,1'"],
+  ["wait", 700],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  ["drag", ".osmolality-handle[data-field=sodium]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{const main=document.querySelector('#field-sodium').value,lower=document.querySelector('#anatomy-sodium').value;if(main!==lower||Number(main.replace(',','.'))<=140)throw Error('sodium drag');return 'sodium pointer capture changes shared value';})()"
+  ],
+  ["drag", ".osmolality-handle[data-field=glucose]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{const main=document.querySelector('#field-glucose').value,lower=document.querySelector('#anatomy-glucose').value;if(main!==lower||Number(main.replace(',','.'))<=100)throw Error('glucose drag');return 'glucose pointer capture changes shared value';})()"
+  ],
+  ["drag", ".osmolality-handle[data-field=urea]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 500],
+  [
+    "eval",
+    "(()=>{const main=document.querySelector('#field-urea').value,lower=document.querySelector('#anatomy-urea').value;if(main!==lower||Number(main.replace(',','.'))<=5)throw Error('urea drag');return 'urea pointer capture changes shared value';})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('Horizontal overflow');const rs=[...document.querySelectorAll('[data-osmolality-hit]')].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error('Target below 44px');for(let i=0;i<3;i++)for(let j=i+1;j<3;j++){const a=rs[i],b=rs[j];if(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)throw Error('Targets overlap');}return 'Three separate 44px handles and no horizontal overflow';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"145\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#anatomy-sodium').value==='145'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"144\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-sodium').value==='144'"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"1000000\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)-1000000)<0.001"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset,ls=JSON.parse(d.osmolalityLengths);if(ls.reduce((a,b)=>a+b,0)>252.000001)throw Error('Receiver clipping');if(Math.abs(ls.reduce((a,b)=>a+b,0)/Number(d.osmolalityUnit)-Number(d.osmolalityResult))>0.001)throw Error('Scale lost dose');return 'Expanded scale preserves contributions';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"10000000\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.osmolality-svg').dataset.osmolalityGlucose)-10000000)<0.001"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset,ls=JSON.parse(d.osmolalityLengths);if(ls.reduce((a,b)=>a+b,0)>252.000001)throw Error('Receiver clipping');if(Math.abs(ls.reduce((a,b)=>a+b,0)/Number(d.osmolalityUnit)-Number(d.osmolalityResult))>0.001)throw Error('Scale lost dose');return 'Expanded scale preserves contributions';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-urea\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"1000000\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.osmolality-svg').dataset.osmolalityUrea)-1000000)<0.001"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset,ls=JSON.parse(d.osmolalityLengths);if(ls.reduce((a,b)=>a+b,0)>252.000001)throw Error('Receiver clipping');if(Math.abs(ls.reduce((a,b)=>a+b,0)/Number(d.osmolalityUnit)-Number(d.osmolalityResult))>0.001)throw Error('Scale lost dose');return 'Expanded scale preserves contributions';})()"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["scroll", ".input-panel"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "eval",
+    "(()=>{for(const id of ['sodium','glucose','urea']){const e=document.querySelector('#anatomy-'+id);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'0,000001');e.dispatchEvent(new Event('input',{bubbles:true}));}})()"
+  ],
+  [
+    "until",
+    "Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)===0.000001&&Number(document.querySelector('.osmolality-svg').dataset.osmolalityGlucose)===0.000001&&Number(document.querySelector('.osmolality-svg').dataset.osmolalityUrea)===0.000001"
+  ],
+  ["lines", null, ".osmolality-figure"],
+  ["eval", "window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'})"],
+  ["wait", 150],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"-1\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if([...document.querySelectorAll('[data-osmolality-group]:not([data-osmolality-group=static])')].some(e=>e.style.display!=='none')||document.querySelector('.osmolality-svg').dataset.osmolalityResult)throw Error('Invalid stale geometry');return 'Invalid input clears all variable art and live data while offscreen';})()"
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "[...document.querySelectorAll('.osmolality-input input')].every(e=>e.value==='')"],
+  ["scroll", ".osmolality-experiments"],
+  ["click", ".osmolality-experiments button:nth-child(1)"],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-140)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  ["move", ".osmolality-handle[data-field=sodium]", 0.5, 0.5],
+  ["shot", "/tmp/osmolality-shots/hover.png", ".osmolality-figure"],
+  ["lines", null, ".osmolality-figure"],
+  ["eval", "document.querySelector('.osmolality-figure').dataset.theme='dark'"],
+  ["shot", "/tmp/osmolality-shots/close-dark.png", ".osmolality-svg", 4],
+  ["lines", null, ".osmolality-figure"],
+  ["eval", "document.querySelector('.osmolality-figure').dataset.theme='light'"],
+  ["eval", "window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'})"],
+  ["wait", 150],
+  [
+    "eval",
+    "(()=>{const r=document.querySelector('.osmolality-svg').getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)throw Error('Offscreen test setup');})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-sodium\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"150\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('.osmolality-svg').dataset.osmolalitySodium)!==140)throw Error('Offscreen animation runs');return 'Offscreen geometry stays still';})()"
+  ],
+  ["scroll", ".osmolality-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.osmolality-svg').dataset;return Math.abs(Number(d.osmolalitySodium)-150)<1e-7&&Math.abs(Number(d.osmolalityGlucose)-100)<1e-6&&Math.abs(Number(d.osmolalityUrea)-5)<1e-7})()"
+  ],
+  ["lines", null, ".osmolality-figure"]
+]

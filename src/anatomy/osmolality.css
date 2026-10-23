@@ -1,0 +1,261 @@
+.osmolality-panel {
+  background: #f6f9f8;
+  border-color: #b5cbc2;
+}
+.osmolality-panel .anatomy-eyebrow {
+  color: #587d70;
+}
+.osmolality-panel .anatomy-method {
+  background: #eaf1ed;
+  border-color: #ceddd5;
+  color: #4a6b5c;
+}
+.osmolality-panel .anatomy-header p {
+  color: #6b7c73;
+}
+.osmolality-figure {
+  max-width: 830px;
+  margin: 0 auto;
+}
+.osmolality-figure.iso[data-theme='light'] {
+  --anatomy-mid: #77837d;
+  --anatomy-lo: #a0aaa3;
+  --anatomy-faint: #d1dad3;
+  --anatomy-card: #f9fbf8;
+  --anatomy-paper: #f9fbf8;
+  --anatomy-lit: #3d7464;
+  --anatomy-lit-top: #a2c6b5;
+  --anatomy-lit-shade: #81b39b;
+  --anatomy-shade-0: #c4d0c7;
+  --anatomy-shade-1: #d4ddd5;
+  --anatomy-shade-2: #e2e9e1;
+  --anatomy-shade-3: #eef2eb;
+}
+.osmolality-plate.iso-plate {
+  padding: 17px 18px;
+}
+.osmolality-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.osmolality-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.osmolality-handle[aria-disabled='true'] {
+  cursor: default;
+}
+.osmolality-handle:focus {
+  outline: none;
+}
+.osmolality-handle:focus-visible rect,
+.osmolality-handle:hover:not([aria-disabled='true']) rect {
+  stroke: var(--anatomy-lit);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+.osmolality-figure-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--anatomy-mid);
+}
+.osmolality-figure-footer [data-readout] {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.osmolality-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #77867c;
+  margin: 11px 0 20px;
+}
+.osmolality-contributions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 24px;
+}
+.osmolality-contributions > div {
+  border-left: 2px solid #b9cdc1;
+  padding-left: 12px;
+  min-width: 0;
+}
+.osmolality-contributions span,
+.osmolality-contributions small {
+  display: block;
+  color: #708377;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.osmolality-contributions strong {
+  display: block;
+  font:
+    600 26px 'Manrope Variable',
+    sans-serif;
+  color: #426e59;
+  overflow-wrap: anywhere;
+}
+.osmolality-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  border-top: 1px solid #d6e1d7;
+  padding-top: 20px;
+}
+.osmolality-input {
+  min-width: 0;
+}
+.osmolality-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #5e7b69;
+  margin-bottom: 9px;
+}
+.osmolality-input .input-wrap {
+  background: #fff;
+}
+.osmolality-input .input-wrap input {
+  font-size: 24px;
+  min-width: 0;
+}
+.osmolality-input .input-wrap select,
+.osmolality-input .field-unit {
+  font-size: 11px;
+}
+.osmolality-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #c5d7cb;
+  border-radius: 9px;
+  background: #ebf2ec;
+  padding: 18px 24px;
+  margin-top: 20px;
+}
+.osmolality-answer span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #62816b;
+}
+.osmolality-answer code {
+  font:
+    21px ui-monospace,
+    monospace;
+  line-height: 1.7;
+  color: #587661;
+  overflow-wrap: anywhere;
+}
+.osmolality-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 44px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+  color: #3d7464;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.osmolality-answer small {
+  font-size: 12px;
+  color: #72917c;
+  margin-left: 8px;
+}
+.osmolality-shared,
+.osmolality-note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #7a887c;
+}
+.osmolality-experiments {
+  margin: 22px 0;
+  border-top: 1px solid #d6e1d7;
+  padding-top: 16px;
+}
+.osmolality-experiments p {
+  font-size: 11px;
+  color: #688170;
+}
+.osmolality-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.osmolality-experiments button {
+  border: 1px solid #c5d7cb;
+  border-radius: 5px;
+  background: #fff;
+  padding: 8px 11px;
+  font: inherit;
+  font-size: 11px;
+  color: #4c715c;
+  cursor: pointer;
+}
+.osmolality-experiments button:hover {
+  background: #e5eee6;
+}
+.osmolality-experiments button:focus-visible {
+  outline: 2px solid #3d7464;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .osmolality-controls {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .osmolality-input .input-wrap input {
+    font-size: 25px;
+  }
+  .osmolality-figure-footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .osmolality-figure-footer [data-readout] {
+    text-align: left;
+  }
+  .osmolality-contributions {
+    gap: 7px;
+  }
+  .osmolality-contributions > div {
+    padding-left: 7px;
+  }
+  .osmolality-contributions strong {
+    font-size: 21px;
+  }
+  .osmolality-contributions span,
+  .osmolality-contributions small {
+    font-size: 9px;
+  }
+  .osmolality-answer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  .osmolality-answer code {
+    font-size: 17px;
+  }
+  .osmolality-answer strong {
+    font-size: 39px;
+  }
+  .osmolality-plate.iso-plate {
+    padding: 14px 10px;
+  }
+  .osmolality-figure .anatomy-figure-heading {
+    font-size: 9px;
+    gap: 8px;
+  }
+}
+.osmolality-figure-footer > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.osmolality-answer > div {
+  min-width: 0;
+  max-width: 100%;
+}
