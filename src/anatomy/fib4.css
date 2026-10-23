@@ -1,0 +1,162 @@
+.fib4-figure {
+  margin: 0;
+}
+.fib4-svg {
+  touch-action: pan-y;
+}
+.fib4-handle {
+  cursor: ns-resize;
+  touch-action: none;
+  outline: none;
+}
+.fib4-handle rect {
+  stroke: transparent;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.fib4-handle:hover rect,
+.fib4-handle:focus-visible rect {
+  stroke: var(--anatomy-lit);
+  fill: #4275540b;
+}
+.fib4-figure figcaption,
+.fib4-note,
+.fib4-scale,
+.fib4-experiments p {
+  color: #657368;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.fib4-figure figcaption {
+  margin: 12px 0 22px;
+}
+.fib4-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.fib4-input {
+  min-width: 0;
+}
+.fib4-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  color: #405c49;
+}
+.fib4-input label span {
+  display: block;
+  font:
+    9px ui-monospace,
+    monospace;
+  color: #7a8a76;
+  margin-bottom: 5px;
+}
+.fib4-input .input-wrap {
+  background: white;
+}
+.fib4-input .input-wrap input {
+  min-width: 0;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.fib4-input .field-unit {
+  font-size: 10px;
+  padding: 0 6px;
+}
+.fib4-calculation {
+  margin-top: 24px;
+  padding: 20px 0;
+  border-block: 1px solid #d5dfcf;
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px;
+  align-items: center;
+  gap: 16px;
+}
+.fib4-calculation span {
+  display: block;
+  font-size: 9px;
+  color: #71816a;
+  margin-bottom: 9px;
+}
+.fib4-calculation b {
+  font:
+    13px ui-monospace,
+    monospace;
+  color: #3e5c47;
+  overflow-wrap: anywhere;
+}
+.fib4-result {
+  padding-left: 18px;
+  border-left: 1px solid #d5dfcf;
+}
+.fib4-result strong {
+  font:
+    650 33px 'Manrope Variable',
+    sans-serif;
+  color: #153e35;
+  overflow-wrap: anywhere;
+}
+.fib4-experiments {
+  margin: 22px 0;
+}
+.fib4-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fib4-experiments button {
+  padding: 10px 12px;
+  border: 1px solid #cbd9c5;
+  border-radius: 6px;
+  background: #fff;
+  color: #385b44;
+  font-size: 10px;
+}
+.fib4-experiments button:focus-visible {
+  outline: 2px solid #638567;
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .fib4-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fib4-calculation {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fib4-result {
+    grid-column: 1/-1;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid #d5dfcf;
+  }
+}
+@media (max-width: 600px) {
+  .fib4-panel .anatomy-header {
+    display: block;
+  }
+  .fib4-panel .anatomy-method {
+    display: inline-block;
+    margin-top: 8px;
+  }
+  .fib4-calculation {
+    grid-template-columns: 1fr;
+  }
+  .fib4-input .input-wrap input {
+    font-size: 16px;
+  }
+  .fib4-controls {
+    gap: 18px 10px;
+  }
+  .fib4-figure .anatomy-figure-heading {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+}
+
+.fib4-scale,
+.fib4-figure .anatomy-figure-footer span {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}

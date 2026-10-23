@@ -1,0 +1,245 @@
+[
+  ["until", "document.querySelector('.fib4-svg')"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.fib4-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Initial result not blank');return 'Dedicated instrument starts empty';})()"
+  ],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{window.fib4Base=[...document.querySelectorAll('[data-fib4-group^=feeler]')].map(e=>e.getAttribute('transform'));const d=document.querySelector('.fib4-svg').dataset;if(Math.abs(+d.fib4Result-60*40/(200*Math.sqrt(35)))>1e-8)throw Error('Formula');return 'Registry result agrees with exact geometry ratio';})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/fib4-anatomy-desktop.png", ".fib4-figure"],
+  ["lines", "docs/anatomy-map/shots/fib4-lines.png", ".fib4-figure"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(2)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-120)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;if(Math.abs(+d.fib4Result-(120*40/(200*Math.sqrt(35))))>1e-7||Math.abs(+d.fib4NumeratorLength/+d.fib4DenominatorLength-+d.fib4Result)>1e-7)throw Error('Parameter 2');return 'Parameter 2 formula and register ratio pass';})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(3)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-80)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;if(Math.abs(+d.fib4Result-(60*80/(200*Math.sqrt(35))))>1e-7||Math.abs(+d.fib4NumeratorLength/+d.fib4DenominatorLength-+d.fib4Result)>1e-7)throw Error('Parameter 3');return 'Parameter 3 formula and register ratio pass';})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(4)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-400)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;if(Math.abs(+d.fib4Result-(60*40/(400*Math.sqrt(35))))>1e-7||Math.abs(+d.fib4NumeratorLength/+d.fib4DenominatorLength-+d.fib4Result)>1e-7)throw Error('Parameter 4');return 'Parameter 4 formula and register ratio pass';})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(5)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-140)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;if(Math.abs(+d.fib4Result-(60*40/(200*Math.sqrt(140))))>1e-7||Math.abs(+d.fib4NumeratorLength/+d.fib4DenominatorLength-+d.fib4Result)>1e-7)throw Error('Parameter 5');return 'Parameter 5 formula and register ratio pass';})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  ["shot", "docs/anatomy-map/shots/fib4-anatomy-close.png", ".fib4-svg", 4],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:first-child"],
+  ["scroll", ".fib4-figure"],
+  ["until", "Math.abs(+document.querySelector('.fib4-svg').dataset.fib4Ast-40)<1e-6"],
+  [
+    "eval",
+    "(()=>{window.fib4OriginalRAF=window.requestAnimationFrame;window.fib4Frames=0;window.requestAnimationFrame=function(cb){if(cb.name==='tick')window.fib4Frames++;return window.fib4OriginalRAF(cb);};})()"
+  ],
+  [
+    "eval",
+    "(()=>{window.fib4Spacer=document.createElement('div');window.fib4Spacer.style.height='200vh';document.body.append(window.fib4Spacer);window.scrollTo(0,document.documentElement.scrollHeight);})()"
+  ],
+  ["wait", 200],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.fib4-svg').getBoundingClientRect().bottom>0)throw Error('Offscreen setup');window.fib4Frames=0;const e=document.querySelector('#field-ast');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'50');e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{if(window.fib4Frames!==0)throw Error('Animation ran offscreen');return 'No instrument animation frames while offscreen';})()"
+  ],
+  ["scroll", ".fib4-figure"],
+  ["until", "Math.abs(+document.querySelector('.fib4-svg').dataset.fib4Ast-50)<1e-6"],
+  [
+    "eval",
+    "(()=>{if(!window.fib4Frames)throw Error('Did not resume');window.requestAnimationFrame=window.fib4OriginalRAF;window.fib4Spacer.remove();return 'Onscreen animation resumes and reaches shared target';})()"
+  ],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-ast\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"45\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-45)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["until", "document.querySelector('#anatomy-ast').value==='45'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-platelets\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"250\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-45)<1e-6&&Math.abs(+d.fib4Platelets-250)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["until", "document.querySelector('#field-platelets').value==='250'"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["key", "ArrowUp", ".fib4-handle[aria-label^=\"Alter\"]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-61)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["key", "ArrowUp", ".fib4-handle[aria-label^=\"AST\"]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-61)<1e-6&&Math.abs(+d.fib4Ast-41)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["key", "ArrowUp", ".fib4-handle[aria-label^=\"Thrombozyten\"]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-61)<1e-6&&Math.abs(+d.fib4Ast-41)<1e-6&&Math.abs(+d.fib4Platelets-201)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["key", "ArrowUp", ".fib4-handle[aria-label^=\"ALT\"]"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-61)<1e-6&&Math.abs(+d.fib4Ast-41)<1e-6&&Math.abs(+d.fib4Platelets-201)<1e-6&&Math.abs(+d.fib4Alt-36)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{for(const id of ['age','ast','platelets','alt'])if(document.querySelector('#field-'+id).value!==document.querySelector('#anatomy-'+id).value)throw Error('Shared keyboard '+id);return 'All four keyboard handles update both forms';})()"
+  ],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["drag", ".fib4-handle[aria-label^=\"Alter\"]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 700],
+  ["drag", ".fib4-handle[aria-label^=\"AST\"]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 700],
+  ["drag", ".fib4-handle[aria-label^=\"Thrombozyten\"]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 700],
+  ["drag", ".fib4-handle[aria-label^=\"ALT\"]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 700],
+  [
+    "eval",
+    "(()=>{const base={age:60,ast:40,platelets:200,alt:35};for(const id of Object.keys(base)){const a=document.querySelector('#field-'+id).value;if(+a.replace(',','.')<=base[id]||a!==document.querySelector('#anatomy-'+id).value)throw Error('Pointer '+id);}return 'Four pointer drags change the shared inputs';})()"
+  ],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector('.fib4-svg'),handle=svg.querySelector('.fib4-handle rect'),still=svg.querySelector('[data-fib4-group=static] path');const event=(type,target,active)=>{const e=new TouchEvent(type,{bubbles:true,cancelable:true,touches:active?[new Touch({identifier:7,target,clientX:1,clientY:1})]:[]});target.dispatchEvent(e);return e.defaultPrevented;};if(!event('touchstart',handle,true)||!event('touchmove',handle,true))throw Error('Control touch not cancelled');event('touchcancel',handle,false);if(event('touchstart',still,true)||event('touchmove',still,true))throw Error('Page scroll cancelled outside handles');event('touchend',still,false);return 'Native non-passive TouchEvent cancellation is scoped to controls and resets after cancel';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const rs=[...document.querySelectorAll('[data-fib4-handle]')].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error('Small target');for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){const a=rs[i],b=rs[j];if(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)throw Error('Overlapping targets');}if(document.documentElement.scrollWidth>innerWidth)throw Error('Overflow');return 'Four separate 44px targets and no horizontal overflow';})()"
+  ],
+  ["move", ".fib4-handle[aria-label^=\"ALT\"]", 0.5, 0.5],
+  ["shot", "docs/anatomy-map/shots/fib4-anatomy-hover.png", ".fib4-figure"],
+  ["slow", 0.1],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(5)"],
+  ["scroll", ".fib4-figure"],
+  ["sheet", "docs/anatomy-map/shots/fib4-anatomy-motion.png", 100, 5, ".fib4-figure", 1, null, 3],
+  ["slow", 1],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-140)<1e-6;})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-alt\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"0\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||[...document.querySelectorAll('[data-fib4-group]:not([data-fib4-group=static])')].some(e=>e.style.display!=='none')||document.querySelector('.fib4-svg').dataset.fib4Result)throw Error('Stale invalid state');return 'Invalid form hides moving geometry and clears both results';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-alt\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-alt').value===''"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-ast\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"1000000\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-1000000)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;if(+d.fib4QuotientLength>76.00001||Math.abs(+d.fib4Result-60e6/(200*Math.sqrt(35)))>1e-5)throw Error('Expanded scale');return 'Large input preserves formula and expands geometry scales';})()"
+  ],
+  ["lines", null, ".fib4-figure"],
+  ["scroll", ".fib4-experiments"],
+  ["click", ".fib4-experiments button:nth-child(1)"],
+  ["scroll", ".fib4-figure"],
+  [
+    "until",
+    "(()=>{const d=document.querySelector('.fib4-svg').dataset;return Math.abs(+d.fib4Age-60)<1e-6&&Math.abs(+d.fib4Ast-40)<1e-6&&Math.abs(+d.fib4Platelets-200)<1e-6&&Math.abs(+d.fib4Alt-35)<1e-6;})()"
+  ],
+  ["shot", "docs/anatomy-map/shots/fib4-anatomy-phone.png", ".fib4-panel"],
+  ["eval", "(()=>{document.querySelector('.fib4-figure').dataset.theme='dark';})()"],
+  ["lines", null, ".fib4-figure"],
+  ["shot", "docs/anatomy-map/shots/fib4-anatomy-dark-close.png", ".fib4-svg", 4]
+]
