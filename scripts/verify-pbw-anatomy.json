@@ -1,0 +1,176 @@
+[
+  ["until", "document.querySelector(\".pbw-svg\")"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"[data-anatomy-result]\").textContent!==\"—\")throw Error(\"empty start\");if([...document.querySelectorAll(\"[data-pbw-group^=measure]\")].some(e=>e.style.display!==\"none\"))throw Error(\"stale blank geometry\");return \"Blank state hides all six measures\";})()"
+  ],
+  ["scroll", ".pbw-presets"],
+  ["click", ".pbw-presets button:nth-of-type(1)"],
+  ["scroll", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(423.396))<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{window.baseMarkup=document.querySelector(\"[data-pbw-group=measure0]\").innerHTML;window.baseSwitch=document.querySelector(\"[data-pbw-group=selector]\").getAttribute(\"transform\");if(document.querySelector(\"#field-height\").value!==\"175\"||document.querySelector(\"#anatomy-height\").value!==\"175\")throw Error(\"shared preset\");return \"175 cm male: PBW 70.566 kg, six equal measures total 423.396 ml\";})()"
+  ],
+  ["shot", "/tmp/pbw-qa/desktop.png", ".pbw-panel"],
+  ["shot", "/tmp/pbw-qa/close-light.png", ".pbw-svg", 4],
+  ["lines", null, ".pbw-figure"],
+  ["scroll", ".pbw-presets"],
+  ["click", ".pbw-presets button:nth-of-type(2)"],
+  ["scroll", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(396.396))<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"[data-pbw-group=measure0]\").innerHTML===window.baseMarkup||document.querySelector(\"[data-pbw-group=selector]\").getAttribute(\"transform\")===window.baseSwitch)throw Error(\"sex geometry insensitive\");return \"Female formula changes all fills and the physical shuttle\";})()"
+  ],
+  ["lines", null, ".pbw-figure"],
+  ["scroll", ".pbw-presets"],
+  ["click", ".pbw-presets button:nth-of-type(3)"],
+  ["scroll", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(505.296))<1e-6"
+  ],
+  ["lines", null, ".pbw-figure"],
+  ["key", "ArrowUp", ".pbw-handle[role=slider]"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(510.756))<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"#field-height\").value!==\"191\"||document.querySelector(\"#anatomy-height\").value!==\"191\")throw Error(\"keyboard sync\");return \"Keyboard changes shared height\";})()"
+  ],
+  ["drag", ".pbw-handle[role=slider]", 0.5, 0.8, 0.5, 0.2, 14],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector(\"#field-height\").value.replace(\",\",\".\"))<=191)throw Error(\"pointer drag\");return \"Pointer capture drag changes height\";})()"
+  ],
+  ["key", " ", ".pbw-handle[role=switch]"],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"#anatomy-sex\").value!==\"0\")throw Error(\"switch keyboard\");return \"Keyboard formula switch changes shared sex\";})()"
+  ],
+  ["click", ".pbw-handle[role=switch]"],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"#anatomy-sex\").value!==\"1\")throw Error(\"switch pointer\");return \"Pointer formula switch works\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-height\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,\"value\").set.call(e,\"180\");e.dispatchEvent(new Event(\"input\",{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(450.696))<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"#anatomy-height\").value!==\"180\")throw Error(\"main to anatomy\");return \"Main form updates carousel and Anatomy field\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-height\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,\"value\").set.call(e,\"185\");e.dispatchEvent(new Event(\"input\",{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(477.996))<1e-6"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"#field-height\").value!==\"185\")throw Error(\"anatomy to main\");return \"Anatomy updates main form\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{const svg=document.querySelector(\".pbw-svg\"),h=document.querySelector(\".pbw-handle rect\");const touch=new Touch({identifier:1,target:h,clientX:1,clientY:1});const start=new TouchEvent(\"touchstart\",{bubbles:true,cancelable:true,touches:[touch]});h.dispatchEvent(start);const move=new TouchEvent(\"touchmove\",{bubbles:true,cancelable:true,touches:[touch]});svg.dispatchEvent(move);const end=new TouchEvent(\"touchcancel\",{bubbles:true,cancelable:true,touches:[]});svg.dispatchEvent(end);const free=new TouchEvent(\"touchstart\",{bubbles:true,cancelable:true,touches:[touch]});svg.dispatchEvent(free);const freeMove=new TouchEvent(\"touchmove\",{bubbles:true,cancelable:true,touches:[touch]});svg.dispatchEvent(freeMove);svg.dispatchEvent(new TouchEvent(\"touchend\",{bubbles:true,touches:[]}));if(!start.defaultPrevented||!move.defaultPrevented||free.defaultPrevented||freeMove.defaultPrevented)throw Error(\"native touch lock\");return \"Native touchstart and touchmove cancelled only for control; touchcancel releases page scrolling\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error(\"horizontal overflow\");const rs=[...document.querySelectorAll(\"[data-pbw-hit]\")].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error(\"44px targets\");if(rs[0].right>rs[1].left&&rs[0].left<rs[1].right&&rs[0].bottom>rs[1].top&&rs[0].top<rs[1].bottom)throw Error(\"overlap targets\");return \"No sideways scroll, two distinct 44px controls\";})()"
+  ],
+  ["scroll", ".pbw-presets"],
+  ["click", ".pbw-presets button:nth-of-type(4)"],
+  ["scroll", ".pbw-figure"],
+  ["wait", 50],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"[data-anatomy-result]\").textContent!==\"—\"||[...document.querySelectorAll(\"[data-pbw-group^=measure]\")].some(e=>e.style.display!==\"none\")||!document.querySelector(\".pbw-panel [role=alert]\"))throw Error(\"registry validation\");return \"Nonpositive PBW rejected by original registry validation, no stale geometry\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-height\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,\"value\").set.call(e,\"\");e.dispatchEvent(new Event(\"input\",{bubbles:true}));})()"
+  ],
+  ["wait", 50],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"[data-anatomy-result]\").textContent!==\"—\")throw Error(\"blank result\");return \"Blank input clears result\";})()"
+  ],
+  ["scroll", ".pbw-presets"],
+  ["click", ".pbw-presets button:nth-of-type(1)"],
+  ["scroll", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(423.396))<1e-6"
+  ],
+  ["move", ".pbw-handle[role=slider]", 0.5, 0.5],
+  ["key", "ArrowRight", ".pbw-handle[role=slider]"],
+  ["shot", "/tmp/pbw-qa/motion-start.png", ".pbw-figure"],
+  ["wait", 100],
+  ["shot", "/tmp/pbw-qa/motion-follow.png", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(428.856))<1e-6"
+  ],
+  ["shot", "/tmp/pbw-qa/hover-focus.png", ".pbw-figure"],
+  ["lines", null, ".pbw-figure"],
+  [
+    "eval",
+    "(()=>{window.lit=document.querySelector(\".pbw-figure\");window.lit.dataset.theme=\"dark\";})()"
+  ],
+  ["shot", "/tmp/pbw-qa/close-dark.png", ".pbw-svg", 4],
+  ["lines", null, ".pbw-figure"],
+  ["eval", "(()=>{window.lit.dataset.theme=\"light\";return \"Both themes line audited\";})()"],
+  [
+    "eval",
+    "window.pbwSpacer=document.createElement(\"div\");window.pbwSpacer.style.height=\"1200px\";document.body.appendChild(window.pbwSpacer);window.pbwSpacer.scrollIntoView({block:\"end\",behavior:\"instant\"});"
+  ],
+  ["wait", 200],
+  [
+    "eval",
+    "(()=>{const r=document.querySelector(\".pbw-svg\").getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)throw Error(\"SVG still in viewport\");window.frozen=document.querySelector(\"[data-pbw-group=measure0]\").innerHTML;return \"Offscreen baseline frozen\";})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-height\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,\"value\").set.call(e,\"200\");e.dispatchEvent(new Event(\"input\",{bubbles:true}));})()"
+  ],
+  ["wait", 400],
+  [
+    "eval",
+    "(()=>{if(document.querySelector(\"[data-pbw-group=measure0]\").innerHTML!==window.frozen)throw Error(\"offscreen animation\");window.pbwSpacer.remove();return \"Offscreen geometry does not animate\";})()"
+  ],
+  ["scroll", ".pbw-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector(\".pbw-svg\").dataset.pbwResult)-(559.896))<1e-6"
+  ],
+  ["lines", null, ".pbw-figure"],
+  ["wait", 300],
+  [
+    "eval",
+    "window.__pbwMutations=0;window.__pbwObserver=new MutationObserver(()=>window.__pbwMutations++);window.__pbwObserver.observe(document.querySelector(\"[data-pbw-group=measure0]\"),{childList:true,subtree:true});"
+  ],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{window.__pbwObserver.disconnect();if(window.__pbwMutations)throw Error(\"idle figure keeps redrawing\");return \"Settled figure performs no animation writes\";})()"
+  ]
+]

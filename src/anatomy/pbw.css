@@ -1,0 +1,198 @@
+.pbw-panel {
+  background: #f8f9fc;
+  border-color: #b7bfd4;
+}
+.pbw-panel .anatomy-eyebrow,
+.pbw-panel .anatomy-header p {
+  color: #737d94;
+}
+.pbw-panel .anatomy-method {
+  background: #edf0f8;
+  border-color: #ccd3e3;
+  color: #526585;
+  white-space: nowrap;
+}
+.pbw-figure {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.pbw-figure.iso[data-theme='light'] {
+  --anatomy-mid: #78839a;
+  --anatomy-lo: #a2adbf;
+  --anatomy-faint: #dce1ec;
+  --anatomy-card: #f7f8fc;
+  --anatomy-paper: #f7f8fc;
+  --anatomy-lit: #425c82;
+  --anatomy-lit-top: #adc1dd;
+  --anatomy-lit-shade: #879ebf;
+  --anatomy-shade-0: #c2ccdd;
+  --anatomy-shade-1: #d4dce9;
+  --anatomy-shade-2: #e1e6f0;
+  --anatomy-shade-3: #edf0f7;
+}
+.pbw-plate.iso-plate {
+  padding: 17px 18px;
+}
+.pbw-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pbw-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.pbw-switch {
+  cursor: pointer;
+}
+.pbw-handle:focus {
+  outline: none;
+}
+.pbw-handle:focus-visible rect {
+  stroke: #425c82;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.pbw-handle:hover rect {
+  fill: #425c820a;
+}
+.pbw-figure figcaption,
+.pbw-equation,
+.pbw-note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #738099;
+}
+.pbw-figure figcaption {
+  margin: 10px 0 22px;
+}
+.pbw-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #d9dfeb;
+}
+.pbw-input {
+  min-width: 0;
+}
+.pbw-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #5e6e88;
+  margin-bottom: 8px;
+}
+.pbw-input > select {
+  width: 100%;
+  min-height: 55px;
+  border: 1px solid #ccd4e3;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  color: #405471;
+  font: inherit;
+}
+.pbw-input .input-wrap {
+  background: white;
+}
+.pbw-input .input-wrap input {
+  font-size: 25px;
+  min-width: 0;
+}
+.pbw-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: #edf1f8;
+  border: 1px solid #cbd4e4;
+  border-radius: 9px;
+  padding: 18px 24px;
+  margin-top: 20px;
+}
+.pbw-answer span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #6b7b96;
+}
+.pbw-answer b {
+  font-size: 27px;
+  font-weight: 500;
+  color: #50668a;
+}
+.pbw-answer strong {
+  font:
+    650 46px 'Manrope Variable',
+    sans-serif;
+  letter-spacing: -1.5px;
+  color: #425c82;
+}
+.pbw-answer small {
+  font-size: 12px;
+  color: #7a88a0;
+}
+.pbw-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 11px;
+  color: #6b7b96;
+}
+.pbw-presets button {
+  border: 1px solid #ccd4e3;
+  border-radius: 6px;
+  background: white;
+  color: #526585;
+  min-height: 44px;
+  padding: 10px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.pbw-presets button:hover {
+  background: #edf1f8;
+}
+.pbw-presets button:focus-visible,
+.pbw-input > select:focus-visible {
+  outline: 2px solid #425c82;
+  outline-offset: 3px;
+}
+@media (max-width: 680px) {
+  .pbw-panel .anatomy-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pbw-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+  .pbw-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pbw-plate.iso-plate {
+    padding: 13px 9px;
+  }
+  .pbw-plate .anatomy-figure-footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .pbw-answer {
+    padding: 14px;
+    gap: 12px;
+  }
+  .pbw-answer strong {
+    font-size: 34px;
+  }
+  .pbw-answer b {
+    font-size: 22px;
+  }
+  .pbw-answer span {
+    font-size: 9px;
+  }
+  .pbw-presets > span {
+    flex-basis: 100%;
+  }
+}
