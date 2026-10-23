@@ -1,0 +1,269 @@
+.sodium-panel {
+  background: #fbf8f5;
+  border-color: #c7ad9c;
+}
+.sodium-panel .anatomy-eyebrow {
+  color: #95765f;
+}
+.sodium-panel .anatomy-method {
+  background: #f3ebe4;
+  border-color: #ddc8b9;
+  color: #8b614a;
+  white-space: nowrap;
+}
+.sodium-panel .anatomy-header p {
+  color: #897a6d;
+}
+.sodium-figure {
+  max-width: 830px;
+  margin: 0 auto;
+}
+.sodium-figure.iso[data-theme='light'] {
+  --anatomy-mid: #837b73;
+  --anatomy-lo: #ada296;
+  --anatomy-faint: #ded6cd;
+  --anatomy-card: #fbf8f3;
+  --anatomy-paper: #fbf8f3;
+  --anatomy-lit: #9b603f;
+  --anatomy-lit-top: #dfbc8d;
+  --anatomy-lit-shade: #ca9f70;
+  --anatomy-shade-0: #d5cdc2;
+  --anatomy-shade-1: #e1d9cf;
+  --anatomy-shade-2: #ebe5db;
+  --anatomy-shade-3: #f3eee6;
+}
+.sodium-plate.iso-plate {
+  padding: 17px 18px;
+}
+.sodium-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sodium-handle {
+  cursor: ns-resize;
+  touch-action: none;
+}
+.sodium-handle:focus {
+  outline: none;
+}
+.sodium-handle:focus-visible rect,
+.sodium-handle:hover rect {
+  stroke: #94634b;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.sodium-figure figcaption {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #968473;
+  margin: 11px 0 20px;
+}
+.sodium-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  border-top: 1px solid #e1d5c9;
+  padding-top: 20px;
+}
+.sodium-input {
+  min-width: 0;
+}
+.sodium-input > label {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #886d57;
+  margin-bottom: 9px;
+}
+.sodium-input .input-wrap {
+  background: #fff;
+}
+.sodium-input .input-wrap input {
+  font-size: 25px;
+  min-width: 0;
+}
+.sodium-input .field-unit {
+  font-size: 12px;
+}
+.sodium-panel .input-wrap select {
+  max-width: 128px;
+}
+.sodium-input .field-hint {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  margin-top: 8px;
+}
+.sodium-answer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #dbc5b5;
+  border-radius: 9px;
+  background: #f5ece5;
+  padding: 18px 24px;
+  margin-top: 16px;
+}
+.sodium-answer span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9b7b63;
+}
+.sodium-answer code {
+  font:
+    25px ui-monospace,
+    monospace;
+  line-height: 1.7;
+  color: #8b614a;
+}
+.sodium-answer strong {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 46px;
+  font-weight: 650;
+  letter-spacing: -1.5px;
+  color: #9b603f;
+  line-height: 1.3;
+}
+.sodium-answer small {
+  font-size: 12px;
+  color: #ab886e;
+  margin-left: 8px;
+}
+.sodium-shared {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a08a76;
+  margin: 12px 0 21px;
+}
+.sodium-working {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  border-top: 1px solid #e1d5c9;
+  border-bottom: 1px solid #e1d5c9;
+  padding: 17px 0;
+  margin-top: 20px;
+}
+.sodium-working span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #a18a76;
+}
+.sodium-working b {
+  font-size: 23px;
+  font-weight: 500;
+  color: #8b614a;
+  overflow-wrap: anywhere;
+}
+.sodium-experiments {
+  margin-top: 20px;
+}
+.sodium-experiments > span {
+  font-size: 11px;
+  color: #886d57;
+}
+.sodium-experiments > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.sodium-experiments button {
+  border: 1px solid #d9c0ad;
+  border-radius: 5px;
+  background: #fff;
+  color: #956c51;
+  font-size: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.sodium-experiments button:hover {
+  background: #f5ece5;
+}
+.sodium-note {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9c8775;
+  margin-top: 16px;
+}
+@media (max-width: 680px) {
+  .sodium-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sodium-input .input-wrap input {
+    font-size: 19px;
+    padding-left: 9px;
+  }
+  .sodium-input .field-unit {
+    font-size: 10px;
+    padding: 0 7px;
+  }
+  .sodium-plate.iso-plate {
+    padding: 13px 9px;
+  }
+  .sodium-plate .anatomy-figure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .sodium-answer {
+    padding: 14px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sodium-answer code {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+  .sodium-answer strong {
+    font-size: 35px;
+  }
+  .sodium-answer span {
+    font-size: 9px;
+  }
+  .sodium-working {
+    gap: 8px;
+  }
+  .sodium-working span {
+    font-size: 9px;
+  }
+  .sodium-working b {
+    font-size: 16px;
+  }
+  .sodium-panel .anatomy-header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .sodium-panel .anatomy-header > div {
+    flex-basis: 100%;
+  }
+}
+
+.sodium-figure.iso[data-theme='dark'] {
+  --anatomy-card: #171c1f;
+  --anatomy-hi: #c9c9bd;
+  --anatomy-mid: #929d9f;
+  --anatomy-lo: #727f83;
+  --anatomy-faint: #4f5d62;
+  --anatomy-top: #5c666a;
+  --anatomy-shade-0: #283136;
+  --anatomy-shade-1: #343f44;
+  --anatomy-shade-2: #424e53;
+  --anatomy-shade-3: #4e5b60;
+  --anatomy-lit: #f1bd79;
+  --anatomy-lit-top: #d4aa72;
+  --anatomy-lit-shade: #926947;
+}
+.sodium-figure[data-theme='dark'] .anatomy-figure-heading,
+.sodium-figure[data-theme='dark'] .anatomy-figure-footer {
+  color: #bec5bb;
+}
+.sodium-figure[data-theme='dark'] .anatomy-figure-footer span:last-child {
+  color: #edbe85;
+}

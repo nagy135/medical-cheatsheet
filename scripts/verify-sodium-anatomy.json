@@ -1,0 +1,189 @@
+[
+  ["until", "document.querySelector('.sodium-svg')"],
+  ["eval", "document.querySelector('.topbar').style.visibility='hidden'"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(2)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.8)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.sodium-svg').dataset;if(document.querySelector('#anatomy-sodium').value!==document.querySelector('#field-sodium').value||document.querySelector('#anatomy-glucose').value!==document.querySelector('#field-glucose').value||Math.abs(Number(d.sodiumTravel)*Number(d.sodiumCorrection)/Number(d.sodiumTravel)-4.8)>1e-6)throw Error('shared reference');window.sodiumBase={...d};return '130 + 4.8 = 134.8; shared raw values';})()"
+  ],
+  ["shot", "/tmp/sodium-desktop.png", ".sodium-panel"],
+  ["shot", "/tmp/sodium-figure.png", ".sodium-figure"],
+  ["shot", "/tmp/sodium-close-light.png", ".sodium-svg", 4],
+  ["lines", "/tmp/sodium-lines.png", ".sodium-figure"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(4)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-144.8)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.sodium-svg').dataset;if(d.sodiumCorrection!==window.sodiumBase.sodiumCorrection||d.sodiumDatum===window.sodiumBase.sodiumDatum)throw Error('Na sensitivity');return 'Na raises datum, correction unchanged';})()"
+  ],
+  ["lines", null, ".sodium-figure"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(3)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-141.2)<1e-9"
+  ],
+  ["shot", "/tmp/sodium-raised.png", ".sodium-figure"],
+  ["lines", null, ".sodium-figure"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(1)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-130)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const d=document.querySelector('.sodium-svg').dataset;if(Number(d.sodiumRise)!==0||Number(d.sodiumTravel)!==0)throw Error('zero correction');return '100 mg/dl gives zero travel and zero rise';})()"
+  ],
+  ["shot", "/tmp/sodium-zero.png", ".sodium-figure"],
+  ["lines", null, ".sodium-figure"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(2)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.8)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector('.sodium-input select');e.value='1';e.dispatchEvent(new Event('change',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.8)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const selects=[...document.querySelectorAll('select[aria-label=\"Einheit für Glukose\"]')];if(selects.some(e=>e.value!=='1')||Math.abs(Number(document.querySelector('#anatomy-glucose').value.replace(',','.'))-400/18.0182)>1e-7)throw Error('unit sync');return 'mg/dl to mmol/l preserves true result and geometry';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"20\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.165824)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('#field-glucose').value!=='20')throw Error('shared SI');return '20 mmol/l = 360.364 mg/dl; result 134.165824';})()"
+  ],
+  ["key", "ArrowUp", ".sodium-handle[aria-label^=Glukose]"],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(Math.abs(Number(document.querySelector('#field-glucose').value.replace(',','.'))-20.1)>1e-7)throw Error('SI keyboard step');return 'Keyboard step uses selected unit 0.1 mmol/l';})()"
+  ],
+  ["drag", ".sodium-handle[aria-label^=Glukose]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-glucose').value.replace(',','.'))<=20.1)throw Error('pointer glucose');return 'Glucose pointer changes shared selected-unit input';})()"
+  ],
+  ["drag", ".sodium-handle[aria-label^=Gemessenes]", 0.5, 0.8, 0.5, 0.2, 12],
+  ["wait", 900],
+  [
+    "eval",
+    "(()=>{if(Number(document.querySelector('#field-sodium').value.replace(',','.'))<=130)throw Error('pointer Na');return 'Sodium pointer changes shared input';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"5,54\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.result-number').textContent!=='—'||[...document.querySelectorAll('[data-sodium-variable]')].some(e=>e.style.display!=='none'))throw Error('invalid stale');return 'Invalid converted glucose hides every variable solid and result';})()"
+  ],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#anatomy-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["until", "document.querySelector('#field-glucose').value===''"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(2)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.8)<1e-9"
+  ],
+  [
+    "eval",
+    "(()=>{const handle=document.querySelector('[data-sodium-target]'),svg=document.querySelector('.sodium-svg');const start=new TouchEvent('touchstart',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:handle,clientX:10,clientY:10})]});handle.dispatchEvent(start);const move=new TouchEvent('touchmove',{bubbles:true,cancelable:true,touches:[new Touch({identifier:1,target:handle,clientX:10,clientY:20})]});handle.dispatchEvent(move);handle.dispatchEvent(new TouchEvent('touchcancel',{bubbles:true,touches:[]}));const free=new TouchEvent('touchstart',{bubbles:true,cancelable:true,touches:[new Touch({identifier:2,target:svg,clientX:20,clientY:20})]});svg.dispatchEvent(free);const freeMove=new TouchEvent('touchmove',{bubbles:true,cancelable:true,touches:[new Touch({identifier:2,target:svg,clientX:20,clientY:30})]});svg.dispatchEvent(freeMove);svg.dispatchEvent(new TouchEvent('touchend',{bubbles:true,touches:[]}));if(!start.defaultPrevented||!move.defaultPrevented||free.defaultPrevented||freeMove.defaultPrevented)throw Error('touch lock');return 'Native TouchEvent: handle start/move cancelled, cancellation releases, non-controls scroll';})()"
+  ],
+  [
+    "eval",
+    "(()=>{if(document.documentElement.scrollWidth>innerWidth)throw Error('overflow');const rs=[...document.querySelectorAll('[data-sodium-target]')].map(e=>e.getBoundingClientRect());if(rs.some(r=>r.width<43.9||r.height<43.9))throw Error('small target');const [a,b]=rs;if(a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)throw Error('overlap');return 'Two separate 44px targets; no horizontal overflow';})()"
+  ],
+  ["move", ".sodium-handle[aria-label^=Glukose]", 0.5, 0.5],
+  ["shot", "/tmp/sodium-hover.png", ".sodium-figure"],
+  ["lines", null, ".sodium-figure"],
+  ["eval", "window.sodiumSettledFrame=document.querySelector('.sodium-svg').dataset.sodiumFrame"],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.sodium-svg').dataset.sodiumFrame!==window.sodiumSettledFrame)throw Error('settled loop');return 'RAF stops when settled';})()"
+  ],
+  ["eval", "document.querySelector('.sodium-svg').style.transform='translateY(-4000px)'"],
+  ["until", "document.querySelector('.sodium-svg').dataset.sodiumVisible==='false'"],
+  [
+    "eval",
+    "(()=>{const e=document.querySelector(\"#field-glucose\");Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,\"500\");e.dispatchEvent(new Event('input',{bubbles:true}));})()"
+  ],
+  ["eval", "window.sodiumOffFrame=document.querySelector('.sodium-svg').dataset.sodiumFrame"],
+  ["wait", 300],
+  [
+    "eval",
+    "(()=>{if(document.querySelector('.sodium-svg').dataset.sodiumFrame!==window.sodiumOffFrame)throw Error('offscreen loop');return 'Offscreen input pauses geometry RAF';})()"
+  ],
+  ["eval", "document.querySelector('.sodium-svg').style.transform=''"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-136.4)<1e-9"
+  ],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(2)"],
+  ["scroll", ".sodium-figure"],
+  [
+    "until",
+    "Math.abs(Number(document.querySelector('.sodium-svg').dataset.sodiumResult)-134.8)<1e-9"
+  ],
+  ["lines", null, ".sodium-figure"],
+  ["shot", "/tmp/sodium-final-light-4x.png", ".sodium-svg", 4],
+  ["eval", "document.querySelector('.sodium-figure').dataset.theme='dark'"],
+  ["shot", "/tmp/sodium-final-dark.png", ".sodium-figure"],
+  ["shot", "/tmp/sodium-final-dark-4x.png", ".sodium-svg", 4],
+  ["lines", "/tmp/sodium-final-dark-lines.png", ".sodium-figure"],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(1)"],
+  ["scroll", ".sodium-figure"],
+  ["until", "Number(document.querySelector('.sodium-svg').dataset.sodiumCorrection)===0"],
+  ["shot", "/tmp/sodium-final-dark-zero-4x.png", ".sodium-svg", 4],
+  ["lines", null, ".sodium-figure"],
+  ["eval", "document.querySelector('.sodium-figure').dataset.theme='light'"],
+  ["shot", "/tmp/sodium-final-light-zero-4x.png", ".sodium-svg", 4],
+  ["lines", null, ".sodium-figure"],
+  ["slow", 0.2],
+  ["scroll", ".sodium-experiments"],
+  ["click", ".sodium-experiments button:nth-child(3)"],
+  ["scroll", ".sodium-figure"],
+  ["sheet", "/tmp/sodium-final-motion.png", 100, 12, ".sodium-svg", 1],
+  ["slow", 1],
+  ["until", "Number(document.querySelector('.sodium-svg').dataset.sodiumGlucose)===800"],
+  ["lines", null, ".sodium-figure"],
+  ["shot", "/tmp/sodium-final-raised-4x.png", ".sodium-svg", 4]
+]
