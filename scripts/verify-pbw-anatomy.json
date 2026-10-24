@@ -1,8 +1,15 @@
 [
   ["until", "document.querySelector(\".pbw-svg\")"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"423\"&&document.querySelector('.result-number').textContent===\"423\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
-    "(()=>{if(document.querySelector(\"[data-anatomy-result]\").textContent!==\"—\")throw Error(\"empty start\");if([...document.querySelectorAll(\"[data-pbw-group^=measure]\")].some(e=>e.style.display!==\"none\"))throw Error(\"stale blank geometry\");return \"Blank state hides all six measures\";})()"
+    "(()=>{if(document.querySelector(\"[data-anatomy-result]\").textContent!==\"—\")throw Error(\"cleared result\");if([...document.querySelectorAll(\"[data-pbw-group^=measure]\")].some(e=>e.style.display!==\"none\"))throw Error(\"stale blank geometry\");return \"Blank state hides all six measures\";})()"
   ],
   ["scroll", ".pbw-presets"],
   ["click", ".pbw-presets button:nth-of-type(1)"],

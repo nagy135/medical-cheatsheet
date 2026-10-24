@@ -1,8 +1,15 @@
 [
   ["until", "document.querySelector('.water-svg')"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"9,00\"&&document.querySelector('.result-number').textContent===\"9,00\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
-    "(()=>{if(document.querySelector('.water-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Incomplete result');return 'Dedicated dilution chamber starts empty with the main form';})()"
+    "(()=>{if(document.querySelector('.water-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Incomplete result');return 'Cleared main form hides the dedicated dilution chamber';})()"
   ],
   ["scroll", ".input-panel-footer"],
   ["click", ".input-panel-footer .text-button"],

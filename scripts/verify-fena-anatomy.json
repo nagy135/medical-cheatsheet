@@ -1,8 +1,15 @@
 [
   ["until", "document.querySelector('.fena-svg')"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"0,17\"&&document.querySelector('.result-number').textContent===\"0,17\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
-    "(()=>{window.fenaSet=(id,v)=>{const e=document.querySelector('#anatomy-'+id);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,v);e.dispatchEvent(new Event('input',{bubbles:true}));};window.fenaUnit=(id,v)=>{const e=document.querySelector('#anatomy-'+id).closest('.input-wrap').querySelector('select');e.value=String(v);e.dispatchEvent(new Event('change',{bubbles:true}));};if(document.querySelector('[data-anatomy-result]').textContent!=='—'||document.querySelector('.fena-svg').dataset.fenaValid!=='false')throw Error('Initial blank state');return 'Empty shared form hides result and geometry';})()"
+    "(()=>{window.fenaSet=(id,v)=>{const e=document.querySelector('#anatomy-'+id);Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,v);e.dispatchEvent(new Event('input',{bubbles:true}));};window.fenaUnit=(id,v)=>{const e=document.querySelector('#anatomy-'+id).closest('.input-wrap').querySelector('select');e.value=String(v);e.dispatchEvent(new Event('change',{bubbles:true}));};if(document.querySelector('[data-anatomy-result]').textContent!=='—'||document.querySelector('.fena-svg').dataset.fenaValid!=='false')throw Error('Cleared form state');return 'Empty shared form hides result and geometry';})()"
   ],
   ["scroll", ".fena-experiments"],
   ["click", ".fena-experiments button"],

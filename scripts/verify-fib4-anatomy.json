@@ -1,8 +1,15 @@
 [
   ["until", "document.querySelector('.fib4-svg')"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"2,03\"&&document.querySelector('.result-number').textContent===\"2,03\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
-    "(()=>{if(document.querySelector('.fib4-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Initial result not blank');return 'Dedicated instrument starts empty';})()"
+    "(()=>{if(document.querySelector('.fib4-panel [data-trace]'))throw Error('Generic plotter');if(document.querySelector('[data-anatomy-result]').textContent!=='—')throw Error('Cleared result not blank');return 'Cleared main form hides the dedicated instrument';})()"
   ],
   ["scroll", ".fib4-experiments"],
   ["click", ".fib4-experiments button:nth-child(1)"],

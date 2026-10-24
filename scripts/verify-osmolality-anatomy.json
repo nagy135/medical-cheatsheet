@@ -1,6 +1,13 @@
 [
   ["until", "document.querySelector('.osmolality-svg')"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"290,5\"&&document.querySelector('.result-number').textContent===\"290,5\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
     "(()=>{if(document.querySelector('[data-anatomy-result]').textContent!=='—'||[...document.querySelectorAll('[data-osmolality-group]:not([data-osmolality-group=static])')].some(e=>e.style.display!=='none'))throw Error('Stale empty geometry');return 'Empty main form hides all seven inserts';})()"
   ],

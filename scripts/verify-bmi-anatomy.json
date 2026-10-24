@@ -1,6 +1,13 @@
 [
   ["until", "document.querySelector('.bmi-svg')"],
   [
+    "until",
+    "document.querySelector('[data-anatomy-result]').textContent===\"24,5\"&&document.querySelector('.result-number').textContent===\"24,5\""
+  ],
+  ["scroll", ".input-panel"],
+  ["click", ".input-panel .panel-heading .text-button"],
+  ["until", "document.querySelector('[data-anatomy-result]').textContent==='—'"],
+  [
     "eval",
     "(()=>{if(!(document.querySelector('[data-anatomy-result]').textContent==='—'&&document.querySelector('[data-bmi-group=load]').style.display==='none'))throw Error('Empty state');return 'Empty state passed';})()"
   ],
