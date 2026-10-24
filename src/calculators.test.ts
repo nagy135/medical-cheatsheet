@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   calculators,
+  defaultInputs,
   evaluateCalculator,
   formatNumber,
   parseGermanNumber,
@@ -8,8 +9,7 @@ import {
 } from './calculators';
 
 const get = (id: string) => calculators.find((calculator) => calculator.id === id)!;
-const example = (id: string) =>
-  Object.fromEntries(get(id).fields.map((field) => [field.id, field.example]));
+const example = (id: string) => defaultInputs(get(id));
 
 // Fixed numerical benchmarks exercise every published formula through the same
 // parsing/conversion/validation path used by the UI, rather than its function alone.

@@ -1,4 +1,4 @@
-import { evaluateCalculator } from '../calculators';
+import { defaultInputs, evaluateCalculator } from '../calculators';
 import type { Calculator, Field, Values } from '../calculators';
 
 export type Quantity = { label: string; value: number; unit?: string };
@@ -249,7 +249,7 @@ export const anatomySpecs: Record<string, Spec> = {
 };
 
 export function exampleRaw(calculator: Calculator) {
-  return Object.fromEntries(calculator.fields.map((f) => [f.id, f.example]));
+  return defaultInputs(calculator);
 }
 
 export function canonicalRaw(values: Values) {

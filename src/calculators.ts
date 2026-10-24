@@ -753,6 +753,11 @@ export function parseGermanNumber(raw: string): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+// The examples use each field's first display unit and seed both calculator views.
+export function defaultInputs(calculator: Calculator): Record<string, string> {
+  return Object.fromEntries(calculator.fields.map((field) => [field.id, field.example]));
+}
+
 export function evaluateCalculator(
   calculator: Calculator,
   raw: Record<string, string>,

@@ -27,6 +27,7 @@ import {
 import {
   calculators,
   categories,
+  defaultInputs,
   evaluateCalculator,
   formatNumber,
   getCategory,
@@ -415,23 +416,7 @@ function CalculatorPage({
   favorite: boolean;
   toggleFavorite: (id: string) => void;
 }) {
-  const [raw, setRaw] = useState<Record<string, string>>((): Record<string, string> =>
-    calculator.id === 'map'
-      ? { systolic: '120', diastolic: '80' }
-      : calculator.id === 'koerperoberflaeche'
-        ? { height: '175', weight: '75' }
-        : calculator.id === 'schockindex'
-          ? { heartRate: '90', systolic: '120' }
-          : calculator.id === 'anionenluecke'
-            ? { sodium: '140', chloride: '104', bicarbonate: '24' }
-            : calculator.id === 'qtc-bazett'
-              ? { qt: '400', heartRate: '75' }
-              : calculator.id === 'horovitz'
-                ? { pao2: '80', fio2: '40' }
-                : calculator.id === 'kalzium'
-                  ? { calcium: '2,1', albumin: '30' }
-                  : {},
-  );
+  const [raw, setRaw] = useState(() => defaultInputs(calculator));
   const [units, setUnits] = useState<Record<string, number>>({});
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
   const copyTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -442,7 +427,7 @@ function CalculatorPage({
   const populated = calculator.fields.filter((field) => raw[field.id]?.trim()).length;
   const example = () => {
     setUnits({});
-    setRaw(Object.fromEntries(calculator.fields.map((field) => [field.id, field.example])));
+    setRaw(defaultInputs(calculator));
     setCopyState('idle');
   };
   const reset = () => {

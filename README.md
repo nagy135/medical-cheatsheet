@@ -47,6 +47,12 @@ Alle Zahlenfelder haben Pfeile zum Erhöhen und Verringern; auch die Pfeiltasten
 
 Alle Berechnungen laufen im Browser. Eingaben werden weder übertragen noch gespeichert; beim Verlassen eines Rechners werden sie verworfen. Ausschließlich die IDs der favorisierten Rechner werden in `localStorage` gespeichert. Es gibt keine Analyse- oder Trackingdienste.
 
+Alle 21 Rechner und ihre Anatomy-Ansichten starten mit denselben gültigen
+Beispielwerten aus dem Rechnerverzeichnis. Zahlenfelder, Formelparameter und
+Einheiten sind damit sofort vollständig; Ergebnis und Instrument erscheinen
+ohne zusätzliche Eingabe. Die Beispiele sind Lernwerte. „Beispiel einsetzen“ stellt
+sie im Hauptrechner wieder her; „Zurücksetzen“ leert seine Eingaben.
+
 Alle 21 Rechner besitzen einen umrandeten Anatomy-Rechner.
 Der Bezug auf 140 mmol/l beim freien Wasserdefizit beschreibt das geschätzte
 Defizit und keinen Infusionsplan oder ein kurzfristiges Korrekturziel. Der mittlere arterielle
